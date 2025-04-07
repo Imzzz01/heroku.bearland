@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear Land</title>
+    <!-- External code - Bootsrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+     <!-- External code - Jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <!-- External code -Font awesome cdn for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!--External code - AOS scroll css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+     <!--External code - AOS scroll css-->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+   
+</head>
+<body>
+    <header class="d-flex flex-column align-items-center" id="home">
+        <!-- Navigation links to different sections.  -->
+        <div class="logo text-center">Bear Land</div>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="color: rgb(255, 255, 255);" aria-label="Main Navigation">
+            <!-- Login icon on the left -->
+            <div class="me-auto"> <!-- Use "me-auto" to push the centered nav to the middle -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html" aria-label="Go to login page">
+                            <i class="fa-regular fa-user"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    
+            <!-- Nav bar toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Centered navigation links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto"> <!-- "mx-auto" centers the nav items -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" aria-label="Go to Home section">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="product.html" aria-label="Go to Product section">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gifts.html" aria-label="Go to gifts section">Gifts</a>
+                    </li>
+                  
+
+                </ul>
+            </div>
+            <div class="d-flex align-items-center">
+                <!-- Search form -->
+                <form class="d-flex me-3" action="/action_page.php">
+                    <input type="text" class="form-control me-2" placeholder="Search">
+                    <button type="submit" class="btn btn-outline-light">Submit</button>
+                </form>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html" aria-label="Go to shopping cart">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+        </nav>
+    </header>
+     <!--Bear section-->
+    <div class="bear-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1>Welcome to bear land</h1>
+                    <p>We have a wide range of products for you to choose from. Do you love bears, then you are in the right place, this bear heaven where you can not only buy bears but also adopt them. </p>
+                    <a href="product.html" class="btn btn-primary">Shop now!</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/images/bear (2).jpg" alt="bear Image" class="img-fluid">
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+
+
+    <!-- About Section -->
+    <div class="about-section">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="row">
+                <div class="col-lg-6 col-md-4 col-md-6">
+                    <img src="assets/images/bear3.jpg" alt="About Image" class="img-fluid">
+                </div>
+                <div class="col-lg-6">
+                    <h3>Our Story</h3>
+                    <p>Bear Land was founded in 2025 with the aim of providing high-quality teddy bears and soft toys to our customers. We have a wide range of products for you to choose from. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Contact and services -->
+
+    <div class="contact-section">
+            <h2>Contact page</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <h4>Our services</h4>
+                    <ul class="contact-list">
+                        <li>Wide range of products</li>
+                        <li>High-quality products</li>
+                        <li>Adoption services</li>
+                        <li>24/7 customer support</li>
+                        <li>Fast Delivery</li>
+                </div>
+        </div>
+</div>
+    </div>
+
+
+    
+    
+<footer class="text-center py-3 bg-light mt-5">
+<div class="container">
+    <p class="mb-0">&copy; 2025 VirtualBear. All Rights Reserved.</p>
+    
+</div>
+</footer>
+<!-- External code - SweetAlert2 for popup notification -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.15.10/sweetalert2.min.js" integrity="sha512-M60HsJC4M4A8pgBOj7oC/lvJXuOc9CraWXdD4PF+KNmKl8/Mnz6AH9FANgi4SJM6D9rqPvgQt4KRFR1rPN+EUw==" crossorigin="anonymous"></script>
+  <!-- External code - Bootstrap js link -->  
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Custom Script  -->
+    <script src="assets/javascript/script.js"></script>
+    <script>
+        
+            // Initialize AOS
+            AOS.init();
+       
+    </script>
+   
+</body>
+</html>

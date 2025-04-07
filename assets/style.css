@@ -1,0 +1,60 @@
+* { /* Reseting margin padding and box-sizing for all elements*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif; /*Set a clean, sans- serif font */
+    background: linear-gradient(135deg, #f5f5f5 #c3cfc3); /*Adds a subtle gradient background */
+}
+
+
+/* Header Styles */
+header {
+    left: 0;
+    height: auto;
+    width: 100%;/* appropriate width */
+    background: url(https://th.bing.com/th/id/R.83ed7fdd78da0aecb6b85df76b47d530?rik=HIDCbF%2fzWzSpAg&pid=ImgRaw&r=0); /* adds a gradient background */
+    background-position: center; /* center the background image */
+    background-repeat: no-repeat;
+    background-size: cover; /* contain the background image */
+    color: rgba(56, 10, 25, 0.493); /* font color */
+    padding: 1%;  /* sets padding around header */
+    display: flex; /* flex for alignment */
+    justify-content: space-between; /* Space between contents */
+    align-items: center; /* Centers items vertically */
+    z-index: 1000;/* makes sure the header stays at top */
+}
+
+.logo {
+    font-size: 2em; /* font size */
+    margin-bottom: 10px; /* adds space between logo and nav items */
+}
+
+
+.navbar-nav .nav-link {
+    color: rgb(70, 11, 11); /* font color */
+    text-decoration: none; /* removes underline */
+}
+
+/* Main Styles */
+main {
+    display:flexbox; /* flex for alignment */
+    justify-content: center; /* centers content horizontally */
+    align-items: center; /* centers content vertically */
+    height: 100vh; /* full height of the viewport */
+    padding: 50px; /* adds padding around main content */
+}
+
+main .card-header h3{
+    font-size: 2em; /* font size */
+    font-family: cursive; /* font family */
+    color: #923e59; /* font color */
+    margin-bottom: 10px; /* adds space between header and content */
+}
+
+.card-body {
+    background-image: url(/assets/cute.webp); /* adds background image */
+    background-size: cover; /* cover the entire element */
+    background-position: center; /* center the background image */}
