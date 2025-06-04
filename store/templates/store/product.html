@@ -1,0 +1,79 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}Bear Land - Products{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h1 class="text-center mt-5">Products</h1>
+    <div class="row mt-5">
+        {% for product in products %}
+        <div class="col-md-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="price">£{{ product.price }}</p>
+                    <p>{{ product.description }}</p>
+                    <button class="btn btn-primary" onclick="addToCart('{{ product.name }}', '{{ product.price }}')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <!-- Fallback for when no products are available -->
+        <div class="col-md-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{% static 'images/bear.jpg' %}" class="card-img-top" alt="Brown Bear" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Brown Bear</h5>
+                    <p class="price">£12.00</p>
+                    <p>Adopt a brown bear today!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Brown Bear', 12.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{% static 'images/bear2.jpg' %}" class="card-img-top" alt="Pink Bear" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Pink Bear</h5>
+                    <p class="price">£13.00</p>
+                    <p>Adopt a Pink bear today!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Pink Bear', 13.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{% static 'images/bear3.jpg' %}" class="card-img-top" alt="Brown bear with bow" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Brown bear with a cute bow</h5>
+                    <p class="price">£12.00</p>
+                    <p>Adopt a cute bear today!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Brown bear with a cute bow', 12.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Create an add to cart function
+    function addToCart(name, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({name, price});
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Using SweetAlert for better user experience
+        Swal.fire({
+            title: 'Success!',
+            text: `${name} added to cart!`,
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    }
+</script>
+{% endblock %}

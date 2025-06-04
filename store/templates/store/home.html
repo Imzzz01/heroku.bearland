@@ -1,0 +1,57 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}Bear Land - Home{% endblock %}
+
+{% block content %}
+<!-- Bear section -->
+<div class="bear-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>Welcome to bear land</h1>
+                <p>We have a wide range of products for you to choose from. Do you love bears, then you are in the right place, this bear heaven where you can not only buy bears but also adopt them.</p>
+                <a href="{% url 'products' %}" class="btn btn-primary">Shop now!</a>
+            </div>
+            <div class="col-lg-6">
+                <img src="{% static 'images/bear.jpg' %}" alt="bear Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Section -->
+<div class="about-section">
+    <div class="container">
+        <h2>About Us</h2>
+        <div class="row">
+            <div class="col-lg-6 col-md-4 col-md-6">
+                <img src="{% static 'images/bear3.jpg' %}" alt="About Image" class="img-fluid">
+            </div>
+            <div class="col-lg-6">
+                <h3>Our Story</h3>
+                <p>Bear Land was founded in 2025 with the aim of providing high-quality teddy bears and soft toys to our customers. We have a wide range of products for you to choose from.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact and services -->
+<div class="contact-section">
+    <div class="container">
+        <h2>Contact page</h2>
+        <div class="row">
+            <div class="col-lg-6">
+                <h4>Our services</h4>
+                <ul class="contact-list">
+                    <li>Wide range of products</li>
+                    <li>High-quality products</li>
+                    <li>Adoption services</li>
+                    <li>24/7 customer support</li>
+                    <li>Fast Delivery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

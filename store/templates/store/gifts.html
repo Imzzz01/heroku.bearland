@@ -1,0 +1,91 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}Bear Land - Gifts{% endblock %}
+
+{% block content %}
+<!-- Gifts section -->
+<section class="container">
+    <h1 class="text-center mt-5">Gifts</h1>
+    <div class="row mt-5">
+        {% for gift in gifts %}
+        <div class="col-md-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{{ gift.image.url }}" class="card-img-top" alt="{{ gift.name }}" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ gift.name }}</h5>
+                    <p class="price">£{{ gift.price }}</p>
+                    <p>{{ gift.description }}</p>
+                    <button class="btn btn-primary" onclick="addToCart('{{ gift.name }}', '{{ gift.price }}')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <!-- Fallback for when no gifts are available -->
+        <div class="col-md-4">
+            <div class="card" data-aos="fade-up">
+                <img src="https://i.etsystatic.com/56979515/r/il/8ea7bc/6702795678/il_1140xN.6702795678_hsc1.jpg" class="card-img-top" alt="A romantic gift" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Rose bear gift</h5>
+                    <p class="price">£13.00</p>
+                    <p>A romantic gift for someone you love!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Rose bear gift', 13.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" data-aos="fade-up">
+                <img src="https://m.media-amazon.com/images/I/51LDosKjDAL.__AC_SX300_SY300_QL70_ML2_.jpg" class="card-img-top" alt="A romantic gift" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Rose bear gift</h5>
+                    <p class="price">£13.00</p>
+                    <p>A romantic gift for someone you love!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Rose bear gift', 13.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" data-aos="fade-up">
+                <img src="https://i.pinimg.com/736x/7f/00/e1/7f00e157cfb99c6d29ee89a4c53c2c1e--valentines-day-teddy-bear-chocolate-hearts.jpg" class="card-img-top" alt="A romantic gift" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Valentine Bear Gift</h5>
+                    <p class="price">£13.00</p>
+                    <p>A romantic gift for someone you love!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Valentine Bear Gift', 13.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card" data-aos="fade-up">
+                <img src="https://www.theknot.com/tk-media/images/c3a3f7b2-17f5-48cd-8cef-0a73294addfb~rs_768.h-cr_1.0.1068.800" class="card-img-top" alt="A romantic gift" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">Wedding Bear Gift</h5>
+                    <p class="price">£13.00</p>
+                    <p>A romantic gift for someone you love!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Wedding Bear Gift', 13.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Create an add to cart function
+    function addToCart(name, price) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({name, price});
+        localStorage.setItem('cart', JSON.stringify(cart));
+        
+        // Using SweetAlert for better user experience
+        Swal.fire({
+            title: 'Success!',
+            text: `${name} added to cart!`,
+            icon: 'success',
+            confirmButtonText: 'OK'
+        });
+    }
+</script>
+{% endblock %}
