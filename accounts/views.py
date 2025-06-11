@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
+
 # Create your views here.
 
 def login_view(request):
@@ -26,13 +27,13 @@ def register_view(request):
             login(request, user)
             messages.success(request, 'Registration successful!')
             return redirect('home')
-    else:
-        for field, errors in form.errors.items():
-            for error in errors:
-                messages.error(request, f"{field}: {error}")
-else: 
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+    else: 
         form = CustomUserCreationForm()
-        return render(request, 'accounts/register.html', {'form': form})
+    return render(request, 'accounts/register.html', {'form': form})
    
 def logout_view(request):
     logout(request)
