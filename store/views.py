@@ -1,12 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product, Gift
-# Create your views here.
 
 def home(request):
-    return render(request, 'store/home.html')
+    # Show some featured products on homepage
+    featured_products = Product.objects.all()[:6]  
+    return render(request, 'store/home.html', {'featured_products': featured_products})
 
 def products(request):
-    products = Product.objects.filter(is_gift=False)
+    # Get all products that are NOT gifts
+    products = Product.objects.exclude(gift__isnull=False)
     return render(request, 'store/product.html', {'products': products})
 
 def gifts(request):
