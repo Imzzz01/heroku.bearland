@@ -1,0 +1,200 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}{{ product.name }} - Bear Land{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="product-image-container">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid product-detail-image" style="border-radius: 12px; box-shadow: 0 8px 15px rgba(0,0,0,0.2);">
+                {% else %}
+                    <img src="{% static 'images/bear.jpg' %}" alt="{{ product.name }}" class="img-fluid product-detail-image" style="border-radius: 12px; box-shadow: 0 8px 15px rgba(0,0,0,0.2);">
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="product-details">
+                <nav aria-label="breadcrumb" class="mb-3">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'store:home' %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'store:products' %}">Products</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+                    </ol>
+                </nav>
+                
+                <h1 class="product-title mb-3">{{ product.name }}</h1>
+                <p class="product-price mb-4">£{{ product.price }}</p>
+                
+                <div class="product-description mb-4">
+                    <h5>Description</h5>
+                    <p>{{ product.description }}</p>
+                </div>
+                
+                <div class="product-stock mb-4">
+                    {% if product.stock > 0 %}
+                        <span class="badge bg-success">In Stock ({{ product.stock }} available)</span>
+                    {% else %}
+                        <span class="badge bg-danger">Out of Stock</span>
+                    {% endif %}
+                </div>
+                
+                <div class="product-actions">
+                    {% if product.stock > 0 %}
+                        <form method="post" action="{% url 'cart:add_to_cart' product.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <div class="quantity-selector mb-3">
+                                <label for="quantity" class="form-label">Quantity:</label>
+                                <select name="quantity" id="quantity" class="form-select" style="width: 100px; display: inline-block;">
+                                    {% for i in "123456789"|make_list %}
+                                        <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg me-3">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                        <button class="btn btn-outline-secondary btn-lg" onclick="addToWishlist('{{ product.name }}')">
+                            <i class="fa fa-heart"></i> Add to Wishlist
+                        </button>
+                    {% else %}
+                        <button class="btn btn-secondary btn-lg" disabled>
+                            <i class="fa fa-ban"></i> Out of Stock
+                        </button>
+                    {% endif %}
+                </div>
+                
+                <div class="product-meta mt-4">
+                    <p><strong>SKU:</strong> BEAR-{{ product.id }}</p>
+                    <p><strong>Category:</strong> Teddy Bears</p>
+                    <p><strong>Added:</strong> {{ product.created_at|date:"F d, Y" }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Related Products Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h3 class="text-center mb-4">You Might Also Like</h3>
+            <div class="row">
+                <!-- This would typically show related products -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/bear2.jpg' %}" class="card-img-top" alt="Related Bear">
+                        <div class="card-body">
+                            <h6 class="card-title">Pink Teddy Bear</h6>
+                            <p class="price">£13.00</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/bear3.jpg' %}" class="card-img-top" alt="Related Bear">
+                        <div class="card-body">
+                            <h6 class="card-title">Brown Bear with Bow</h6>
+                            <p class="price">£12.00</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="{% static 'images/bear.jpg' %}" class="card-img-top" alt="Related Bear">
+                        <div class="card-body">
+                            <h6 class="card-title">Classic Brown Bear</h6>
+                            <p class="price">£12.00</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.product-detail-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-detail-image:hover {
+    transform: scale(1.05);
+}
+
+.product-title {
+    color: #8B4513;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.product-price {
+    font-size: 2rem;
+    color: #D2691E;
+    font-weight: 700;
+}
+
+.quantity-selector select {
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+}
+
+.breadcrumb-item a {
+    color: #8B4513;
+    text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+    color: #D2691E;
+}
+
+.product-actions .btn {
+    transition: all 0.3s ease;
+}
+
+.product-actions .btn:hover {
+    transform: translateY(-2px);
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function addToWishlist(productName) {
+    Swal.fire({
+        title: 'Added to Wishlist!',
+        text: `${productName} has been added to your wishlist`,
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false
+    });
+}
+
+// Add smooth scroll animation for related products
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('animate-fade-in');
+    });
+});
+</script>
+
+<style>
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+</style>
+{% endblock %}
