@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
+from whitenoise import WhiteNoise
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -23,12 +25,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-wrr2b=t^edb(l$jj^$uwi7958(5b8n610$!u4^c-@i5m9^^9+o"
-
+SECRET_KEY = os.getenv('SECRET_KEY', 'your-development-key-here') 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+DEBUG = os.getenv('DEBUG', 'False') == 'True' 
+
+ALLOWED_HOSTS = [
+    'bearland-b0479f09fcd3.herokuapp.com',
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
@@ -59,6 +65,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -66,6 +73,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
      'allauth.account.middleware.AccountMiddleware',
+    
 ]
 
 ROOT_URLCONF = "bearland.urls"
@@ -138,10 +146,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    os.path.join(BASE_DIR, 'bearland/static'),  # Your app's static files
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
