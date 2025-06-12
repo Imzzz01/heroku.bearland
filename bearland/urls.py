@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.shortcuts import redirect
+from django.contrib.auth import views as auth_views 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +27,10 @@ urlpatterns = [
     path('cart/', include('cart.urls')),
     path('accounts/', include('accounts.urls')),  
     path('checkout/', include('checkout.urls')),
-    path('accounts/', include('allauth.urls')),  
+    path('accounts/', include('allauth.urls')), 
+
+    path('accounts/', include('django.contrib.auth.urls')),  # Built-in auth views
+    
 ]
+
+

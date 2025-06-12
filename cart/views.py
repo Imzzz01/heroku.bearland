@@ -1,10 +1,7 @@
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import Cart, CartItem
 from store.models import Product
-import json
-# Create your views here.
 
 def cart_view(request):
     cart = get_or_create_cart(request)
@@ -29,7 +26,7 @@ def add_to_cart(request, product_id):
 def remove_from_cart(request, item_id):
     cart_item = get_object_or_404(CartItem, id=item_id)
     cart_item.delete()
-    return redirect('cart')
+    return redirect('cart:cart')
 
 def get_or_create_cart(request):
     if request.user.is_authenticated:
@@ -37,6 +34,6 @@ def get_or_create_cart(request):
     else:
         if not request.session.session_key:
             request.session.create()
-            cart, created = Cart.objects.get_or_create(session_key=request.session.session_key)
+        cart, created = Cart.objects.get_or_create(session_key=request.session.session_key)
     
     return cart

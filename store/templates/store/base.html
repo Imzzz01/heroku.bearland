@@ -35,7 +35,7 @@
             <div class="me-auto">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}" aria-label="Go to login page">
+                        <a class="nav-link" href="{% url 'account_login' %}" aria-label="Go to login page">
                             <i class="fa-regular fa-user"></i>
                         </a>
                     </li>
@@ -51,26 +51,26 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}" aria-label="Go to Home section">Home</a>
+                        <a class="nav-link" href="{% url 'store:home' %}" aria-label="Go to Home section">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'products' %}" aria-label="Go to Product section">Products</a>
+                        <a class="nav-link" href="{% url 'store:products' %}" aria-label="Go to Product section">Products</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'gifts' %}" aria-label="Go to gifts section">Gifts</a>
+                        <a class="nav-link" href="{% url 'store:gifts' %}" aria-label="Go to gifts section">Gifts</a>
                     </li>
                 </ul>
             </div>
             
             <div class="d-flex align-items-center">
                 <!-- Search form -->
-                <form class="d-flex me-3" method="GET" action="{% url 'search' %}">
+                <form class="d-flex me-3" method="GET" action="{% url 'store:search' %}">
                     <input type="text" class="form-control me-2" placeholder="Search" name="q">
                     <button type="submit" class="btn btn-outline-light">Submit</button>
                 </form>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'cart' %}" aria-label="Go to shopping cart">
+                        <a class="nav-link" href="{% url 'cart:cart' %}" aria-label="Go to shopping cart">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </li>
