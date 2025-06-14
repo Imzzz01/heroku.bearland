@@ -1,64 +1,106 @@
 {% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}Checkout - Bear Land{% endblock %}
 
 {% block content %}
-
-<h1>Checkout</h1>
-<div class="checkout-container">
-    <div class="order-summary">
-        <h3>Order Summary</h3>
-         {% for item in cart.items.all %}
-         <div class="order-item">
-            <p>{{ item.product.name }} x {{ item.quantity }}</p>
-            <p>£{{ item.subtotal }}</p>
-
-        </div>
-        {% endfor %}
-        <div class="order-total">
-            <p>Total: £{{ cart.total }}</p>
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header bg-brown text-white">
+                    <h3>Order Summary</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in cart.items.all %}
+                            <tr>
+                                <td>{{ item.product.name }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>£{{ item.product.price }}</td>
+                                <td>£{{ item.subtotal }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="3">Total</th>
+                                <th>£{{ cart.total }}</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
             </div>
-
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header bg-brown text-white">
+                    <h3>Payment</h3>
+                </div>
+                <div class="card-body">
+                    <form id="payment-form" method="POST" action="{% url 'checkout:checkout' %}">
+                        {% csrf_token %}
+                        <div id="card-element" class="mb-3"></div>
+                        <button id="submit-button" class="btn btn-primary w-100">
+                            <span id="button-text">Pay £{{ cart.total }}</span>
+                            <span id="spinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
 
-<div class="payment-form">
-    <form id="payment-form">
-          {% csrf_token %}
-          <div id="card-element"></div>
-          <button id="submit-button" class="btn btn-primary">Pay Now</button>
-    </form>
-    </div>
-    </div>
+{% block extra_js %}
 <script src="https://js.stripe.com/v3/"></script>
-
 <script>
-    const stripe = Stripe('{{ STRIPE_PUBLISHABLE_KEY }}');
+    const stripe = Stripe('{{ stripe_public_key }}');
     const elements = stripe.elements();
     const cardElement = elements.create('card');
     cardElement.mount('#card-element');
-
+    
     const form = document.getElementById('payment-form');
     const submitButton = document.getElementById('submit-button');
-
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
+    const buttonText = document.getElementById('button-text');
+    const spinner = document.getElementById('spinner');
+    
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Disable the submit button
         submitButton.disabled = true;
-
-        // Create payment intent confirmation
-        const {error, paymentIntent} = await stripe.confirmCardPayment(
-            '{{ client_secret }}', {
-                payment_method: {
-                    card: cardElement,
-                }
+        buttonText.textContent = 'Processing...';
+        spinner.classList.remove('d-none');
+        
+        // Create payment intent and submit form
+        const {error} = await stripe.confirmCardPayment('{{ client_secret }}', {
+            payment_method: {
+                card: cardElement,
             }
-        );
-
+        });
+        
         if (error) {
-            // Show error to your customer
-            console.error(error);
+            // Show error to customer
+            alert(error.message);
             submitButton.disabled = false;
-            alert('Payment failed: ' + error.message);
-        } else if (paymentIntent.status === 'succeeded') {
-            // Redirect to success page with payment intent ID
-            window.location.href = "{% url 'payment_success' %}?payment_intent=" + paymentIntent.id;
+            buttonText.textContent = 'Pay £{{ cart.total }}';
+            spinner.classList.add('d-none');
+        } else {
+            // The payment succeeded, form will submit
+            form.submit();
         }
     });
 </script>
+{% endblock %}
