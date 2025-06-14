@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #8B4513; color: white; padding: 20px; text-align: center; }
+        .content { padding: 20px; background-color: #f9f9f9; }
+        .order-details { margin-top: 20px; }
+        .footer { margin-top: 20px; text-align: center; font-size: 0.8em; color: #666; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thank you for your order!</h1>
+        </div>
+        
+        <div class="content">
+            <p>Dear {% if order.user %}{{ order.user.username }}{% else %}Customer{% endif %},</p>
+            <p>Your order has been received and is being processed. Here are your order details:</p>
+            
+            <div class="order-details">
+                <h3>Order #{{ order.id }}</h3>
+                <p><strong>Order Date:</strong> {{ order.created_at|date:"F j, Y" }}</p>
+                <p><strong>Total:</strong> £{{ order.total }}</p>
+                
+                <h4>Items:</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in order.items.all %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>£{{ item.price }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+            <p>We'll notify you when your items ship. If you have any questions, please contact our support team.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Bear Land - Bringing Joy Through Teddy Bears</p>
+            <p>© {% now "Y" %} Bear Land. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

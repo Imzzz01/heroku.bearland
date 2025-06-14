@@ -6,6 +6,7 @@ from .models import Order, OrderItem
 from cart.views import get_or_create_cart
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -85,3 +86,36 @@ def payment_success(request):
 
 def payment_cancel(request):
         return render(request, 'checkout/cancel.html')
+
+ 
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WEBHOOK_SECRET
+        )
+    except ValueError as e:
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        return HttpResponse(status=400)
+
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
+        fulfill_order(session)
+
+    return HttpResponse(status=200)
+
+def fulfill_order(session):
+    order_id = session.metadata.get('order_id')
+    if order_id:
+        try:
+            order = Order.objects.get(id=order_id)
+            order.status = 'completed'
+            order.save()
+            # Here you could add email sending logic
+        except Order.DoesNotExist:
+            pass       
