@@ -31,7 +31,7 @@ def gifts(request):
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    return render(request, 'store/product_detail.html', {'product': product})
+    return render(request, 'store/product_details.html', {'product': product})
 
 def search(request):
     query = request.GET.get('q')

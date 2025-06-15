@@ -1,0 +1,114 @@
+/* Accounts App Specific Styles */
+.auth-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.auth-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.auth-card-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.auth-card-body {
+    padding: 2rem;
+}
+
+.auth-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.auth-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.auth-form-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.auth-form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.1);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: var(--border-radius);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.auth-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.auth-link:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Social Auth Buttons */
+.social-auth {
+    margin-top: 1.5rem;
+}
+
+.social-auth-btn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.social-auth-btn.google {
+    background: #fff;
+    color: #757575;
+    border: 1px solid #ddd;
+}
+
+.social-auth-btn.facebook {
+    background: #3b5998;
+    color: white;
+    border: 1px solid #3b5998;
+}
+
+.social-auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}

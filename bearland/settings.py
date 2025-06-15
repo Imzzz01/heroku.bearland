@@ -81,7 +81,10 @@ ROOT_URLCONF = "bearland.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [ os.path.join(BASE_DIR, 'templates') 
+        ],
+               
+
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -143,18 +146,20 @@ USE_I18N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
-
-
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For production
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
-MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+# Media files (user-uploaded content)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MEDIA_URL = "media/"
-MEDIA_ROOT = BASE_DIR / "media"
+# WhiteNoise configuration (add this)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # email settings - for order confirmation and other notifications
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -164,6 +169,8 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'noreply@bearland.com')
+
+
 
 #stripe settings 
 
@@ -176,6 +183,10 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')            # Backend key (sk_
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
