@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
 
 # Create your views here.
-
+# This file contains views for user authentication, including login, registration, and logout.
 def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']

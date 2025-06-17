@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 import stripe
 from django.conf import settings
@@ -9,11 +10,13 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
 
+# Initialize Stripe with your secret key
 stripe.api_key = settings.STRIPE_SECRET_KEY
-@login_required
-def checkout_view(request):
-    cart = get_or_create_cart(request)
 
+@login_required
+def checkout_view(request): # Checkout view for logged-in users
+    cart = get_or_create_cart(request)
+# Check if the cart is empty
     if cart.items.count() == 0:
         return redirect('cart:cart')
 
@@ -31,7 +34,7 @@ def checkout_view(request):
                 quantity=item.quantity,
                 price=item.product.price
             )
-
+# Clear the cart after creating the order
         try:
             checkout_session = stripe.checkout.Session.create(
                 payment_method_types=['card'],
@@ -87,7 +90,7 @@ def payment_success(request):
 def payment_cancel(request):
         return render(request, 'checkout/cancel.html')
 
- 
+ # Stripe webhook to handle payment events
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
@@ -109,6 +112,7 @@ def stripe_webhook(request):
 
     return HttpResponse(status=200)
 
+# Function to fulfill the order after payment is successful
 def fulfill_order(session):
     order_id = session.metadata.get('order_id')
     if order_id:
@@ -116,6 +120,6 @@ def fulfill_order(session):
             order = Order.objects.get(id=order_id)
             order.status = 'completed'
             order.save()
-            # Here you could add email sending logic
+            
         except Order.DoesNotExist:
             pass       

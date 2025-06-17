@@ -4,6 +4,7 @@
 {% block title %}Bear Land - Register{% endblock %}
 
 {% block content %}
+<!--Register Page-->
 <main class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -11,6 +12,7 @@
                 <div class="card-header">
                     <h3 class="text-center">Register</h3>
                 </div>
+                <!--Display Messages-->
                 <div class="card-body">
                     {% if messages %}
                         {% for message in messages %}
@@ -20,7 +22,7 @@
                             </div>
                         {% endfor %}
                     {% endif %}
-                    
+                    <!--Registration Form-->
                     <form method="POST">
                         {% csrf_token %}
                         <div class="mb-3">
