@@ -47,33 +47,14 @@ The goal of Bear Land is to introduce teddy bear lovers to our unique eCommerce 
    - Nostalgic buyers reconnecting with childhood
    - Seek bears as decorative items or comfort objects
 
+## 📖 User Stories <a id="user-stories"></a>
 
+| **As a...**         | **I Want To**                    |        **So That**                | **Priority**   |
+|---------------------|---------------------------       |--------------------------------   |----------------|
+| First-time visitor  | Browse curated collections       | I can quickly find suitable gifts | High           | 
+| Registred user      | Save multiple shipping addresses | I don't need to re-enter info     | Medium         | 
+| Mobile User         | Easy view product details        | I can shop on the go              | High           | 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# UX Design <a id="ux-design">
-
-## 👤 User Persona
-
-| **Attribute** | **Details**        |
-|---------------|--------------------|
-| Name          |        |
-| Age           |        |
-| Occupation    |  |
-| Tech Savviness|        |
 
 Goals: 
  
