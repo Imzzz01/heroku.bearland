@@ -9,7 +9,7 @@
     {% endif %}
 {% endblock %}
 
-
+{% block content %}
 <div class="container mt-5">
     <div class="search-header text-center mb-5">
         {% if query %}
@@ -21,7 +21,7 @@
         {% endif %}
     </div>
 
-    <!-- Enhanced Search Form -->
+    <!-- Search Form -->
     <div class="row justify-content-center mb-5">
         <div class="col-md-8">
             <form method="GET" action="{% url 'store:search' %}" class="search-form">
@@ -40,33 +40,41 @@
         </div>
     </div>
 
-  {% if query %}
-    {% if results %}
-        <!-- Search Results -->
-        <div class="search-results">
-            <div class="row">
-                {% for product in results %}
-                <div class="col-md-4 col-sm-6 mb-4">
-                    <div class="card product-card h-100" data-aos="fade-up">
-                        <div class="card-img-container">
-                            {% if product.image %}
-                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                            {% else %}
-                                <img src="{% static 'images/bear.jpg' %}" class="card-img-top" alt="{{ product.name }}">
-                            {% endif %}
-                            <div class="card-overlay">
-                                <a href="{% url 'store:product_detail' product.pk %}" class="btn btn-light btn-sm">
-                                    <i class="fa fa-eye"></i> View Details
-                                </a>
+    {% if query %}
+        {% if results %}
+            <!-- Search Results -->
+            <div class="search-results">
+                <div class="row">
+                    {% for product in results %}
+                    <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="card product-card h-100" data-aos="fade-up">
+                            <div class="card-img-container">
+                                {% if product.image %}
+                                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                                {% else %}
+                                    <img src="{% static 'images/bear.jpg' %}" class="card-img-top" alt="{{ product.name }}">
+                                {% endif %}
+                                <div class="card-overlay">
+                                    <a href="{% url 'store:product_detail' product.pk %}" class="btn btn-light btn-sm">
+                                        <i class="fa fa-eye"></i> View Details
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">£{{ product.price }}</p>
+                                <p class="card-text text-muted small">{{ product.description|truncatechars:100 }}</p>
                             </div>
                         </div>
-                       
                     </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}  
             </div>
-        </div>
-    {% else %}
-        <p>No results found for "{{ query }}"</p>
+        {% else %}
+            <div class="alert alert-info text-center">
+                No results found for "{{ query }}"
+            </div>
+        {% endif %}
     {% endif %}
-{% endif %}
+</div>
+{% endblock %}

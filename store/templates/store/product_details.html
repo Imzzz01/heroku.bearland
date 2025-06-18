@@ -261,15 +261,15 @@ function quickAddToCart(productName, productPrice, productId) {
         showConfirmButton: false
     });
     
-    // Optional: Make AJAX call to actually add to cart
-    // fetch(`/cart/add/${productId}/`, {
-    //     method: 'POST',
-    //     headers: {
-    //         'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify({quantity: 1})
-    // });
+    //  Make AJAX call to actually add to cart
+     fetch(`/cart/add/${productId}/`, {
+          method: 'POST',
+          headers: {
+             'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+             'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({quantity: 1})
+     });
 }
 
 // Add smooth scroll animation for related products

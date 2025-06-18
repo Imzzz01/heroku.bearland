@@ -10,20 +10,24 @@
         {% for product in products %}
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="width: 100%;">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="width: 100%;">
+                {% else %}
+                    <img src="/static/images/no-image.png" class="card-img-top" alt="{{ product.name }}" style="width: 100%;">
+                {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="price">£{{ product.price }}</p>
+                    <p class="price">${{ product.price }}</p>
                     <p>{{ product.description }}</p>
                     <button class="btn btn-primary" onclick="addToCart('{{ product.name }}', '{{ product.price }}')">Add to Cart</button>
                 </div>
             </div>
         </div>
-        {% empty %}
+    {% empty %}
         <!-- Fallback for when no products are available -->
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear11.jpg' %}" class="card-img-top" alt="Brown Bear" style="width: 100%;">
+                <img src="{% static 'images/store/brownbear.jpg' %}" class="card-img-top" alt="Brown Bear" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">Brown Bear</h5>
                     <p class="price">£12.00</p>
@@ -34,7 +38,7 @@
         </div>
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear2.jpg' %}" class="card-img-top" alt="Pink Bear" style="width: 100%;">
+                <img src="{% static 'images/store/pink-bear.jpg' %}" class="card-img-top" alt="Pink Bear" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">Pink Bear</h5>
                     <p class="price">£13.00</p>
@@ -45,7 +49,7 @@
         </div>
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'bear10.jpg' %}" class="card-img-top" alt="Brown bear with bow" style="width: 100%;">
+                <img src="{% static 'images/store/bowbear.jpg' %}" class="card-img-top" alt="Brown bear with bow" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">Brown bear with a cute bow</h5>
                     <p class="price">£12.00</p>
@@ -57,7 +61,7 @@
 
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear5.jpg' %}" class="card-img-top" alt="Blue Bear" style="width: 100%;">
+                <img src="{% static 'images/store/bluebear.jpg' %}" class="card-img-top" alt="Blue Bear" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">Blue Bear</h5>
                     <p class="price">£14.00</p>
@@ -79,7 +83,7 @@
         </div>
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear5.jpg' %}" class="card-img-top" alt="Grey Bear" style="width: 100%;">
+                <img src="{% static 'images/store/greybear.jpg' %}" class="card-img-top" alt="Grey Bear" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">Grey Bear</h5>
                     <p class="price">£16.00</p>
@@ -90,7 +94,7 @@
         </div>
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear6.jpg' %}" class="card-img-top" alt="Yellow Bear" style="width: 100%;">
+                <img src="{% static 'images/store/yellowbear.jpg' %}" class="card-img-top" alt="Yellow Bear" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">Yellow Bear</h5>
                     <p class="price">£17.00</p>
@@ -101,7 +105,7 @@
         </div>
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear7.jpg' %}" class="card-img-top" alt="Green Bear" style="width: 100%;">
+                <img src="{% static 'images/store/greenbear.jpg' %}" class="card-img-top" alt="Green Bear" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">Green Bear</h5>
                     <p class="price">£18.00</p>
@@ -112,7 +116,7 @@
         </div>
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear8.jpg' %}" class="card-img-top" alt="Purple Bear" style="width: 100%;">
+                <img src="{% static 'images/store/purplebear.jpg' %}" class="card-img-top" alt="Purple Bear" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">Purple Bear</h5>
                     <p class="price">£19.00</p>
@@ -123,7 +127,7 @@
         </div>
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear9.jpg' %}" class="card-img-top" alt="Orange Bear" style="width: 100%;">
+                <img src="{% static 'images/store/orangebear.jpg' %}" class="card-img-top" alt="Orange Bear" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">Orange Bear</h5>
                     <p class="price">£20.00</p>
@@ -132,25 +136,15 @@
                 </div>
             </div>
         </div>
+        
         <div class="col-md-4">
             <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear10.jpg' %}" class="card-img-top" alt="Rainbow Bear" style="width: 100%;">
+                <img src="{% static 'images/store/redbear.jpg' %}" class="card-img-top" alt="Red Bear" style="width: 100%;">
                 <div class="card-body">
-                    <h5 class="card-title">Rainbow Bear</h5>
-                    <p class="price">£21.00</p>
-                    <p>Adopt a Rainbow bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Rainbow Bear', 21.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bear11.jpg' %}" class="card-img-top" alt="Cuddly Bear" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Cuddly Bear</h5>
+                    <h5 class="card-title">Red Bear</h5>
                     <p class="price">£22.00</p>
-                    <p>Adopt a Cuddly bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Cuddly Bear', 22.00)">Add to Cart</button>
+                    <p>Adopt a red bear today!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Red Bear', 22.00)">Add to Cart</button>
                 </div>
             </div>
         </div>
