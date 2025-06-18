@@ -21,76 +21,116 @@
             </div>
         </div>
         {% empty %}
-        <!-- Fallback for when no gifts are available -->
-        <div class="col-md-4">
+        <!-- Fallback gifts when no database gifts are available -->
+        <div class="col-md-4 mb-4">
             <div class="card" data-aos="fade-up">
-                <img src="https://i.etsystatic.com/56979515/r/il/8ea7bc/6702795678/il_1140xN.6702795678_hsc1.jpg" class="card-img-top" alt="A romantic gift" style="width: 100%;">
+                <img src="{% static 'images/store/rosybear.jpg' %}" class="card-img-top" alt="Rose bear gift" style="width: 100%; height: 250px; object-fit: cover;">
                 <div class="card-body">
-                    <h5 class="card-title">Rose bear gift</h5>
-                    <p class="price">£13.00</p>
-                    <p>A romantic gift for someone you love!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Rose bear gift', 13.00)">Add to Cart</button>
+                    <h5 class="card-title">Rose Bear Gift</h5>
+                    <p class="price">£25.00</p>
+                    <p>A romantic gift with a beautiful rose - perfect for someone special!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Rose Bear Gift', 25.00)">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <!-- Fallback gifts for demonstration purposes -->
-        <div class="col-md-4">
+        
+        <div class="col-md-4 mb-4">
             <div class="card" data-aos="fade-up">
-                <img src="https://m.media-amazon.com/images/I/51LDosKjDAL.__AC_SX300_SY300_QL70_ML2_.jpg" class="card-img-top" alt="A romantic gift" style="width: 100%;">
+                <img src="{% static 'images/store/bearnecklace.jpg' %}" class="card-img-top" alt="Bear necklace" style="width: 100%; height: 250px; object-fit: cover;">
                 <div class="card-body">
-                    <h5 class="card-title">Rose bear gift</h5>
-                    <p class="price">£13.00</p>
-                    <p>A romantic gift for someone you love!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Rose bear gift', 13.00)">Add to Cart</button>
+                    <h5 class="card-title">Bear Necklace</h5>
+                    <p class="price">£18.00</p>
+                    <p>Adorable bear-themed jewelry for bear lovers!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Bear Necklace', 18.00)">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        
+        <div class="col-md-4 mb-4">
             <div class="card" data-aos="fade-up">
-                <img src="https://i.pinimg.com/736x/7f/00/e1/7f00e157cfb99c6d29ee89a4c53c2c1e--valentines-day-teddy-bear-chocolate-hearts.jpg" class="card-img-top" alt="A romantic gift" style="width: 100%;">
+                <img src="{% static 'images/store/bearkeychain.jpg' %}" class="card-img-top" alt="Bear keychain" style="width: 100%; height: 250px; object-fit: cover;">
                 <div class="card-body">
-                    <h5 class="card-title">Valentine Bear Gift</h5>
-                    <p class="price">£13.00</p>
-                    <p>A romantic gift for someone you love!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Valentine Bear Gift', 13.00)">Add to Cart</button>
+                    <h5 class="card-title">Bear Keychain</h5>
+                    <p class="price">£8.00</p>
+                    <p>Cute bear keychain to keep your favorite bear with you always!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Bear Keychain', 8.00)">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        
+        <div class="col-md-4 mb-4">
             <div class="card" data-aos="fade-up">
-                <img src="https://www.theknot.com/tk-media/images/c3a3f7b2-17f5-48cd-8cef-0a73294addfb~rs_768.h-cr_1.0.1068.800" class="card-img-top" alt="A romantic gift" style="width: 100%;">
+                <img src="{% static 'images/store/teddygift.jpg' %}" class="card-img-top" alt="Wedding bear gift" style="width: 100%; height: 250px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">Wedding Bear Gift</h5>
-                    <p class="price">£13.00</p>
-                    <p>A romantic gift for someone you love!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Wedding Bear Gift', 13.00)">Add to Cart</button>
+                    <p class="price">£35.00</p>
+                    <p>Perfect wedding gift for the happy couple!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Wedding Bear Gift', 35.00)">Add to Cart</button>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="https://i.pinimg.com/736x/7f/00/e1/7f00e157cfb99c6d29ee89a4c53c2c1e--valentines-day-teddy-bear-chocolate-hearts.jpg" class="card-img-top" alt="A romantic gift" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Valentine Bear Gift</h5>
-                    <p class="price">£13.00</p>
-                    <p>A romantic gift for someone you love!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Valentine Bear Gift', 13.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>    
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="https://i.pinimg.com/736x/7f/00/e1/7f00e157cfb99c6d29ee89a4c53c2c1e--valentines-day-teddy-bear-chocolate-hearts.jpg" class="card-img-top" alt="A romantic gift" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Valentine Bear Gift</h5>
-                    <p class="price">£13.00</p>
-                    <p>A romantic gift for someone you love!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Valentine Bear Gift', 13.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>    
         
-    
+        <div class="col-md-4 mb-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{% static 'images/store/chocolates.jpg' %}" class="card-img-top" alt="Bear chocolates" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Bear Chocolates</h5>
+                    <p class="price">£15.00</p>
+                    <p>Delicious bear-shaped chocolates for sweet moments!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Bear Chocolates', 15.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{% static 'images/store/teddybouquet.jpg' %}" class="card-img-top" alt="Teddy bouquet" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Teddy Bear Bouquet</h5>
+                    <p class="price">£28.00</p>
+                    <p>A beautiful bouquet of mini teddy bears - unique and adorable!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Teddy Bear Bouquet', 28.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Additional gift based on your images -->
+        <div class="col-md-4 mb-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{% static 'images/store/valentinegift.jpg' %}" class="card-img-top" alt="Valentine bear gift set" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Valentine Gift Set</h5>
+                    <p class="price">£32.00</p>
+                    <p>Complete Valentine's gift set with bear and treats!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Valentine Gift Set', 32.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{% static 'images/store/giftboxbears.jpg' %}" class="card-img-top" alt="Gift box bears" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Gift Box Bears</h5>
+                    <p class="price">£22.00</p>
+                    <p>Beautifully packaged mini bears in elegant gift boxes!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Gift Box Bears', 22.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="card" data-aos="fade-up">
+                <img src="{% static 'images/store/specialoccasion.jpg' %}" class="card-img-top" alt="Special occasion bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">Special Occasion Bear</h5>
+                    <p class="price">£30.00</p>
+                    <p>Perfect for birthdays, anniversaries, and special celebrations!</p>
+                    <button class="btn btn-primary" onclick="addToCart('Special Occasion Bear', 30.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
         {% endfor %}
     </div>
 </section>
@@ -101,7 +141,15 @@
     // Create an add to cart function
     function addToCart(name, price) {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({name, price});
+        
+        // Check if item already exists in cart
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity = (existingItem.quantity || 1) + 1;
+        } else {
+            cart.push({name, price, quantity: 1});
+        }
+        
         localStorage.setItem('cart', JSON.stringify(cart));
         
         // Using SweetAlert for better user experience
@@ -109,7 +157,8 @@
             title: 'Success!',
             text: `${name} added to cart!`,
             icon: 'success',
-            confirmButtonText: 'OK'
+            confirmButtonText: 'OK',
+            timer: 2000
         });
     }
 </script>
