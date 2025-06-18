@@ -31,10 +31,13 @@ def gifts(request):
     gifts = Gift.objects.all()
     return render(request, 'store/gifts.html', {'gifts': gifts})
 
-
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    return render(request, 'store/product_details.html', {'product': product})
+    related_products = Product.objects.exclude(pk=pk)[:3]
+    return render(request, 'store/product_details.html', {  # Match actual filename
+        'product': product,
+        'related_products': related_products
+    })
 
 def search(request): # This view handles product search functionality
     query = request.GET.get('q')
