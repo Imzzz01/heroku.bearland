@@ -23,6 +23,10 @@
 
 The goal of Bear Land is to introduce teddy bear lovers to our unique eCommerce platform. Here, you'll find a wide selection of soft, adorable, and colourful teddy bears. Our aim is to evoke the joy of childhood and the appeal of owning teddy bears, a sentiment that transcends age. As adults, we all appreciate the comfort these bears provide, and their positive impact on our mental health is undeniable. 
 
+## 🌟 Key Features <a id="key-features"></a>
+
+- ** Product and gift display
+
 
 ## 👥 Target Audience <a id="target-audience"></a>
 ### Primary Segments
