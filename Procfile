@@ -1,1 +1,1 @@
-web: gunicorn django_bearland.wsgi --log-file -
+web: gunicorn bearland.wsgi --log-file -
