@@ -1,189 +1,189 @@
 /* Home Page Specific */
 .bear-section {
-    padding: 5rem 0;
-    background: linear-gradient(135deg, var(--bg-light) 0%, rgba(255, 182, 193, 0.1) 100%);
-    position: relative;
-    overflow: hidden;
+    padding: 5rem 0; /* Padding for the bear section */
+    background: linear-gradient(135deg, var(--bg-light) 0%, rgba(255, 182, 193, 0.1) 100%); /* Light background with a hint of pink */
+    position: relative; /* Relative positioning for the floating effect */ 
+    overflow: hidden; /* Ensure the floating effect is contained */
 }
 
 .bear-section::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 182, 193, 0.1) 0%, transparent 70%);
-    animation: float 20s ease-in-out infinite;
+    content: ''; /* Pseudo-element for the floating effect */
+    position: absolute; /* Positioning the pseudo-element */
+    top: -50%; /* Start above the section */
+    right: -50%; /* Start to the right of the section */
+    width: 200%; /* Double the width to cover the section */
+    height: 200%; /* Double the height to cover the section */
+    background: radial-gradient(circle, rgba(255, 182, 193, 0.1) 0%, transparent 70%); /* Radial gradient for a soft floating effect */
+    animation: float 20s ease-in-out infinite; /* Animation for the floating effect */
 }
 
 @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
+    0%, 100% { transform: translateY(0px) rotate(0deg); }   /* Start and end at the original position */
+    50% { transform: translateY(-20px) rotate(180deg); } /* Move up and rotate halfway through the animation */
 }
 
 .bear-section h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 3.5rem; /* Font size for the main heading */
+    font-weight: 800;   /* Bold font weight for emphasis */
+    color: var(--primary-color); /* Primary color for the text */
+    margin-bottom: 1.5rem; /* Margin below the heading */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
 }
 
 .bear-section p {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    margin-bottom: 2rem;
-    line-height: 1.8;
+    font-size: 1.2rem; /* Font size for the paragraph */
+    color: var(--text-light); /* Light text color for readability */
+    margin-bottom: 2rem; /* Margin below the paragraph */
+    line-height: 1.8; /* Line height for better readability */
 }
 
 /* About Section */
 .about-section {
-    padding: 5rem 0;
-    background: white;
+    padding: 5rem 0;   /* Padding for the about section */
+    background: white;  /* White background for contrast */
 }
 
 .about-section h2, .contact-section h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
+    font-size: 2.5rem;  /* Font size for section headings */
+    font-weight: 700; /* Bold font weight for emphasis */
+    color: var(--primary-color); /* Primary color for the headings */
+    text-align: center; /* Center align the headings */
+    margin-bottom: 3rem; /* Margin below the headings */
+    position: relative;     /* Relative positioning for the pseudo-element */
 }
 
 .about-section h2::after, .contact-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    border-radius: 2px;
+    content: ''; /* Pseudo-element for the underline effect */
+    position: absolute; /* Absolute positioning for the pseudo-element */
+    bottom: -10px; /* Position below the heading */
+    left: 50%; /* Center the pseudo-element */
+    transform: translateX(-50%); /* Center the pseudo-element */
+    width: 80px;    /* Width of the underline */
+    height: 4px; /* Height of the underline */
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color)); /* Gradient background for the underline */
+    border-radius: 2px; /* Rounded corners for the underline */
 }
 
 .about-section h3 {
-    color: var(--secondary-color);
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    color: var(--secondary-color); /* Secondary color for subheadings */
+    font-size: 2rem;    /* Font size for subheadings */
+    margin-bottom: 1rem;    /* Margin below subheadings */
 }
 
 /* Contact Section */
 .contact-section {
-    padding: 5rem 0;
-    background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-light) 100%);
+    padding: 5rem 0; /* Padding for the contact section */
+    background: linear-gradient(135deg, var(--bg-cream) 0%, var(--bg-light) 100%); /* Gradient background for the contact section */
 }
 
 .contact-list {
-    list-style: none;
-    padding: 0;
+    list-style: none;   /* Remove default list styles */
+    padding: 0;   /* Remove default padding */
 }
 
 .contact-list li {
-    background: white;
-    margin: 1rem 0;
-    padding: 1rem 1.5rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    position: relative;
-    padding-left: 3rem;
+    background: white;  /* White background for each contact item */
+    margin: 1rem 0; /* Margin between contact items */
+    padding: 1rem 1.5rem; /* Padding for contact items */
+    border-radius: var(--border-radius); /* Rounded corners for contact items */
+    box-shadow: var(--shadow); /* Box shadow for depth */
+    transition: var(--transition);  /* Transition for hover effect */
+    position: relative; /* Relative positioning for the pseudo-element */
+    padding-left: 3rem; /* Padding for the icon */
 }
 
 .contact-list li::before {
-    content: '🐻';
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2rem;
+    content: '🐻';  /* Bear icon as a pseudo-element */
+    position: absolute; /* Positioning the bear icon */
+    left: 1rem; /* Position to the left of the contact item */
+    top: 50%;   /* Center vertically */
+    transform: translateY(-50%); /* Center vertically */
+    font-size: 1.2rem;  /* Font size for the bear icon */
 }
 
 /* Product Cards */
 .product-card {
-    border: none;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    overflow: hidden;
-    background: white;
-    margin-bottom: 2rem;
+    border: none; /* Remove default border */
+    border-radius: var(--border-radius); /* Rounded corners */
+    box-shadow: var(--shadow); /* Box shadow for depth */
+    transition: var(--transition); /* Transition for hover effect */
+    overflow: hidden; /* Ensure content does not overflow */
+    background: white; /* White background for product cards */
+    margin-bottom: 2rem; /* Margin below product cards */
 }
 
 .product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--shadow-hover);
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: var(--shadow-hover); /* Darker shadow on hover */
 }
 
 .product-card .card-img-top {
-    height: 250px;
-    object-fit: cover;
-    transition: var(--transition);
+    height: 250px; /* Fixed height for product images */
+    object-fit: cover;  /* Cover the entire area of the image */
+    transition: var(--transition); /* Transition for hover effect */
 }
 
 .product-card:hover .card-img-top {
-    transform: scale(1.1);
+    transform: scale(1.1); /* Scale effect on hover */
 }
 
 /* Product Detail Page */
 .product-detail-image {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    width: 100%; /* Full width for product detail images */
+    height: 400px;  /* Fixed height for product detail images */
+    object-fit: cover; /* Cover the entire area of the image */
+    transition: transform 0.3s ease;    /* Smooth transition for hover effect */
+    border-radius: var(--border-radius); /* Rounded corners for product detail images */
+    box-shadow: var(--shadow);  /* Box shadow for depth */
 }
 
 .product-detail-image:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Scale effect on hover */
 }
 
 .product-title {
-    color: var(--primary-color);
-    font-size: 2.5rem;
-    font-weight: 700;
+    color: var(--primary-color);    /* Primary color for product titles */
+    font-size: 2.5rem;   /* Font size for product titles */
+    font-weight: 700;   /* Bold font weight for product titles */
 }
 
 .product-price {
-    font-size: 2rem;
-    color: var(--secondary-color);
-    font-weight: 700;
+    font-size: 2rem;   /* Font size for product prices */
+    color: var(--secondary-color);  /* Secondary color for product prices */
+    font-weight: 700;   /* Bold font weight for product prices */
 }
 
 /* Search Results */
 .search-title {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2.5rem; /* Font size for search results title */
+    margin-bottom: 1rem;    /* Margin below the title */
 }
 
 .query-highlight {
-    color: var(--secondary-color);
-    font-weight: 700;
+    color: var(--secondary-color); /* Secondary color for highlighted search query */
+    font-weight: 700; /* Bold font weight for emphasis */
 }
 
 .search-subtitle {
-    font-size: 1.2rem;
-    color: var(--text-light);
+    font-size: 1.2rem;  /* Font size for search results subtitle */
+    color: var(--text-light); /* Light text color for readability */
 }
 
 .search-form {
-    margin-bottom: 3rem;
+    margin-bottom: 3rem; /* Margin below the search form */
 }
 
 .search-input-group {
-    box-shadow: var(--shadow);
-    border-radius: 25px;
-    overflow: hidden;
+    box-shadow: var(--shadow); /* Box shadow for the search input group */
+    border-radius: 25px; /* Rounded corners for the search input group */
+    overflow: hidden;   /* Ensure content does not overflow */
 }
 
 .search-input {
-    border: none;
-    padding: 1rem;
+    border: none; /* Remove default border */
+    padding: 1rem; /* Padding for the search input */  
 }
 
 .search-btn {
-    padding: 0 1.5rem;
+    padding: 0 1.5rem;  /* Padding for the search button */
 }

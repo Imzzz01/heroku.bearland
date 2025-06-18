@@ -2,6 +2,8 @@ from django.db import models
 from django.conf import settings
 from store.models import Product
 
+# cart/models.py
+# This file defines the Cart and CartItem models for managing shopping carts in an e-commerce application
 class Cart(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     session_key = models.CharField(max_length=40, null=True, blank=True)
@@ -15,6 +17,8 @@ class Cart(models.Model):
     def __str__(self):
         return f"Cart {self.id}"
 
+# cart/models.py
+# This file defines the CartItem model for items in a shopping cart
 class CartItem(models.Model):
     cart = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 # Create your models here.
+
+# This file defines the models for the store application, including Product and Gift models.
 class Product (models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()

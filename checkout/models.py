@@ -4,6 +4,7 @@ from cart.models import Cart
 
 # Create your models here.
 
+# This model represents an order in the checkout process.
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     session_key = models.CharField(max_length=40, null=True, blank=True)  # For anonymous users
@@ -16,7 +17,7 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order {self.id}"
-    
+ # This model represents an item in an order.   
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     product = models.ForeignKey('store.Product', on_delete=models.CASCADE)

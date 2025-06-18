@@ -1,114 +1,114 @@
 /* Accounts App Specific Styles */
 .auth-container {
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 500px; /* Maximum width for the auth card */
+    margin: 0 auto; /* Center the card */
 }
 
 .auth-card {
-    background: white;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
+    background: white; /* White background for the card */
+    border-radius: var(--border-radius); /* Use CSS variable for border radius */
+    box-shadow: var(--shadow); /* Use CSS variable for shadow */
+    overflow: hidden; /* Ensure no overflow */
 }
 
 .auth-card-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
-    padding: 1.5rem;
-    text-align: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Gradient background for header */
+    color: white; /* White text for header */
+    padding: 1.5rem; /* Padding for header */
+    text-align: center; /* Center the text */
 }
 
 .auth-card-body {
-    padding: 2rem;
+    padding: 2rem;  /* Padding for the body of the card */
 }
 
 .auth-form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem; /* Spacing between form groups */
 }
 
 .auth-form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--text-dark);
+    display: block; /* Block display for labels */
+    margin-bottom: 0.5rem; /* Spacing below labels */
+    font-weight: 600;   /* Bold labels */
+    color: var(--text-dark); /* Dark text color for labels */
 }
 
 .auth-form-input {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
+    width: 100%; /* Full width for inputs */
+    padding: 0.8rem 1rem;   /* Padding for inputs */
+    border: 2px solid #e0e0e0; /* Light gray border */
+    border-radius: var(--border-radius);  /* Use CSS variable for border radius */
+    transition: var(--transition); /* Smooth transition for focus state */
 }
 
 .auth-form-input:focus {
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.1);
+    border-color: var(--primary-color); /* Change border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.1);    /* Subtle shadow on focus */
 }
 
 .auth-btn {
-    width: 100%;
-    padding: 1rem;
-    border: none;
-    border-radius: var(--border-radius);
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
+    width: 100%; /* Full width for buttons */
+    padding: 1rem; /* Padding for buttons */
+    border: none; /* No border */
+    border-radius: var(--border-radius); /* Use CSS variable for border radius */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Gradient background for buttons */
+    color: white;   /* White text for buttons */
+    font-weight: 600; /* Bold text for buttons */
+    cursor: pointer; /* Pointer cursor for buttons */
+    transition: var(--transition);  /* Smooth transition for hover state */
 }
 
 .auth-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px); /* Slightly lift button on hover */
+    box-shadow: var(--shadow-hover); /* Use a different shadow for hover state */
 }
 
 .auth-links {
-    text-align: center;
-    margin-top: 1.5rem;
+    text-align: center; /* Center align links */
+    margin-top: 1.5rem; /* Spacing above links */
 }
 
 .auth-link {
-    color: var(--secondary-color);
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
+    color: var(--secondary-color);  /* Secondary color for links */
+    text-decoration: none; /* No underline by default */
+    font-weight: 600;   /* Bold text for links */
+    transition: var(--transition); /* Smooth transition for hover state */
 }
 
 .auth-link:hover {
-    color: var(--primary-color);
-    text-decoration: underline;
+    color: var(--primary-color); /* Change color on hover */
+    text-decoration: underline; /* Underline on hover */
 }
 
 /* Social Auth Buttons */
 .social-auth {
-    margin-top: 1.5rem;
+    margin-top: 1.5rem; /* Spacing above social auth section */
 }
 
 .social-auth-btn {
-    display: block;
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 0.8rem;
-    border-radius: var(--border-radius);
-    font-weight: 600;
-    text-align: center;
-    transition: var(--transition);
+    display: block;     /* Block display for social buttons */   
+    width: 100%; /* Full width for social buttons */
+    padding: 0.8rem; /* Padding for social buttons */
+    margin-bottom: 0.8rem; /* Spacing between social buttons */
+    border-radius: var(--border-radius);    /* Use CSS variable for border radius */
+    font-weight: 600; /* Bold text for social buttons */
+    text-align: center;     /* Center align text */
+    transition: var(--transition); /* Smooth transition for hover state */
 }
 
 .social-auth-btn.google {
-    background: #fff;
-    color: #757575;
-    border: 1px solid #ddd;
+    background: #fff;   /* White background for Google button */
+    color: #757575; /* Dark gray text for Google button */
+    border: 1px solid #ddd; /* Light gray border for Google button */
 }
 
 .social-auth-btn.facebook {
-    background: #3b5998;
-    color: white;
-    border: 1px solid #3b5998;
+    background: #3b5998; /* Facebook blue background */
+    color: white;   /* White text for Facebook button */
+    border: 1px solid #3b5998; /* Matching border for Facebook button */
 }
 
 .social-auth-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
+    transform: translateY(-2px); /* Slightly lift button on hover */
+    box-shadow: var(--shadow); /* Use the same shadow as the card */
 }
