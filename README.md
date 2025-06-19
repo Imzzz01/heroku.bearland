@@ -21,7 +21,32 @@
 
 ## 🚀 Project Purpose <a id="project-purpose"></a>
 
-The goal of Bear Land is to introduce teddy bear lovers to our unique eCommerce platform. Here, you'll find a wide selection of soft, adorable, and colourful teddy bears. Our aim is to evoke the joy of childhood and the appeal of owning teddy bears, a sentiment that transcends age. As adults, we all appreciate the comfort these bears provide, and their positive impact on our mental health is undeniable. 
+The goal of Bear Land is to introduce teddy bear lovers to our unique eCommerce platform. Here, you'll find a wide selection of soft, adorable, and colourful teddy bears. Our aim is to evoke the joy of childhood and the appeal of owning teddy bears, a sentiment that transcends age. As adults, we all appreciate the comfort these bears provide, and their positive impact on our mental health is undeniable.
+
+Key objectives:
+
+- Provide a delightful shopping experience for teddy bear enthusiasts
+- Offer unique, high qaulity products that evoke nostalgia and comfort
+- Create an intuitive platform for gift shopping and collectible purchases.
+
+## 🎨 UX Design <a id="ux-design"></a>  
+Color scheme:
+
+- Primary: #8B4513 (SaddleBrown)
+- Secondary:#D2691E (Chocolate)
+- Accent: #FFB6C1 (lightPink)
+- Background: #FFF8DC (Cornsilk)
+
+Typography: 
+
+- Primary font: 'Inter' (Modern sans-serif)
+- Fallback: System UI fonts
+
+Design Principles: 
+- Warm, inviting aesthetic with bear-themed elements
+- Responsive layput for all device sizes
+- Intuitive navigation with clear CTAs
+- Emotional connection through imagery and product presentation
 
 ## 🌟 Key Features <a id="key-features"></a>
 
