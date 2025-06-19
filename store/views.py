@@ -33,13 +33,24 @@ def gifts(request):
 
 def product_detail(request, pk):
     product = get_object_or_404(Product, pk=pk)
-    related_products = Product.objects.exclude(pk=pk)[:3]
-    return render(request, 'store/product_details.html', {  # Match actual filename
+    related_products = Product.objects.exclude(pk=pk).order_by('?')[:3]
+    
+    return render(request, 'store/product_details.html', {
         'product': product,
         'related_products': related_products
     })
 
-def search(request): # This view handles product search functionality
-    query = request.GET.get('q')
-    results = Product.objects.filter(name__icontains=query) if query else []
-    return render(request, 'store/search_results.html', {'results': results, 'query': query})
+def search(request):
+    query = request.GET.get('q', '')
+    if query:
+        results = Product.objects.filter(
+            models.Q(name__icontains=query) | 
+            models.Q(description__icontains=query)
+            )
+    else:
+        results = Product.objects.none()
+        
+    return render(request, 'store/search_results.html', {
+        'results': results,
+        'query': query
+    })

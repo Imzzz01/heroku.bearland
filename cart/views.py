@@ -4,7 +4,6 @@ from .models import Cart, CartItem
 from store.models import Product
 from django.contrib.auth.decorators import login_required
 
-# cart/views.py
 def get_or_create_cart(request):
     if request.user.is_authenticated:
         cart, created = Cart.objects.get_or_create(user=request.user)
@@ -12,17 +11,15 @@ def get_or_create_cart(request):
         if not request.session.session_key:
             request.session.create()
         cart, created = Cart.objects.get_or_create(session_key=request.session.session_key)
-    
     return cart
 
-
 @login_required
-def cart_view(request): 
+def cart_view(request):
     cart = get_or_create_cart(request)
     return render(request, 'cart/cart.html', {'cart': cart})
 
-@login_required 
-def add_to_cart(request, product_id): 
+@login_required
+def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart = get_or_create_cart(request)
     
@@ -34,15 +31,13 @@ def add_to_cart(request, product_id):
 
     if not created:
         cart_item.quantity += 1
-    cart_item.save()
+        cart_item.save()
 
     return JsonResponse({
         'success': True,
-        'cart_total' : cart.total, 
-        'item_count' : cart.items.count()
-        })
-
-    return JsonResponse({'success': False}, status=400)
+        'cart_total': cart.total,
+        'item_count': cart.items.count()
+    })
 
 @login_required
 def remove_from_cart(request, item_id):
