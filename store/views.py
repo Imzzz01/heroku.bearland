@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render, get_object_or_404
 from .models import Product, Gift
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from django.db.models import Q 
 
 # Store Views
 def login_view(request):
@@ -44,9 +45,9 @@ def search(request):
     query = request.GET.get('q', '')
     if query:
         results = Product.objects.filter(
-            models.Q(name__icontains=query) | 
-            models.Q(description__icontains=query)
-            )
+            Q(name__icontains=query) | 
+            Q(description__icontains=query)
+        )
     else:
         results = Product.objects.none()
         
