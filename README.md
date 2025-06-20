@@ -50,12 +50,12 @@ Design Principles:
 
 ## 🌟 Key Features <a id="key-features"></a>
 
-**Product catalog: Browse our extensive collection of teddy bears** 
-**Gift Section: Curated bear-themed gifts for special occations** 
-**User Accounts: Secure Registration and login system**
-**Shopping Cart: Persistent cart functionality**
-**Checkout: Secure Stripe payment integration**
-**Search: Find products quickly with our earch functionality**
+- Product catalog: Browse our extensive collection of teddy bears
+- Gift Section: Curated bear-themed gifts for special occations
+- User Accounts: Secure Registration and login system
+- Shopping Cart: Persistent cart functionality
+- Checkout: Secure Stripe payment integration
+- Search: Find products quickly with our earch functionality
 
 
 ## 👥 Target Audience <a id="target-audience"></a>
