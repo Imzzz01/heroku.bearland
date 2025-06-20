@@ -180,11 +180,16 @@ Heroku Deployment Steps
 4. Configure static files with WhiteNoise
 5. Set up Stripe webhooks
 
-bash 
+| bash                                        |
+|---------------------------------------------|
 | git add .                                   |
+|---------------------------------------------|
 | git commit -m "test1"                       |
+|---------------------------------------------|
 | Git push heroku main                        |
+|---------------------------------------------|
 | heroku run python manage.py migrate         |
+|---------------------------------------------|
 
 
 
