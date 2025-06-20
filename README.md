@@ -148,10 +148,6 @@ The design emphasizes warmth and nostalgia with:
 
 # Test Plan <a id="test-plan"></a>
   
-   
-# Code Implementation <a id="code-implementation"><a>
-
-
 
 # Internal and External Code <a id="internal-and-external-code"></a>
 
@@ -159,6 +155,47 @@ Backend:
 
 
 # Validation <a id="validation"></a>
+
+## View Source HTML Validation:
+Home
+![image](https://github.com/user-attachments/assets/02c413d5-9bb5-40d6-8fd1-89135d1c6adf)
+Products
+![image](https://github.com/user-attachments/assets/91a42fa0-799a-47c5-b96d-97355b8623a8)
+Gifts
+![image](https://github.com/user-attachments/assets/aa4b37e4-f245-4623-ba4f-f2b3dc1f91b3)
+Search 
+![image](https://github.com/user-attachments/assets/2a7d43f6-a25c-49af-b861-d256d42668eb)
+Cart
+![image](https://github.com/user-attachments/assets/12a6468a-a640-4d8a-9e04-17022dfa579c)
+Login
+![image](https://github.com/user-attachments/assets/ea5c8c01-e9ef-49ca-bb07-9aad587d7dc1)
+Register
+![image](https://github.com/user-attachments/assets/7e8c7f45-c458-41fd-a1cb-61339d3e22fd)
+
+
+
+
+## View Source Style.CSS Validation: 
+Store - Style.css
+![image](https://github.com/user-attachments/assets/ee2f9f6d-38f1-4cc2-8f5c-97a7f90ccfbc)
+
+Accounts - style.css
+![image](https://github.com/user-attachments/assets/9143e710-9139-460b-ad20-8209f67967d3)
+
+Cart - Style.css
+![image](https://github.com/user-attachments/assets/bc075bc8-ee38-4edf-bb04-b1627a8c9897)
+
+Checkout - Style.css
+![image](https://github.com/user-attachments/assets/73a685ea-a437-4106-85ae-de073613d1cd)
+
+Base.css
+![image](https://github.com/user-attachments/assets/6668d477-9e5b-4a57-a1e2-ae86f7166389)
+
+
+
+
+
+
 
 
 
