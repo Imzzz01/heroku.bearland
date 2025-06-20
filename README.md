@@ -1,8 +1,9 @@
 # 🐻 Bear Land - Premium Teddy Bear Emporium 🎀
 
 ## Table of Contents
-- [UX Design](#ux-design)
+
 - [Purpose of Project](#purpose)
+- [UX Design](#ux-design)
 - [Target Audience](#target-audience)
 - [User Query](#user-query)
 - [Features and Functionalities](#features)
@@ -12,7 +13,7 @@
 - [Code Implementation](#code-implementation)
 - [Internal and External Code](#internal-and-external-code)
 - [Test Plan](#test-plan)
-- [Commit Messages](#internal-and-external-code)
+- [Commit Messages](#commit-messages)
 - [HTML Validation](#html-validation)
 - [Finished Project](#finished-project)
 - [Deployment](#deployment)
