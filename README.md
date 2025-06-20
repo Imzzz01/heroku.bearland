@@ -148,6 +148,86 @@ The design emphasizes warmth and nostalgia with:
 
 ## 🧪 Test Plan <a id="test-plan"></a>
 
+# 1. Introduction
+
+1.1 Purpose 
+
+This document outlines the test strategy for bear land, a teddy bear e-commerce website built with Django. The goal is to ensure all features work as expected across different scenarios.
+
+1.2 Scope
+
+Testing will cover:
+
+- User authentication and accounts
+- Product browsing and search
+- Shopping cart functionality
+- Checkout and payment processing
+- Responsive design across devices
+
+# 2. Test Approach 
+
+2.1 Test Types 
+
+- Functional Testing: Verify all features work as specified
+- UI Testing: Check visual elements and responsiveness
+- Integration Testing: Test interactions between components
+- Security Testing: Validate authentication and data protection
+- Performance Testing: Assess loading times under load
+
+# 2.2 Test Environment
+- Frontend: Chrome, Firefox, Safari, Edge (Latest version)
+- Mobile: iOS and Android devices
+- Backend: Django 5.1.6 with SQlite (Development), PostgreSQL (production)
+
+# 3. Test Cases
+
+# 4. Test Data
+
+4.1 Test Products 
+- 10 sample teddy bear products with varying prices
+- 5 gift items with different categories
+
+4.2 Test Users 
+
+# 5. Test Schedule
+
+| Phase         Duration       Tasks                                 |
+|--------------------------------------------------------------------|
+|Preparation    3 days          Set up test environment, prepare data|
+|--------------------------------------------------------------------|
+|Execution      6 days          Run all test cases, document results |
+|--------------------------------------------------------------------|
+|Reporting      2 days          Compile test report, log defects     |
+
+
+# 7. Exit Criteria
+
+Testing will be considered when:
+- All critical test cases pass
+- No critical defects remain open
+- 95% of all test cases pass
+- Remaining defects are documented and prioritised.
+
+# 8. Tools
+- Automated Testing: Django Test Framework
+- Manual Testing: Browser developer tools
+- Performance: Chrome
+- Security: OWASP ZAP (basic scans)
+
+# 9. Risks 
+| Risk                            Mitigation                         |
+|--------------------------------------------------------------------|
+|Payment gateway failures         Test with Stripe test mode first   |
+|--------------------------------------------------------------------|
+|Browser compatibility issues     Test early on multiple browsers    |
+|--------------------------------------------------------------------|
+|Performance under load           Monitor during peak testing        |
+|--------------------------------------------------------------------|
+
+
+
+ 
+
 
   
 
