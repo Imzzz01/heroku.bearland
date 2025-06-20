@@ -244,6 +244,17 @@ Integration Points:
    - WhiteNoise for static file serving
    - Django compressor for asset optimisation 
      
+# Commit messages <a id="commit-messages"></a>
+![image](https://github.com/user-attachments/assets/3307a729-4848-46a2-a6ed-9667c6370a86)
+![image](https://github.com/user-attachments/assets/dd4b4632-2a50-4679-aef4-84501b135bdb)
+![image](https://github.com/user-attachments/assets/fecb8235-0d16-435f-a767-64bbd6464f51)
+![image](https://github.com/user-attachments/assets/50885e6d-c361-4d80-a949-11484b620fb2)
+![image](https://github.com/user-attachments/assets/19e34342-390c-4963-86ee-2f4fe9ac1f3f)
+![image](https://github.com/user-attachments/assets/bfa352d8-285c-4752-91ff-6c8d9a1dc164)
+![image](https://github.com/user-attachments/assets/d0eeb8cf-5f3a-43c6-8083-2890b6a1f516)
+
+
+
 
 # Validation <a id="validation"></a>
 
