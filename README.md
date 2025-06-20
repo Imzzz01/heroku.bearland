@@ -191,14 +191,14 @@ Testing will cover:
 
 # 5. Test Schedule
 
-| Phase         Duration       Tasks                                 |
-|--------------------------------------------------------------------|
-|Preparation    3 days          Set up test environment, prepare data|
-|--------------------------------------------------------------------|
-|Execution      6 days          Run all test cases, document results |
-|--------------------------------------------------------------------|
-|Reporting      2 days          Compile test report, log defects     |
-
+| Phase        Duration       Tasks                                     |
+|-------------|---------------|-----------------------------------------|
+|Preparation    3 days          Set up test environment, prepare data   |
+|-------------|---------------|-----------------------------------------|
+|Execution      6 days          Run all test cases, document results    |
+|------------|----------------|-----------------------------------------|
+|Reporting      2 days          Compile test report, log defects        |
+|------------|----------------|-----------------------------------------|
 
 # 7. Exit Criteria
 
@@ -214,15 +214,16 @@ Testing will be considered when:
 - Performance: Chrome
 - Security: OWASP ZAP (basic scans)
 
-# 9. Risks 
-| Risk                            Mitigation                         |
-|--------------------------------------------------------------------|
-|Payment gateway failures         Test with Stripe test mode first   |
-|--------------------------------------------------------------------|
-|Browser compatibility issues     Test early on multiple browsers    |
-|--------------------------------------------------------------------|
-|Performance under load           Monitor during peak testing        |
-|--------------------------------------------------------------------|
+# 9. Risks
+
+|Risk                           Mitigation                             |
+|-----------------------------|----------------------------------------|
+|Payment gateway failures       Test with Stripe test mode first       |
+|-----------------------------|--------------------------------------- |
+|Browser compatibility issues   Test early on multiple browsers        |
+|-----------------------------|--------------------------------------- |
+|Performance under load         Monitor during peak testing            |
+|-----------------------------|----------------------------------------|
 
 
 
