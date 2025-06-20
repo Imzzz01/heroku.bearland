@@ -89,7 +89,42 @@ Design Principles:
 | Registred user      | Save multiple shipping addresses | I don't need to re-enter info     | Medium         | 
 | Mobile User         | Easy view product details        | I can shop on the go              | High           | 
 
+# Technologies <a id="technologies"></a>
 
+**Frontend**
+- HTML5, CSS3, Javascript
+- Bootsrap 5.3
+- Font Awesome 6
+- jQuery 3.7
+- AOS (Animate On Scroll)
+
+**Backend**
+- Python 3
+- Django 5.1
+- PostgreSQL (Production)
+- SQlite (Development)
+
+**Services**
+- Stripe (payments)
+- Heroku (Hosting)
+
+## Design Rationale <a id="design-rationale"></a>
+
+Design Overview:
+
+
+
+Color scheme:
+
+
+
+Typography: 
+
+
+Layout:
+
+
+User Experience:
 Goals: 
  
 
@@ -143,41 +178,13 @@ Core Features
 Advanced Features
 
 
-# Technologies <a id="technologies"></a>
 
-Backend
-
-
-
-Frontend
-
-
-Development tools
-- Git: Version control
-- VS code: Development environment
-  
 # Future enhancements <a id="future-enhancements"></a>
 
     
 
 
-# Design Rationale <a id="design-rationale"></a>
 
-Design Overview:
-
-
-
-Color scheme:
-
-
-
-Typography: 
-
-
-Layout:
-
-
-User Experience:
 
 
 # Code Implementation <a id="code-implementation"><a>
