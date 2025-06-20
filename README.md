@@ -21,20 +21,20 @@
 
 ## 🚀 Project Purpose <a id="project-purpose"></a>
 
-The goal of Bear Land is to introduce teddy bear lovers to our unique eCommerce platform. Here, you'll find a wide selection of soft, adorable, and colourful teddy bears. Our aim is to evoke the joy of childhood and the appeal of owning teddy bears, a sentiment that transcends age. As adults, we all appreciate the comfort these bears provide, and their positive impact on our mental health is undeniable.
+Bear Land aims to introduce teddy bear lovers to our unique eCommerce platform. You'll find a wide selection of soft, adorable, and colourful teddy bears here. We aim to evoke the joy of childhood and the appeal of owning teddy bears, a sentiment that transcends age. As adults, we all appreciate the comfort these bears provide, and their positive impact on our mental health is undeniable.
 
 Key objectives:
 
 - Provide a delightful shopping experience for teddy bear enthusiasts
-- Offer unique, high qaulity products that evoke nostalgia and comfort
-- Create an intuitive platform for gift shopping and collectible purchases.
+- Offer unique, high-quality products that evoke nostalgia and comfort
+- Create an intuitive platform for gift shopping and collectable purchases.
 
-## 🎨 UX Design <a id="ux-design"></a>  
+## 🎨 UX Design <a id="UX-design"></a>  
 Color scheme:
 
 - Primary: #8B4513 (SaddleBrown)
 - Secondary:#D2691E (Chocolate)
-- Accent: #FFB6C1 (lightPink)
+- Accent: #FFB6C1 (light pink)
 - Background: #FFF8DC (Cornsilk)
 
 Typography: 
@@ -44,26 +44,26 @@ Typography:
 
 Design Principles: 
 - Warm, inviting aesthetic with bear-themed elements
-- Responsive layput for all device sizes
+- Responsive layout for all device sizes
 - Intuitive navigation with clear CTAs
 - Emotional connection through imagery and product presentation
 
 ## 🌟 Key Features <a id="key-features"></a>
 
-- Product catalog: Browse our extensive collection of teddy bears
-- Gift Section: Curated bear-themed gifts for special occations
+- Product catalogue: Browse our extensive collection of teddy bears
+- Gift Section: Curated bear-themed gifts for special occasions
 - User Accounts: Secure Registration and login system
 - Shopping Cart: Persistent cart functionality
 - Checkout: Secure Stripe payment integration
-- Search: Find products quickly with our earch functionality
+- Search: Find products quickly with our search functionality
 
 
 ## 👥 Target Audience <a id="target-audience"></a>
 ### Primary Segments
 
 1.  **Gift Shoppers** (Age 23 - 40)
-   - Seeking unique presents for birthdays, aniversaries, and holidays.
-   - Value connvenience + personalised options
+   - Seeking unique presents for birthdays, anniversaries, and holidays.
+   - Value convenience + personalised options
   
 2.  **Collectors** (Age 20 - 60)
    - Teddy bear enthusiasts seeking limited editions
@@ -74,7 +74,7 @@ Design Principles:
    - Prioritise safety certifications and durability
 
 4.  **Children** (Age 1 - 10)
-   - Drawn to colorful, soft and cuddly bears
+   - Drawn to colourful, soft and cuddly bears
    - Prefer bears with friendly faces and tactile features
 
 5.  **Teens/Adults** (Age 11-19 & 18+)
@@ -93,7 +93,7 @@ Design Principles:
 
 **Frontend**
 - HTML5, CSS3, Javascript
-- Bootsrap 5.3
+- Bootstrap 5.3
 - Font Awesome 6
 - jQuery 3.7
 - AOS (Animate On Scroll)
@@ -102,7 +102,7 @@ Design Principles:
 - Python 3
 - Django 5.1
 - PostgreSQL (Production)
-- SQlite (Development)
+- SQLite (Development)
 
 **Services**
 - Stripe (payments)
@@ -110,9 +110,9 @@ Design Principles:
 
 ## 🎨 Design Rationale <a id="design-rationale"></a>
 
-The design emphasizes warmth and nostalgia with:
+The design emphasises warmth and nostalgia with:
 
-- Earthy brown color palette reminiscent of classic teddy bears
+- Earthy brown colour palette reminiscent of classic teddy bears
 - Soft pink accents for a playful touch
 - Ample white space to prevent visual clutter
 - Large product images to showcase details
@@ -124,7 +124,7 @@ The design emphasizes warmth and nostalgia with:
 1. Responsive Product Grid
     - Filterable by category
     - Detailed product pages
-    - Related products suggestions
+    - Related product suggestions
 
 2. Shopping Cart
    - Persistent across sessions
@@ -132,7 +132,7 @@ The design emphasizes warmth and nostalgia with:
    - Real-time total calculation
 
 3. User Authentication
-   - Custom User model
+   - Custom User Model
    - Social auth integration
   
  4. Checkout process
@@ -144,7 +144,7 @@ The design emphasizes warmth and nostalgia with:
 
 - Wishlist functionality
 - Product reviews and ratings
-- Subcription service for collectors
+- Subscription service for collectors
 
 ## 🧪 Test Plan <a id="test-plan"></a>
 
@@ -152,7 +152,7 @@ The design emphasizes warmth and nostalgia with:
 
 1.1 Purpose 
 
-This document outlines the test strategy for bear land, a teddy bear e-commerce website built with Django. The goal is to ensure all features work as expected across different scenarios.
+This document outlines the test strategy for Bear Land, a teddy bear e-commerce website built with Django. The goal is to ensure that all features work as expected across different scenarios.
 
 1.2 Scope
 
@@ -177,7 +177,7 @@ Testing will cover:
 # 2.2 Test Environment
 - Frontend: Chrome, Firefox, Safari, Edge (Latest version)
 - Mobile: iOS and Android devices
-- Backend: Django 5.1.6 with SQlite (Development), PostgreSQL (production)
+- Backend: Django 5.1.6 with SQLite (Development), PostgreSQL (production)
 
 # 3. Test Cases
 [https://1drv.ms/w/c/4825e675d30aceda/ESZ0eegzToxGv8gSUPIeVqEB-UO_C1ytDsilXNx6Y3lM0w?e=bG68PV]
@@ -222,12 +222,6 @@ Testing will be considered when:
 |Performance under load       | Monitor during peak testing            |
 
 
-
- 
-
-
-  
-
 ## 🔗 Internal and External Code <a id="internal-and-external-code"></a>
 # Core Components 
 
@@ -238,16 +232,16 @@ Custom Business Logic:
 - Custom template tags for reusable UI components.
 
 Integration Points:
-1. Payment System: Secure Stripe integration handles payment processing with webhook vertification.
+1. Payment System: Secure Stripe integration handles payment processing with webhook verification.
 
 2. UI Libraries:
-   - Bootsrap 5 for responsive layouts and components
+   - Bootstrap 5 for responsive layouts and components
    - Font Awesome for iconography
    - Animate on Scroll for scroll-triggered animations
 
 3. Performance Tools:
    - WhiteNoise for static file serving
-   - Django-compressor for asset optimisation 
+   - Django compressor for asset optimisation 
      
 
 # Validation <a id="validation"></a>
@@ -288,16 +282,6 @@ Base.css
 ![image](https://github.com/user-attachments/assets/6668d477-9e5b-4a57-a1e2-ae86f7166389)
 
 
-
-
-
-
-
-
-
-
-
-
 # Finish Project <a id="finished-project"></a>
 
 
@@ -307,7 +291,7 @@ Base.css
 
 Heroku Deployment Steps
 
-1. Create a new heroku app
+1. Create a new Heroku app
 2. Configure environment variables
 3. Set up PostgreSQL add-on
 4. Configure static files with WhiteNoise
@@ -315,17 +299,12 @@ Heroku Deployment Steps
 
 | bash                                        |
 |---------------------------------------------|
-| git add .                                   |
+| git add.                                   |
 |---------------------------------------------|
 | git commit -m "test1"                       |
 |---------------------------------------------|
-| Git push heroku main                        |
+| git push heroku main                        |
 |---------------------------------------------|
 | heroku run python manage.py migrate         |
 |---------------------------------------------|
-
-
-
-
-
 
