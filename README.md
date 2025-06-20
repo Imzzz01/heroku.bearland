@@ -146,13 +146,32 @@ The design emphasizes warmth and nostalgia with:
 - Product reviews and ratings
 - Subcription service for collectors
 
-# Test Plan <a id="test-plan"></a>
+## 🧪 Test Plan <a id="test-plan"></a>
+
+
   
 
-# Internal and External Code <a id="internal-and-external-code"></a>
+## 🔗 Internal and External Code <a id="internal-and-external-code"></a>
+# Core Components 
 
-Backend:
+Custom Business Logic:
+- Extended user model with additional profile fields
+- Cart Management system supporting both authenticated and guest users
+- Order processing workflow with status tracking
+- Custom template tags for reusable UI components.
 
+Integration Points:
+1. Payment System: Secure Stripe integration handles payment processing with webhook vertification.
+
+2. UI Libraries:
+   - Bootsrap 5 for responsive layouts and components
+   - Font Awesome for iconography
+   - Animate on Scroll for scroll-triggered animations
+
+3. Performance Tools:
+   - WhiteNoise for static file serving
+   - Django-compressor for asset optimisation 
+     
 
 # Validation <a id="validation"></a>
 
