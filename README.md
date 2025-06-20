@@ -108,30 +108,18 @@ Design Principles:
 - Stripe (payments)
 - Heroku (Hosting)
 
-## Design Rationale <a id="design-rationale"></a>
+## 🎨 Design Rationale <a id="design-rationale"></a>
 
-Design Overview:
+The design emphasizes warmth and nostalgia with:
 
-
-
-Color scheme:
-
-
-
-Typography: 
-
-
-Layout:
-
-
-User Experience:
-Goals: 
- 
-
-Frustrations:
+- Earthy brown color palette reminiscent of classic teddy bears
+- Soft pink accents for a playful touch
+- Ample white space to prevent visual clutter
+- Large product images to showcase details
+- Animated transitions for delightful interactions.
   
 
-Behavior:
+
    
 
 # User Journey <a id="user-journey"></a>
