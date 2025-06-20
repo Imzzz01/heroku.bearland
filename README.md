@@ -118,7 +118,48 @@ The design emphasizes warmth and nostalgia with:
 - Large product images to showcase details
 - Animated transitions for delightful interactions.
   
+# Features and Functionalities<a id="features"></a>
 
+## Current Features
+1. Responsive Product Grid
+    - Filterable by category
+    - Detailed product pages
+    - Related products suggestions
+
+2. Shopping Cart
+   - Persistent across sessions
+   - Quantity adjustment
+   - Real-time total calculation
+
+3. User Authentication
+   - Custom User model
+   - Social auth integration
+  
+ 4. Checkout process
+   - Multi-step form
+   - Stripe Payment integration
+   - Order confirmation emails.
+
+## Future Features
+
+- Wishlist functionality
+- Product reviews and ratings
+- Subcription service for collectors
+
+
+  
+    
+   
+
+
+  
+6. 
+
+7.
+
+8. 
+  
+Advanced Features
 
    
 
@@ -150,20 +191,7 @@ Findings:
 
 
 
-# Features and Functionalities<a id="features"></a>
 
-Core Features
-1. 
-
-2.
-  
-3. 
-
-4.
-
-5. 
-  
-Advanced Features
 
 
 
