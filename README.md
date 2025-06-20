@@ -146,84 +146,19 @@ The design emphasizes warmth and nostalgia with:
 - Product reviews and ratings
 - Subcription service for collectors
 
-
+# Test Plan <a id="test-plan"></a>
   
-    
    
-
-
-  
-6. 
-
-7.
-
-8. 
-  
-Advanced Features
-
-   
-
-# User Journey <a id="user-journey"></a>
-
-UX test 
-
-Test Participants: 
-
-Findings:
-- Positive
-     
-- Challenges:
-    
-- Actionable Insights:
-     
- 
-
-
-
-
-
-
-
-
-
-# User Query<a id="user-query"></a>
-
-
-
-
-
-
-
-
-# Future enhancements <a id="future-enhancements"></a>
-
-    
-
-
-
-
-
 # Code Implementation <a id="code-implementation"><a>
 
 
-  
-  
+
 # Internal and External Code <a id="internal-and-external-code"></a>
 
 Backend:
 
 
-
-# Test Plan <a id="test-plan"></a>
-
-
-
-
-
-# Commit Messages <a id="commit-messages"></a>
-
-
-# Html Validation <a id="html-validation"></a>
+# Validation <a id="validation"></a>
 
 
 
@@ -235,29 +170,23 @@ Backend:
 
 
 
-# Deployment <a id="deployment"></a>
+## 🚀 Deployment <a id="deployment"></a>
 
-Development Setup
-1. VS- Terminal:  Clone the repository:
+Heroku Deployment Steps
+
+1. Create a new heroku app
+2. Configure environment variables
+3. Set up PostgreSQL add-on
+4. Configure static files with WhiteNoise
+5. Set up Stripe webhooks
+
+bash 
+| git add .                                   |
+| git commit -m "test1"                       |
+| Git push heroku main                        |
+| heroku run python manage.py migrate         |
 
 
-2. Create and activate a virtual environment:
-   - python -m venv venv
-   - venv\Scripts\activate
-     
-3. Install Dependencies
-   - pip install -r requirements.txt
-
-4. Apply Migrations:
-   - python manage.py migrate
-  
-5. Create a superuser:
-   - python manage.py createsuperuser
-
-6. Run the development server:
-   - python manage.py runserver
-
-# Getting started <a id="getting-started"></a>
 
 
 
