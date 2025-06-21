@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
+from django import forms
 
 # Custom user creation form
 # This form is used to create a new user with username, email, and password fields.
