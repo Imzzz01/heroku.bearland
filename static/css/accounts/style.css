@@ -1,114 +1,204 @@
 /* Accounts App Specific Styles */
+/* Base Styles */
 .auth-container {
-    max-width: 500px; /* Maximum width for the auth card */
-    margin: 0 auto; /* Center the card */
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 0 15px;
 }
 
 .auth-card {
-    background: white; /* White background for the card */
-    border-radius: var(--border-radius); /* Use CSS variable for border radius */
-    box-shadow: var(--shadow); /* Use CSS variable for shadow */
-    overflow: hidden; /* Ensure no overflow */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
 }
 
 .auth-card-header {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Gradient background for header */
-    color: white; /* White text for header */
-    padding: 1.5rem; /* Padding for header */
-    text-align: center; /* Center the text */
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
 }
 
 .auth-card-body {
-    padding: 2rem;  /* Padding for the body of the card */
+    padding: 2rem;
 }
 
+/* Form Elements */
 .auth-form-group {
-    margin-bottom: 1.5rem; /* Spacing between form groups */
+    margin-bottom: 1.5rem;
 }
 
 .auth-form-label {
-    display: block; /* Block display for labels */
-    margin-bottom: 0.5rem; /* Spacing below labels */
-    font-weight: 600;   /* Bold labels */
-    color: var(--text-dark); /* Dark text color for labels */
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
 }
 
 .auth-form-input {
-    width: 100%; /* Full width for inputs */
-    padding: 0.8rem 1rem;   /* Padding for inputs */
-    border: 2px solid #e0e0e0; /* Light gray border */
-    border-radius: var(--border-radius);  /* Use CSS variable for border radius */
-    transition: var(--transition); /* Smooth transition for focus state */
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .auth-form-input:focus {
-    border-color: var(--primary-color); /* Change border color on focus */
-    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.1);    /* Subtle shadow on focus */
+    border-color: #8B4513;
+    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.1);
+    outline: none;
 }
 
+/* Buttons */
 .auth-btn {
-    width: 100%; /* Full width for buttons */
-    padding: 1rem; /* Padding for buttons */
-    border: none; /* No border */
-    border-radius: var(--border-radius); /* Use CSS variable for border radius */
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); /* Gradient background for buttons */
-    color: white;   /* White text for buttons */
-    font-weight: 600; /* Bold text for buttons */
-    cursor: pointer; /* Pointer cursor for buttons */
-    transition: var(--transition);  /* Smooth transition for hover state */
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .auth-btn:hover {
-    transform: translateY(-2px); /* Slightly lift button on hover */
-    box-shadow: var(--shadow-hover); /* Use a different shadow for hover state */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* Links */
 .auth-links {
-    text-align: center; /* Center align links */
-    margin-top: 1.5rem; /* Spacing above links */
+    text-align: center;
+    margin-top: 1.5rem;
 }
 
 .auth-link {
-    color: var(--secondary-color);  /* Secondary color for links */
-    text-decoration: none; /* No underline by default */
-    font-weight: 600;   /* Bold text for links */
-    transition: var(--transition); /* Smooth transition for hover state */
+    color: #A0522D;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .auth-link:hover {
-    color: var(--primary-color); /* Change color on hover */
-    text-decoration: underline; /* Underline on hover */
+    color: #8B4513;
+    text-decoration: underline;
 }
 
-/* Social Auth Buttons */
-.social-auth {
-    margin-top: 1.5rem; /* Spacing above social auth section */
+/* Account Page Styles */
+.account-container {
+    padding: 30px 0;
 }
 
-.social-auth-btn {
-    display: block;     /* Block display for social buttons */   
-    width: 100%; /* Full width for social buttons */
-    padding: 0.8rem; /* Padding for social buttons */
-    margin-bottom: 0.8rem; /* Spacing between social buttons */
-    border-radius: var(--border-radius);    /* Use CSS variable for border radius */
-    font-weight: 600; /* Bold text for social buttons */
-    text-align: center;     /* Center align text */
-    transition: var(--transition); /* Smooth transition for hover state */
+.account-sidebar {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    height: 100%;
 }
 
-.social-auth-btn.google {
-    background: #fff;   /* White background for Google button */
-    color: #757575; /* Dark gray text for Google button */
-    border: 1px solid #ddd; /* Light gray border for Google button */
+.welcome-message {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
 }
 
-.social-auth-btn.facebook {
-    background: #3b5998; /* Facebook blue background */
-    color: white;   /* White text for Facebook button */
-    border: 1px solid #3b5998; /* Matching border for Facebook button */
+.account-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.social-auth-btn:hover {
-    transform: translateY(-2px); /* Slightly lift button on hover */
-    box-shadow: var(--shadow); /* Use the same shadow as the card */
+.account-menu li {
+    margin-bottom: 10px;
+}
+
+.account-menu li a {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.account-menu li a:hover,
+.account-menu li.active a {
+    background-color: #e9ecef;
+    color: #8B4513;
+}
+
+.account-menu li a i {
+    margin-right: 8px;
+    width: 20px;
+    text-align: center;
+}
+
+.account-content {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.account-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #6c757d;
+}
+
+.empty-state i {
+    font-size: 50px;
+    color: #dee2e6;
+    margin-bottom: 15px;
+}
+
+.detail-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+/* Simplified Account Page */
+.simple-account-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.account-details {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .auth-container {
+        margin: 1rem auto;
+    }
+    
+    .account-container {
+        padding: 15px 0;
+    }
+    
+    .account-content {
+        padding: 15px;
+    }
 }

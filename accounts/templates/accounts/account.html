@@ -1,0 +1,46 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}My Account - Bear Land{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <div class="simple-account-card">
+        <div class="card">
+            <div class="card-body p-4">
+                <div class="text-center mb-4">
+                    <h2>Hello, {{ user.first_name|default:user.username }}</h2>
+                    <p class="text-muted">Welcome to your Bear Land account</p>
+                </div>
+                
+                <div class="account-details">
+                    <div class="detail-card mb-4">
+                        <h5 class="card-title">Account Information</h5>
+                        <div class="detail-row">
+                            <span>Name:</span>
+                            <span>{{ user.get_full_name|default:"Not specified" }}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Email:</span>
+                            <span>{{ user.email }}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Member since:</span>
+                            <span>{{ user.date_joined|date:"F j, Y" }}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <a href="{% url 'store:products' %}" class="btn btn-primary me-2">
+                            Continue Shopping
+                        </a>
+                        <a href="{% url 'accounts:logout' %}" class="btn btn-outline-secondary">
+                            Sign Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

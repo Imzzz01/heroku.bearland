@@ -1,54 +1,76 @@
-<!-- Register.html-->{% extends 'store/base.html' %}
+{% extends 'store/base.html' %}
 {% load static %}
 
 {% block title %}Bear Land - Register{% endblock %}
 
 {% block content %}
-<!--Register Page-->
-<main class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="text-center">Register</h3>
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-card-header">
+            <h3>Create Account</h3>
+        </div>
+        <div class="auth-card-body">
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                <!--Display Messages-->
-                <div class="card-body">
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                                {{ message }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                    <!--Registration Form-->
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="username" required>
+                {% endfor %}
+            {% endif %}
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="auth-form-group">
+                            <label for="id_first_name" class="auth-form-label">First name</label>
+                            {{ form.first_name }}
+                            {{ form.first_name.errors }}
                         </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="auth-form-group">
+                            <label for="id_last_name" class="auth-form-label">Last name</label>
+                            {{ form.last_name }}
+                            {{ form.last_name.errors }}
                         </div>
-                        <div class="mb-3">
-                            <label for="password1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password1" name="password1" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="password2" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="password2" name="password2" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Register</button>
-                    </form>
-                    <div class="text-center mt-3">
-                        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
                     </div>
                 </div>
+                
+                <div class="auth-form-group">
+                    <label for="id_email" class="auth-form-label">Email address</label>
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="id_password1" class="auth-form-label">Password</label>
+                    {{ form.password1 }}
+                    {{ form.password1.errors }}
+                    <small class="text-muted">Must include at least 8 characters, an upper and lowercase character, a number and a special character.</small>
+                </div>
+                
+                <div class="auth-form-group">
+                    <label for="id_password2" class="auth-form-label">Confirm password</label>
+                    {{ form.password2 }}
+                    {{ form.password2.errors }}
+                </div>
+                
+                <div class="auth-form-group form-check">
+                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                    <label class="form-check-label" for="newsletter">
+                        I'd like to receive exclusive discounts and news from Bear Land
+                    </label>
+                </div>
+                
+                <button type="submit" class="auth-btn">CREATE ACCOUNT</button>
+            </form>
+            
+            <div class="auth-links mt-3">
+                <p>Already have an account? <a href="{% url 'accounts:login' %}" class="auth-link">Sign in</a></p>
             </div>
         </div>
     </div>
-</main>
+</div>
 {% endblock %}
