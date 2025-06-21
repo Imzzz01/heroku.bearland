@@ -13,7 +13,12 @@ def get_or_create_cart(request):
         cart, created = Cart.objects.get_or_create(session_key=request.session.session_key)
     return cart
 
-# Remove @login_required from add_to_cart view
+@login_required
+def cart_view(request):
+    cart = get_or_create_cart(request)
+    return render(request, 'cart/cart.html', {'cart': cart})
+
+@login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     cart = get_or_create_cart(request)
@@ -33,3 +38,10 @@ def add_to_cart(request, product_id):
         'cart_total': cart.total,
         'item_count': cart.items.count()
     })
+  
+
+@login_required
+def remove_from_cart(request, item_id):
+    cart_item = get_object_or_404(CartItem, id=item_id)
+    cart_item.delete()
+    return redirect('cart:cart')

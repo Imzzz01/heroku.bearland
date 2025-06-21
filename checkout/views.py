@@ -18,6 +18,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 logger = logging.getLogger(__name__)
 
 @login_required
+@login_required
 def checkout_view(request):
     cart = get_or_create_cart(request)
     
@@ -27,11 +28,11 @@ def checkout_view(request):
 
     if request.method == 'POST':
         try:
-            # Use transaction.atomic to ensure data consistency
             with transaction.atomic():
                 order = Order.objects.create(
                     user=request.user,
-                    total=cart.total,
+                    cart=cart,
+                    amount=cart.total,
                     status='pending'
                 )
                 
@@ -51,7 +52,7 @@ def checkout_view(request):
                             'product_data': {
                                 'name': f'Order #{order.id}',
                             },
-                            'unit_amount': int(order.total * 100),
+                            'unit_amount': int(order.amount * 100),
                         },
                         'quantity': 1,
                     }],
@@ -63,20 +64,16 @@ def checkout_view(request):
                         reverse('checkout:cancel')
                     ),
                     metadata={
-                        'order_id': str(order.id)  # Ensure order_id is string
+                        'order_id': str(order.id)
                     }
                 )
                 return redirect(checkout_session.url)
-                
-        except stripe.error.StripeError as e:
-            logger.error(f"Stripe error during checkout: {str(e)}")
-            messages.error(request, "Payment processing error. Please try again.")
         except Exception as e:
-            logger.error(f"Unexpected error during checkout: {str(e)}")
-            messages.error(request, "An unexpected error occurred. Please contact support.")
-        
-        return redirect('checkout:checkout')
-
+            logger.error(f"Error during checkout: {str(e)}")
+            messages.error(request, "There was an error processing your order. Please try again.")
+            return redirect('store:products')
+    
+    # Add this section to handle GET requests
     return render(request, 'checkout/checkout.html', {
         'cart': cart,
         'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY

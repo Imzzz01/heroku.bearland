@@ -18,10 +18,13 @@
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="price">${{ product.price }}</p>
-                    <p>{{ product.description }}</p>
-                    <button class="btn btn-primary" onclick="addToCart('{{ product.name }}', '{{ product.price }}')">Add to Cart</button>
-                </div>
+                        <p class="price">£{{ product.price }}</p>
+                         <form method="post" action="{% url 'cart:add_to_cart' product.id %}">
+                       {% csrf_token %}
+                          <input type="hidden" name="quantity" value="1">
+                              <button type="submit" class="btn btn-primary">Add to Cart</button>
+                       </form>
+                    </div>
             </div>
         </div>
     {% empty %}

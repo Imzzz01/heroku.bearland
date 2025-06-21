@@ -1,3 +1,4 @@
+from venv import logger
 import stripe
 import json
 from django.conf import settings
@@ -11,39 +12,37 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @csrf_exempt
 def stripe_webhook(request):
-    # Only allow POST requests from Stripe
-    if request.method != 'POST':
-        return HttpResponse("Method not allowed", status=405)
-    
     payload = request.body
-    
-    # Safely get the signature header
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
-    if not sig_header:
-        return HttpResponse("Missing Stripe signature", status=400)
     
-    event = None
-
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, settings.STRIPE_ENDPOINT_SECRET  # Note: using STRIPE_ENDPOINT_SECRET
+            payload, 
+            sig_header, 
+            settings.STRIPE_ENDPOINT_SECRET
         )
     except ValueError as e:
-        # Invalid payload
-        return HttpResponse("Invalid payload", status=400)
+        return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
-        return HttpResponse("Invalid signature", status=400)
+        return HttpResponse(status=400)
 
-    # Handle the checkout.session.completed event
+    # Handle successful payment
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
+        
         try:
-            fulfill_order(session)
+            order = Order.objects.get(id=session.metadata.order_id)
+            order.status = 'completed'
+            order.stripe_payment_intent = session.payment_intent
+            order.save()
+            
+            # Send confirmation email
+            send_order_confirmation(order)
+            
+        except Order.DoesNotExist:
+            logger.error(f"Order not found: {session.metadata.order_id}")
         except Exception as e:
-            # Log the error in production
-            print(f"Error fulfilling order: {e}")
-            return HttpResponse("Error processing order", status=500)
+            logger.error(f"Error processing order: {str(e)}")
 
     return HttpResponse(status=200)
 

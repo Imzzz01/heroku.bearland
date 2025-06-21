@@ -1,13 +1,11 @@
 from django.db import models
 from django.conf import settings
 from cart.models import Cart
+from store.models import Product  # Make sure to import Product
 
-# Create your models here.
-
-# This model represents an order in the checkout process.
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-    session_key = models.CharField(max_length=40, null=True, blank=True)  # For anonymous users
+    session_key = models.CharField(max_length=40, null=True, blank=True)
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
     stripe_payment_intent = models.CharField(max_length=255, blank=True, null=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
@@ -17,10 +15,10 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order {self.id}"
- # This model represents an item in an order.   
+
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
-    product = models.ForeignKey('store.Product', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)  # Using imported Product
     quantity = models.PositiveIntegerField(default=1)
     price = models.DecimalField(max_digits=10, decimal_places=2)
    
