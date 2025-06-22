@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <title>{% block title %}Bear Land{% endblock %}</title>
     
     <!-- External code - Bootstrap cdn -->
@@ -39,6 +40,8 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
+     <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    <!-- Header section with navigation -->
     <header class="d-flex flex-column align-items-center" id="home">
         <!-- Navigation links to different sections -->
         <div class="logo text-center">Bear Land</div>

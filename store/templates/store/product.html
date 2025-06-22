@@ -1,5 +1,4 @@
-
-<!--product.html -->{% extends 'store/base.html' %}
+{% extends 'store/base.html' %}
 {% load static %}
 
 {% block title %}Bear Land - Products{% endblock %}
@@ -9,146 +8,210 @@
     <h1 class="text-center mt-5">Products</h1>
     <div class="row mt-5">
         {% for product in products %}
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
                 {% if product.image %}
-                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="width: 100%;">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="width: 100%; height: 250px; object-fit: cover;">
                 {% else %}
-                    <img src="/static/images/no-image.png" class="card-img-top" alt="{{ product.name }}" style="width: 100%;">
+                    <img src="{% static 'images/no-image.png' %}" class="card-img-top" alt="{{ product.name }}" style="width: 100%; height: 250px; object-fit: cover;">
                 {% endif %}
-                <div class="card-body">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="price">£{{ product.price }}</p>
-                         <form method="post" action="{% url 'cart:add_to_cart' product.id %}">
-                       {% csrf_token %}
-                          <input type="hidden" name="quantity" value="1">
-                              <button type="submit" class="btn btn-primary">Add to Cart</button>
-                       </form>
-                    </div>
+                    <p class="price">£{{ product.price }}</p>
+                    <p class="card-text flex-grow-1">{{ product.description|default:"Adopt this bear today!" }}</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' product.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
             </div>
         </div>
-    {% empty %}
-        <!-- Fallback for when no products are available -->
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/brownbear.jpg' %}" class="card-img-top" alt="Brown Bear" style="width: 100%;">
-                <div class="card-body">
+        {% empty %}
+        <!-- Fallback products with consistent image sizing -->
+        <!-- Brown Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/brownbear.jpg' %}" class="card-img-top" alt="Brown Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Brown Bear</h5>
                     <p class="price">£12.00</p>
-                    <p>Adopt a brown bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Brown Bear', 12.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/pink-bear.jpg' %}" class="card-img-top" alt="Pink Bear" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Pink Bear</h5>
-                    <p class="price">£13.00</p>
-                    <p>Adopt a Pink bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Pink Bear', 13.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bowbear.jpg' %}" class="card-img-top" alt="Brown bear with bow" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Brown bear with a cute bow</h5>
-                    <p class="price">£12.00</p>
-                    <p>Adopt a cute bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Brown bear with a cute bow', 12.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/bluebear.jpg' %}" class="card-img-top" alt="Blue Bear" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Blue Bear</h5>
-                    <p class="price">£14.00</p>
-                    <p>Adopt a Blue bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Blue Bear', 14.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/white-bear.jpg' %}" class="card-img-top" alt="White Bear" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">White Bear</h5>
-                    <p class="price">£15.00</p>
-                    <p>Adopt a White bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('White Bear', 15.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/greybear.jpg' %}" class="card-img-top" alt="Grey Bear" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Grey Bear</h5>
-                    <p class="price">£16.00</p>
-                    <p>Adopt a Grey bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Grey Bear', 16.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/yellowbear.jpg' %}" class="card-img-top" alt="Yellow Bear" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Yellow Bear</h5>
-                    <p class="price">£17.00</p>
-                    <p>Adopt a Yellow bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Yellow Bear', 17.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/greenbear.jpg' %}" class="card-img-top" alt="Green Bear" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Green Bear</h5>
-                    <p class="price">£18.00</p>
-                    <p>Adopt a Green bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Green Bear', 18.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/purplebear.jpg' %}" class="card-img-top" alt="Purple Bear" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Purple Bear</h5>
-                    <p class="price">£19.00</p>
-                    <p>Adopt a Purple bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Purple Bear', 19.00)">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/orangebear.jpg' %}" class="card-img-top" alt="Orange Bear" style="width: 100%;">
-                <div class="card-body">
-                    <h5 class="card-title">Orange Bear</h5>
-                    <p class="price">£20.00</p>
-                    <p>Adopt an Orange bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Orange Bear', 20.00)">Add to Cart</button>
+                    <p class="card-text flex-grow-1">Adopt a brown bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 201 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
                 </div>
             </div>
         </div>
         
-        <div class="col-md-4">
-            <div class="card" data-aos="fade-up">
-                <img src="{% static 'images/store/redbear.jpg' %}" class="card-img-top" alt="Red Bear" style="width: 100%;">
-                <div class="card-body">
+        <!-- Pink Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/pink-bear.jpg' %}" class="card-img-top" alt="Pink Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Pink Bear</h5>
+                    <p class="price">£13.00</p>
+                    <p class="card-text flex-grow-1">Adopt a Pink bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 202 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Brown bear with bow -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/bowbear.jpg' %}" class="card-img-top" alt="Brown bear with bow" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Brown bear with bow</h5>
+                    <p class="price">£12.00</p>
+                    <p class="card-text flex-grow-1">Adopt this cute bear with a bow today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 203 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Blue Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/bluebear.jpg' %}" class="card-img-top" alt="Blue Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Blue Bear</h5>
+                    <p class="price">£14.00</p>
+                    <p class="card-text flex-grow-1">Adopt a Blue bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 204 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- White Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/white-bear.jpg' %}" class="card-img-top" alt="White Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">White Bear</h5>
+                    <p class="price">£15.00</p>
+                    <p class="card-text flex-grow-1">Adopt a White bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 205 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Grey Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/greybear.jpg' %}" class="card-img-top" alt="Grey Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Grey Bear</h5>
+                    <p class="price">£16.00</p>
+                    <p class="card-text flex-grow-1">Adopt a Grey bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 206 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Yellow Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/yellowbear.jpg' %}" class="card-img-top" alt="Yellow Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Yellow Bear</h5>
+                    <p class="price">£17.00</p>
+                    <p class="card-text flex-grow-1">Adopt a Yellow bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 207 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Green Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/greenbear.jpg' %}" class="card-img-top" alt="Green Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Green Bear</h5>
+                    <p class="price">£18.00</p>
+                    <p class="card-text flex-grow-1">Adopt a Green bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 208 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Purple Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/purplebear.jpg' %}" class="card-img-top" alt="Purple Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Purple Bear</h5>
+                    <p class="price">£19.00</p>
+                    <p class="card-text flex-grow-1">Adopt a Purple bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 209 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Orange Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/orangebear.jpg' %}" class="card-img-top" alt="Orange Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title">Orange Bear</h5>
+                    <p class="price">£20.00</p>
+                    <p class="card-text flex-grow-1">Adopt an Orange bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 210 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Red Bear -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100" data-aos="fade-up">
+                <img src="{% static 'images/store/redbear.jpg' %}" class="card-img-top" alt="Red Bear" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Red Bear</h5>
                     <p class="price">£22.00</p>
-                    <p>Adopt a red bear today!</p>
-                    <button class="btn btn-primary" onclick="addToCart('Red Bear', 22.00)">Add to Cart</button>
+                    <p class="card-text flex-grow-1">Adopt a Red bear today!</p>
+                    <form method="post" action="{% url 'cart:add_to_cart' 211 %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -156,5 +219,3 @@
     </div>
 </section>
 {% endblock %}
-
-
