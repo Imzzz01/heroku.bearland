@@ -149,7 +149,8 @@
     display: none;
 }
 
-.wishlist-btn {
+
+/*.wishlist-btn {
     transition: all 0.3s ease;
 }
 
@@ -159,4 +160,4 @@
 
 .wishlist-btn.active {
     color: #dc3545;
-}
+} */

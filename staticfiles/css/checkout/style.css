@@ -1,99 +1,99 @@
 /* Checkout App Specific Styles */
 .checkout-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    display: grid; /* Use grid layout for the checkout page */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 2rem; /* Space between columns */
 }
 
 .order-summary {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    box-shadow: var(--shadow);
+    background: white; /* White background for the order summary */
+    border-radius: var(--border-radius); /* Rounded corners */
+    padding: 2rem; /* Padding inside the order summary */
+    box-shadow: var(--shadow);  /* Box shadow for depth */
 }
 
 .order-summary-title {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
+    color: var(--primary-color); /* Primary color for the title */
+    font-size: 1.5rem; /* Font size for the title */
+    margin-bottom: 1.5rem; /* Margin below the title */
+    padding-bottom: 1rem;   /* Padding below the title */
+    border-bottom: 1px solid #eee; /* Bottom border for separation */
 }
 
 .order-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
+    display: flex; /* Flexbox for item layout */
+    justify-content: space-between; /* Space between item name and price */
+    margin-bottom: 1rem; /* Margin below each item */
+    padding-bottom: 1rem;   /* Padding below each item */
+    border-bottom: 1px solid #eee;  /* Bottom border for separation */
 }
 
 .order-total {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
-    margin-top: 1rem;
+    font-weight: 700; /* Bold font for total */
+    font-size: 1.2rem; /* Font size for total */
+    color: var(--primary-color);    /* Primary color for total */
+    padding-top: 1rem; /* Padding above the total */
+    border-top: 1px solid #eee; /* Top border for separation */
+    margin-top: 1rem; /* Margin above the total */
 }
 
 .payment-form {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    box-shadow: var(--shadow);
+    background: white; /* White background for the payment form */
+    border-radius: var(--border-radius);    /* Rounded corners */
+    padding: 2rem;  /* Padding inside the payment form */
+    box-shadow: var(--shadow);  /* Box shadow for depth */
 }
 
 .payment-form-title {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    color: var(--primary-color); /* Primary color for the title */
+    font-size: 1.5rem;  /* Font size for the title */
+    margin-bottom: 1.5rem; /* Margin below the title */
 }
 
 .StripeElement {
-    box-sizing: border-box;
-    height: 40px;
-    padding: 10px 12px;
-    border: 1px solid #e0e0e0;
-    border-radius: var(--border-radius);
-    background-color: white;
-    box-shadow: 0 1px 3px 0 #e6ebf1;
-    transition: box-shadow 150ms ease;
+    box-sizing: border-box;     /* Ensure padding and border are included in element's total width and height */
+    height: 40px; /* Height of the Stripe element */
+    padding: 10px 12px; /* Padding inside the Stripe element */
+    border: 1px solid #e0e0e0;  /* Light gray border */
+    border-radius: var(--border-radius);    /* Rounded corners */
+    background-color: white; /* White background */
+    box-shadow: 0 1px 3px 0 #e6ebf1; /* Subtle shadow for depth */
+    transition: box-shadow 150ms ease;  /* Transition effect for focus state */
 }
 
 .StripeElement--focus {
-    box-shadow: 0 1px 3px 0 #cfd7df;
-    border-color: var(--primary-color);
+    box-shadow: 0 1px 3px 0 #cfd7df; /* Darker shadow on focus */
+    border-color: var(--primary-color);   /* Primary color border on focus */
 }
 
 .StripeElement--invalid {
-    border-color: #fa755a;
+    border-color: #fa755a; /* Red border for invalid input */
 }
 
 .StripeElement--webkit-autofill {
-    background-color: #fefde5 !important;
+    background-color: #fefde5 !important; /* Yellow background for autofill */
 }
 
 .order-success, .order-cancel {
-    max-width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    background: white;
-    padding: 3rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
+    max-width: 600px; /* Maximum width for success and cancel messages */
+    margin: 0 auto; /* Center the messages */
+    text-align: center; /* Center text alignment */        
+    background: white; /* White background for success and cancel messages */
+    padding: 3rem; /* Padding inside the messages */
+    border-radius: var(--border-radius); /* Rounded corners */
+    box-shadow: var(--shadow); /* Box shadow for depth */
 }
 
 .order-success h2 {
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    color: var(--primary-color); /* Primary color for success title */
+    margin-bottom: 1.5rem;  /* Margin below the title */ 
 }
 
 .order-success p {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem;    /* Margin below the paragraph */
 }
 
 .order-cancel h2 {
-    color: #dc3545;
-    margin-bottom: 1.5rem;
+    color: #dc3545;     /* Red color for cancel title */
+    margin-bottom: 1.5rem; /* Margin below the title */
 }

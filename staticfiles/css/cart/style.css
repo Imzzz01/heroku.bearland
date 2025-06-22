@@ -1,89 +1,89 @@
 /* Cart App Specific Styles */
 .cart-container {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    box-shadow: var(--shadow);
+    background: white; /* Fallback for older browsers */
+    border-radius: var(--border-radius); /* Use CSS variable for border radius */  
+    padding: 2rem;  /* Use CSS variable for padding */
+    box-shadow: var(--shadow); /* Use CSS variable for shadow */
 }
 
 .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid #eee;
+    display: flex; /* Flexbox for layout */    
+    justify-content: space-between; /* Space between items */
+    align-items: center;  /* Center items vertically */         
+    padding: 1.5rem 0; /* Padding for each item */
+    border-bottom: 1px solid #eee; /* Light border for separation */
 }
 
 .cart-item:last-child {
-    border-bottom: none;
+    border-bottom: none; /* Remove border for the last item */
 }
 
 .cart-item-details {
-    flex: 2;
+    flex: 2; /* Take up more space */
 }
 
 .cart-item-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: var(--border-radius);
-    margin-right: 1.5rem;
+    width: 100px; /* Fixed width for images */
+    height: 100px; /* Fixed height for images */
+    object-fit: cover; /* Cover the area without stretching */
+    border-radius: var(--border-radius); /* Use CSS variable for border radius */
+    margin-right: 1.5rem; /* Space between image and details */
 }
 
 .cart-item-name {
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
+    font-weight: 600; /* Bold text for item name */
+    color: var(--primary-color); /* Use primary color from CSS variable */
+    margin-bottom: 0.5rem; /* Space below item name */
 }
 
 .cart-item-price {
-    color: var(--secondary-color);
-    font-weight: 700;
+    color: var(--secondary-color);  /* Use secondary color from CSS variable */
+    font-weight: 700; /* Bold text for price */
 }
 
 .cart-summary {
-    background: white;
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    box-shadow: var(--shadow);
-    height: fit-content;
+    background: white;  /* Fallback for older browsers */
+    border-radius: var(--border-radius); /* Use CSS variable for border radius */
+    padding: 2rem; /* Use CSS variable for padding */
+    box-shadow: var(--shadow); /* Use CSS variable for shadow */
+    height: fit-content; /* Fit content height */
 }
 
 .cart-summary-title {
-    color: var(--primary-color);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
+    color: var(--primary-color); /* Use primary color from CSS variable */
+    font-size: 1.5rem; /* Font size for title */
+    margin-bottom: 1.5rem;  /* Space below title */
+    padding-bottom: 1rem; /* Padding below title */
+    border-bottom: 1px solid #eee;  /* Light border for separation */
 }
 
 .cart-summary-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+    display: flex; /* Flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    margin-bottom: 1rem; /* Space between rows */
 }
 
 .cart-summary-total {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    padding-top: 1rem;
-    border-top: 1px solid #eee;
+    font-weight: 700; /* Bold text for total */
+    font-size: 1.2rem; /* Font size for total */
+    color: var(--primary-color); /* Use primary color from CSS variable */
+    padding-top: 1rem; /* Padding above total */
+    border-top: 1px solid #eee; /* Light border for separation */
 }
 
 .empty-cart-message {
-    text-align: center;
-    padding: 3rem 0;
+    text-align: center;     /* Center the message */
+    padding: 3rem 0;    /* Padding for the message */
 }
 
 .empty-cart-icon {
-    font-size: 5rem;
-    color: #ccc;
-    margin-bottom: 1.5rem;
+    font-size: 5rem;    /* Large icon for empty cart */
+    color: #ccc;   /* Light color for the icon */
+    margin-bottom: 1.5rem; /* Space below icon */
 }
 
 .empty-cart-text {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    margin-bottom: 1.5rem;
+    font-size: 1.2rem;  /* Font size for empty cart text */
+    color: var(--text-light); /* Use light text color from CSS variable */   
+    margin-bottom: 1.5rem; /* Space below text */
 }
