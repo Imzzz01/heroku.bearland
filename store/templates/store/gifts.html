@@ -136,30 +136,3 @@
 </section>
 {% endblock %}
 
-{% block extra_js %}
-<script>
-    // Create an add to cart function
-    function addToCart(name, price) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        
-        // Check if item already exists in cart
-        const existingItem = cart.find(item => item.name === name);
-        if (existingItem) {
-            existingItem.quantity = (existingItem.quantity || 1) + 1;
-        } else {
-            cart.push({name, price, quantity: 1});
-        }
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-        
-        // Using SweetAlert for better user experience
-        Swal.fire({
-            title: 'Success!',
-            text: `${name} added to cart!`,
-            icon: 'success',
-            confirmButtonText: 'OK',
-            timer: 2000
-        });
-    }
-</script>
-{% endblock %}

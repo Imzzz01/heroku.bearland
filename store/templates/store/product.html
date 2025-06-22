@@ -157,22 +157,4 @@
 </section>
 {% endblock %}
 
-{% block extra_js %}
-<script>
-    // Create an add to cart function
-    function addToCart(name, price) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({name, price});
-        localStorage.setItem('cart', JSON.stringify(cart));
-        
-        // Using SweetAlert for better user experience
-        Swal.fire({
-            title: 'Success!',
-            text: `${name} added to cart!`,
-            icon: 'success',
-            confirmButtonText: 'OK'
-        });
-    }
 
-</script>
-{% endblock %}
