@@ -19,11 +19,26 @@
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="price">£{{ product.price }}</p>
                     <p class="card-text flex-grow-1">{{ product.description|default:"Adopt this bear today!" }}</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' product.id %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="{% url 'store:product_detail' product.id %}" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        {% if product.stock > 0 %}
+                        <form method="post" action="{% url 'cart:add_to_cart' product.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                        {% comment %}
+                        <button class="btn btn-outline-secondary btn-sm wishlist-btn" 
+                                onclick="addToWishlist('{{ product.id }}')"
+                                title="Add to wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                        {% endcomment %}
+                        {% else %}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -37,11 +52,17 @@
                     <h5 class="card-title">Brown Bear</h5>
                     <p class="price">£12.00</p>
                     <p class="card-text flex-grow-1">Adopt a brown bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 201 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 201 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                       
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,11 +75,17 @@
                     <h5 class="card-title">Pink Bear</h5>
                     <p class="price">£13.00</p>
                     <p class="card-text flex-grow-1">Adopt a Pink bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 202 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 202 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                     
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,11 +98,17 @@
                     <h5 class="card-title">Brown bear with bow</h5>
                     <p class="price">£12.00</p>
                     <p class="card-text flex-grow-1">Adopt this cute bear with a bow today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 203 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 203 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,11 +121,17 @@
                     <h5 class="card-title">Blue Bear</h5>
                     <p class="price">£14.00</p>
                     <p class="card-text flex-grow-1">Adopt a Blue bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 204 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 204 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                       
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,11 +144,17 @@
                     <h5 class="card-title">White Bear</h5>
                     <p class="price">£15.00</p>
                     <p class="card-text flex-grow-1">Adopt a White bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 205 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 205 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                       
+                    </div>
                 </div>
             </div>
         </div>
@@ -122,11 +167,17 @@
                     <h5 class="card-title">Grey Bear</h5>
                     <p class="price">£16.00</p>
                     <p class="card-text flex-grow-1">Adopt a Grey bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 206 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 206 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -139,11 +190,17 @@
                     <h5 class="card-title">Yellow Bear</h5>
                     <p class="price">£17.00</p>
                     <p class="card-text flex-grow-1">Adopt a Yellow bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 207 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 207 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                      
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,11 +213,17 @@
                     <h5 class="card-title">Green Bear</h5>
                     <p class="price">£18.00</p>
                     <p class="card-text flex-grow-1">Adopt a Green bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 208 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 208 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -173,11 +236,17 @@
                     <h5 class="card-title">Purple Bear</h5>
                     <p class="price">£19.00</p>
                     <p class="card-text flex-grow-1">Adopt a Purple bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 209 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 209 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                       
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,11 +259,17 @@
                     <h5 class="card-title">Orange Bear</h5>
                     <p class="price">£20.00</p>
                     <p class="card-text flex-grow-1">Adopt an Orange bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 210 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 210 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                     
+                    </div>
                 </div>
             </div>
         </div>
@@ -207,15 +282,22 @@
                     <h5 class="card-title">Red Bear</h5>
                     <p class="price">£22.00</p>
                     <p class="card-text flex-grow-1">Adopt a Red bear today!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 211 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 211 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                       
+                    </div>
                 </div>
             </div>
         </div>
         {% endfor %}
     </div>
 </section>
+
 {% endblock %}

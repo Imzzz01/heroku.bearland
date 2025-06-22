@@ -58,9 +58,12 @@
                                 <i class="fa fa-cart-plus"></i> Add to Cart
                             </button>
                         </form>
-                        <button class="btn btn-outline-secondary btn-lg" onclick="addToWishlist('{{ product.name }}')">
-                            <i class="fa fa-heart"></i> Add to Wishlist
-                        </button>
+                        {% comment %}
+                        <button class="btn btn-outline-secondary btn-lg" onclick="addToWishlist('{{ product.id }}')">
+                           <i class="fa fa-heart"></i> Add to Wishlist
+                          </button>
+                        
+                        {% endcomment %}
                     {% else %}
                         <button class="btn btn-secondary btn-lg" disabled>
                             <i class="fa fa-ban"></i> Out of Stock

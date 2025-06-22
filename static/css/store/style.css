@@ -140,3 +140,23 @@
 .search-btn {
     padding: 0 1.5rem;
 }
+/* Wishlist styles */
+#wishlist-count {
+    font-size: 0.6rem;
+    position: relative;
+    top: -10px;
+    left: -5px;
+    display: none;
+}
+
+.wishlist-btn {
+    transition: all 0.3s ease;
+}
+
+.wishlist-btn:hover {
+    transform: scale(1.1);
+}
+
+.wishlist-btn.active {
+    color: #dc3545;
+}

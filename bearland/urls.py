@@ -29,6 +29,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('accounts/', include('allauth.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    #path('wishlist/', include('wishlist.urls')),
 ]
 
 # This works for both development and production

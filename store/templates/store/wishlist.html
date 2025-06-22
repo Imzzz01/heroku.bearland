@@ -1,0 +1,51 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}My Wishlist - Bear Land{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="mb-4">My Wishlist</h1>
+    
+    {% if wishlist_items %}
+    <div class="row">
+        {% for item in wishlist_items %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                {% if item.product.image %}
+                    <img src="{{ item.product.image.url }}" class="card-img-top" alt="{{ item.product.name }}">
+                {% else %}
+                    <img src="{% static 'images/bear.jpg' %}" class="card-img-top" alt="{{ item.product.name }}">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ item.product.name }}</h5>
+                    <p class="card-text">£{{ item.product.price }}</p>
+                </div>
+                <div class="card-footer bg-white">
+                    <div class="d-flex justify-content-between">
+                        <form method="post" action="{% url 'cart:add_to_cart' item.product.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                        <form method="post" action="{% url 'store:remove_from_wishlist' item.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                <i class="fa fa-trash"></i> Remove
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        Your wishlist is empty. Start adding products you love!
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

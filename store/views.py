@@ -3,8 +3,11 @@ from .models import Product, Gift
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.db.models import Q 
+# from wishlist.models import Wishlist, WishlistItem
 
 # Store Views
+
+
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -55,3 +58,4 @@ def search(request):
         'results': results,
         'query': query
     })
+    

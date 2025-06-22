@@ -16,11 +16,23 @@
                     <h5 class="card-title">{{ gift.name }}</h5>
                     <p class="price">£{{ gift.price }}</p>
                     <p class="card-text flex-grow-1">{{ gift.description }}</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' gift.id %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="{% url 'store:product_detail' gift.id %}" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' gift.id %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                        {% comment %}
+                        <button class="btn btn-outline-secondary btn-sm wishlist-btn" 
+                                onclick="addToWishlist('{{ gift.id }}')"
+                                title="Add to wishlist">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    {% endcomment %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,11 +46,17 @@
                     <h5 class="card-title">Rose Bear Gift</h5>
                     <p class="price">£25.00</p>
                     <p class="card-text flex-grow-1">A romantic gift with a beautiful rose - perfect for someone special!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 101 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 101 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                      
+                    </div>
                 </div>
             </div>
         </div>
@@ -51,11 +69,17 @@
                     <h5 class="card-title">Bear Necklace</h5>
                     <p class="price">£18.00</p>
                     <p class="card-text flex-grow-1">Adorable bear-themed jewelry for bear lovers!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 102 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 102 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,11 +92,17 @@
                     <h5 class="card-title">Bear Keychain</h5>
                     <p class="price">£8.00</p>
                     <p class="card-text flex-grow-1">Cute bear keychain to keep your favorite bear with you always!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 103 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 103 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                       
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,11 +115,17 @@
                     <h5 class="card-title">Wedding Bear Gift</h5>
                     <p class="price">£35.00</p>
                     <p class="card-text flex-grow-1">Perfect wedding gift for the happy couple!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 104 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 104 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                      
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,11 +138,17 @@
                     <h5 class="card-title">Bear Chocolates</h5>
                     <p class="price">£15.00</p>
                     <p class="card-text flex-grow-1">Delicious bear-shaped chocolates for sweet moments!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 105 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 105 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                     
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,11 +161,17 @@
                     <h5 class="card-title">Teddy Bear Bouquet</h5>
                     <p class="price">£28.00</p>
                     <p class="card-text flex-grow-1">A beautiful bouquet of mini teddy bears - unique and adorable!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 106 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 106 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                       
+                    </div>
                 </div>
             </div>
         </div>
@@ -136,11 +184,17 @@
                     <h5 class="card-title">Valentine Gift Set</h5>
                     <p class="price">£32.00</p>
                     <p class="card-text flex-grow-1">Complete Valentine's gift set with bear and treats!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 107 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 107 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                       
+                    </div>
                 </div>
             </div>
         </div>
@@ -153,11 +207,17 @@
                     <h5 class="card-title">Gift Box Bears</h5>
                     <p class="price">£22.00</p>
                     <p class="card-text flex-grow-1">Beautifully packaged mini bears in elegant gift boxes!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 108 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 108 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                      
+                    </div>
                 </div>
             </div>
         </div>
@@ -170,11 +230,17 @@
                     <h5 class="card-title">Special Occasion Bear</h5>
                     <p class="price">£30.00</p>
                     <p class="card-text flex-grow-1">Perfect for birthdays, anniversaries, and special celebrations!</p>
-                    <form method="post" action="{% url 'cart:add_to_cart' 109 %}">
-                        {% csrf_token %}
-                        <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="btn btn-primary mt-auto">Add to Cart</button>
-                    </form>
+                    <div class="mt-auto">
+                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        <form method="post" action="{% url 'cart:add_to_cart' 109 %}" class="d-inline">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn btn-primary btn-sm me-2">
+                                <i class="fa fa-cart-plus"></i> Add to Cart
+                            </button>
+                        </form>
+                     
+                    </div>
                 </div>
             </div>
         </div>
@@ -182,3 +248,4 @@
     </div>
 </section>
 {% endblock %}
+
