@@ -5,10 +5,12 @@
 
 {% block content %}
 <!-- Gifts section -->
+ <!-- I have used grid layout for my gift items using bootstrap row and column system -->
 <section class="container">
     <h1 class="text-center mt-5">Gifts</h1>
     <div class="row mt-5">
-        {% for gift in gifts %}
+        {% for gift in gifts %} 
+        <!--Individual gift cards-->
         <div class="col-md-4 mb-4">
             <div class="card h-100" data-aos="fade-up">
                 <img src="{{ gift.image.url }}" class="card-img-top" alt="{{ gift.name }}" style="width: 100%; height: 250px; object-fit: cover;">
@@ -37,7 +39,7 @@
             </div>
         </div>
         {% empty %}
-        <!-- All fallback gifts displayed when no database gifts available -->
+        <!--  I have added gifts to the database; if there are no gifts in the database, these fallback gifts will be available -->
         <!-- Rose Bear Gift -->
         <div class="col-md-4 mb-4">
             <div class="card h-100" data-aos="fade-up">

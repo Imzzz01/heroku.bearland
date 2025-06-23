@@ -1,4 +1,5 @@
 <!--Base.html -->{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,6 +51,7 @@
             <!-- Login icon on the left -->
                <div class="me-auto">
             <ul class="navbar-nav">
+               <!--I created a dropdown menu so the users can log in and register and also be able to log out efficiently-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" 
                        data-bs-toggle="dropdown" aria-expanded="false" aria-label="User account">
@@ -74,11 +76,13 @@
         </div>
     
             <!-- Nav bar toggler -->
+             <!--I have created a nav bar toggle for responsiveness so that users can use the hamburger method on mobile screens-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
     
             <!-- Centered navigation links -->
+             <!--I chose to centre my navbar items because I envisioned my teddy bear e-commerce website to have centred items, which would make it more UX-pleasing.-->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
@@ -95,16 +99,19 @@
             
             <div class="d-flex align-items-center">
                 <!-- Search form -->
+                 <!--I have created a search engine bar so customers can search for their desired products. For example, couples looking for Valentine's gifts or products that would make good gifts for a loved one can search for that product or gift instead of manually scrolling! This saves time and would encourage more customers to buy my products.-->
                 <form class="d-flex me-3" method="GET" action="{% url 'store:search' %}">
                     <input type="text" class="form-control me-2" placeholder="Search" name="q">
                     <button type="submit" class="btn btn-outline-light">Submit</button>
                 </form>
+                <!--I have used a cart icon instead of text to save some space so that all nav bars are not crowded.--->
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'cart:cart' %}" aria-label="Go to shopping cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </a>
+                            <i class="fa-solid fa-cart-shopping"></i> 
                     </li>
+                    <!--I had partially implemented the wishlist feature into my project, but I couldn't implement it the way I wanted because of a tight deadline.
+                     Due to the tight deadline, I have commented it out!-->
                    {% comment %}
                     <ul class="navbar-nav">
                  
