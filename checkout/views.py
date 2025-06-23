@@ -12,6 +12,8 @@ from cart.models import Cart, CartItem
 from .models import Order, OrderItem
 from cart.views import get_or_create_cart
 from django.conf import settings
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 logger = logging.getLogger(__name__)
@@ -133,79 +135,21 @@ def payment_cancel(request):
     return render(request, 'checkout/cancel.html')
 
 def send_order_confirmation(order):
-    """Send order confirmation email to customer"""
     try:
         subject = f"Order Confirmation #{order.id}"
-        html_message = render_to_string('checkout/order_confirmation_email.html', {
-            'order': order
-        })
-        plain_message = f"""Thank you for your order #{order.id} from Bear Land.
-        
-        Order Total: £{order.amount}
-        
-        We'll notify you when your items ship. If you have any questions, please contact our support team.
-        """
+        context = {'order': order}
+        html_message = render_to_string('checkout/order_confirmation_email.html', context)
+        plain_message = f"Thank you for your order #{order.id}"
         
         send_mail(
-            subject,
-            plain_message,
-            settings.DEFAULT_FROM_EMAIL,
-            [order.user.email],
+            subject=subject,
+            message=plain_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[order.user.email],
             html_message=html_message,
             fail_silently=False
         )
-        logger.info(f"Order confirmation email sent for order #{order.id}")
+        logger.info(f"Sent confirmation for order {order.id}")
     except Exception as e:
-        logger.error(f"Failed to send order confirmation email for order #{order.id}: {str(e)}")
-        if settings.DEBUG:
-            raise
-
-def stripe_webhook(request):
-    """Handle Stripe webhook notifications"""
-    payload = request.body
-    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
-    event = None
-
-    try:
-        event = stripe.Webhook.construct_event(
-            payload, 
-            sig_header, 
-            settings.STRIPE_ENDPOINT_SECRET
-        )
-    except ValueError as e:
-        logger.error(f"Invalid payload: {str(e)}")
-        return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError as e:
-        logger.error(f"Invalid signature: {str(e)}")
-        return HttpResponse(status=400)
-
-    # Handle successful payment
-    if event['type'] == 'checkout.session.completed':
-        session = event['data']['object']
-        
-        try:
-            order_id = session.metadata.get('order_id')
-            if not order_id:
-                raise ValueError("No order_id in session metadata")
-            
-            order = Order.objects.get(id=order_id)
-            
-            # Only process if order is still pending
-            if order.status == 'pending':
-                order.status = 'completed'
-                order.stripe_payment_intent = session.payment_intent
-                order.save()
-                
-                # Send confirmation email
-                send_order_confirmation(order)
-                
-                logger.info(f"Order {order_id} completed via webhook")
-            else:
-                logger.info(f"Order {order_id} was already completed")
-                
-        except Order.DoesNotExist:
-            logger.error(f"Order not found: {order_id}")
-        except Exception as e:
-            logger.error(f"Error processing order {order_id}: {str(e)}")
-
-    return HttpResponse(status=200)
+        logger.error(f"Failed to send email for order {order.id}: {str(e)}")
+        # Optionally implement a retry mechanism or fallback
