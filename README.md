@@ -82,6 +82,130 @@ Design Principles:
    - Nostalgic buyers reconnecting with childhood
    - Seek bears as decorative items or comfort objects
 
+## Data Models 
+
+```python
+# Store models 
+
+from django.db import models
+from django.urls import reverse
+
+class Product (models.Model):
+     name = models.CharField(max_length=100)
+     description = models.TextField()
+     price = models.DecimalField(max_digits=10, decimal_places=2)
+     image = models.ImageField(upload_to='products/', blank=True, null=True)
+     stock = models.PositiveIntegerField()
+     created_at = models.DateTimeField(auto_now_add=True)
+     updated_at = models.DateTimeField(auto_now=True)
+
+     def __str__(self):
+         return self.name
+     def get_absolute_url(self):
+         return reverse('product_detail', args=[str(self.id)])
+
+class Gift(Product):
+      is_gift = models.BooleanField(default=True)
+      gift_type = models.CharField(max_length=50, blank=True, null=True)
+
+class Category(models.Model):
+      name = models.CharField(max_length=100)
+      slug = models.SlugField(unique=True)
+
+      def __str__(self):
+        return self.name
+
+# Cart Models
+
+from django.db import models
+from django.conf import settings
+from store.models import Product
+
+
+class Cart(models.Model):
+     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True,   blank=True)
+     session_key = models.CharField(max_length=40, null=True, blank=True)
+     created_at = models.DateTimeField(auto_now_add=True)
+     updated_at = models.DateTimeField(auto_now=True)
+
+     @property
+     def total(self):
+          return sum(item.subtotal for item in self.items.all())
+     def __str__(self):
+          return f"Cart {self.id}"
+
+class CartItem(models.Model):
+
+      cart = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
+      product =  models.ForeignKey(Product, on_delete=models.CASCADE)
+      quantity =  models.PositiveIntegerField(default=1)
+ 
+      @property
+      def subtotal(self):
+          return self.product.price * self.quantity
+      def __str__(self):
+          return f"{self.quantity} x {self.product.name}"
+
+# Accounts models
+
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+from store.models import Product
+
+class CustomUser(AbstractUser):
+      phone_number = models.CharField(max_length=20, blank=True)
+      address = models.TextField(blank=True)
+
+groups = models.ManyToManyField(
+      'auth.Group',
+       verbose_name='groups',
+       blank=True,
+       help_text='The group this user belongs to.',
+       related_name='customuser_set',
+       related_query_name='customuser'
+)
+
+user_permissions = models.ManyToManyField(
+       'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_name='customuser_set',
+        related_query_name='customuser'
+)
+
+def __str__(self):
+         return self.username
+
+# Checkout models
+
+from django.db import models
+from django.conf import settings
+from cart.models import Cart
+from store.models import Product 
+
+class Order(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    session_key = models.CharField(max_length=40, null=True, blank=True)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    stripe_payment_intent = models.CharField(max_length=255, blank=True, null=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=20, default='Pending')
+
+    def __str__(self):
+        return f"Order {self.id}"
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE) 
+    quantity = models.PositiveIntegerField(default=1)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+   
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name}"  
+
 ## 📖 User Stories <a id="user-stories"></a>
 
 | **As a...**         | **I Want To**                    |        **So That**                | **Priority**   |
