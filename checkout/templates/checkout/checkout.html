@@ -66,11 +66,12 @@
 </div>
 {% endblock %}
 
-{% block extra_js %}
+
 <script src="https://js.stripe.com/v3/"></script>
+
 <script>
-    // Initialize Stripe
-    const stripe = Stripe('{{ stripe_public_key }}');
+    // Initialize Stripe with the correct context variable
+    const stripe = Stripe('{{ stripe_publishable_key }}');
     const elements = stripe.elements();
     const cardElement = elements.create('card');
     cardElement.mount('#card-element');
@@ -110,4 +111,3 @@
         }
     });
 </script>
-{% endblock %}

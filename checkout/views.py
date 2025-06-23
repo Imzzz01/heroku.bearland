@@ -75,39 +75,11 @@ def checkout_view(request):
             messages.error(request, "There was an error processing your order. Please try again.")
             return redirect('cart:cart')
 
-    # GET request - show checkout page
+    # GET request - show checkout page (KEY FIX: Pass stripe_publishable_key)
     return render(request, 'checkout/checkout.html', {
         'cart': cart,
-        'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY
+        'stripe_publishable_key': settings.STRIPE_PUBLISHABLE_KEY  # <-- Critical fix
     })
-
-def send_order_confirmation(order):
-    """Send order confirmation email to customer"""
-    try:
-        subject = f"Order Confirmation #{order.id}"
-        html_message = render_to_string('checkout/order_confirmation_email.html', {
-            'order': order
-        })
-        plain_message = f"""Thank you for your order #{order.id} from Bear Land.
-        
-        Order Total: £{order.amount}
-        
-        We'll notify you when your items ship. If you have any questions, please contact our support team.
-        """
-        
-        send_mail(
-            subject,
-            plain_message,
-            settings.DEFAULT_FROM_EMAIL,
-            [order.user.email],
-            html_message=html_message,
-            fail_silently=False
-        )
-        logger.info(f"Order confirmation email sent for order #{order.id}")
-    except Exception as e:
-        logger.error(f"Failed to send order confirmation email for order #{order.id}: {str(e)}")
-        if settings.DEBUG:
-            raise
 
 def payment_success(request):
     """Handle successful payment completion"""
@@ -159,6 +131,34 @@ def payment_cancel(request):
     """Handle payment cancellation"""
     messages.info(request, "Your payment was cancelled. You can try again.")
     return render(request, 'checkout/cancel.html')
+
+def send_order_confirmation(order):
+    """Send order confirmation email to customer"""
+    try:
+        subject = f"Order Confirmation #{order.id}"
+        html_message = render_to_string('checkout/order_confirmation_email.html', {
+            'order': order
+        })
+        plain_message = f"""Thank you for your order #{order.id} from Bear Land.
+        
+        Order Total: £{order.amount}
+        
+        We'll notify you when your items ship. If you have any questions, please contact our support team.
+        """
+        
+        send_mail(
+            subject,
+            plain_message,
+            settings.DEFAULT_FROM_EMAIL,
+            [order.user.email],
+            html_message=html_message,
+            fail_silently=False
+        )
+        logger.info(f"Order confirmation email sent for order #{order.id}")
+    except Exception as e:
+        logger.error(f"Failed to send order confirmation email for order #{order.id}: {str(e)}")
+        if settings.DEBUG:
+            raise
 
 def stripe_webhook(request):
     """Handle Stripe webhook notifications"""
