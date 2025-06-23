@@ -418,7 +418,42 @@ Base.css
 ![image](https://github.com/user-attachments/assets/6668d477-9e5b-4a57-a1e2-ae86f7166389)
 
 
-# Finish Project <a id="finished-project"></a>
+## Finish Project <a id="finished-project"></a>
+
+# Home Page
+
+![image](https://github.com/user-attachments/assets/4fdc61fa-8646-4d2b-a174-eb76e0a5101a)
+![image](https://github.com/user-attachments/assets/298eea84-9e8e-4f28-99ce-16e4ad44d9ee)
+
+# Product Page 
+![image](https://github.com/user-attachments/assets/3cfa030a-df53-45b1-b59f-7d774024a4c6)
+![image](https://github.com/user-attachments/assets/945ec97a-2e15-4b31-9cd2-fe4fae9c5d22)
+![image](https://github.com/user-attachments/assets/215f053a-5ca1-4b96-980d-5abfb05ba96a)
+
+# Gift Page 
+![image](https://github.com/user-attachments/assets/fba6234c-8cee-4a7a-9393-9e52a456903b)
+![image](https://github.com/user-attachments/assets/8468d692-e5e7-47ee-93c8-c38bed421388)
+
+# Search Engine / Product & Gift Details
+![image](https://github.com/user-attachments/assets/6f230f28-2902-4226-a0ed-3810d4884032)
+![image](https://github.com/user-attachments/assets/5b56218e-027a-4b1f-8903-a4b6746cd000)
+![image](https://github.com/user-attachments/assets/3c336cb5-49cf-4cbe-aa93-6f7584fe496a)
+
+# Cart / Customer's can only buy products after creating an account and logging in.
+![image](https://github.com/user-attachments/assets/0f683972-7486-489a-a020-a3ee1036c2a6)
+![image](https://github.com/user-attachments/assets/9a948c19-b121-4bab-aa00-f891d42afd02)
+
+# Checkout
+
+# Stripe Payment / Success Message
+![image](https://github.com/user-attachments/assets/c9df3fd2-041b-4cd3-8717-dfab9687275b) With the right information
+![image](https://github.com/user-attachments/assets/fd1e5eaf-f5d0-4a54-b88a-e4c5b582274c) With the wrong information
+Pay through link which makes it easier for customers to pay quickly just like Apple pay or google pay
+![image](https://github.com/user-attachments/assets/a7ccd022-71c9-4e24-a270-246d7c844851)
+![image](https://github.com/user-attachments/assets/6752732e-4f5e-41d6-9782-11103117ad26)
+Once Payment has been made, it will direct you back to the home page and show you Payment successful message!
+![image](https://github.com/user-attachments/assets/331d4d4e-ca72-4a53-a7c8-73a9d6d93a0d)
+
 
 
 
