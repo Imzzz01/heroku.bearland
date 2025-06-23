@@ -82,7 +82,7 @@ Design Principles:
    - Nostalgic buyers reconnecting with childhood
    - Seek bears as decorative items or comfort objects
 
-## Data Models 
+## Data Models <a id="data-models"></a>
 
 ```python
 # Store models 
@@ -145,7 +145,7 @@ class CartItem(models.Model):
           return self.product.price * self.quantity
       def __str__(self):
           return f"{self.quantity} x {self.product.name}"
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 # Accounts models
 
