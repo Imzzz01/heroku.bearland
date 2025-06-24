@@ -183,12 +183,11 @@ Testing will cover:
 - Mobile: iOS and Android devices
 - Backend: Django 5.1.6 with SQLite (Development), PostgreSQL (production)
 
-# 3. Test Cases
-[https://1drv.ms/w/c/4825e675d30aceda/ESZ0eegzToxGv8gSUPIeVqEB-UO_C1ytDsilXNx6Y3lM0w?e=bG68PV]
+## 3. Test Cases
 
-## ID: AUTH-01: User Registration
+ID: AUTH-01: User Registration
 
-# Steps:
+Steps:
 
 1. Navigate to /accounts/register
 2. Fill in required/valid input e.g (Full name, Last name, Email, Password, confirm password)
@@ -516,28 +515,261 @@ Pay through link which makes it easier for customers to pay quickly just like Ap
 Once Payment has been made, it will direct you back to the home page and show you Payment successful message!
 ![image](https://github.com/user-attachments/assets/331d4d4e-ca72-4a53-a7c8-73a9d6d93a0d)
 
+## Data Models <a id="data-models"></a>
+
+```python
+# Store models 
+
+from django.db import models
+from django.urls import reverse
+
+class Product (models.Model):
+     name = models.CharField(max_length=100)
+     description = models.TextField()
+     price = models.DecimalField(max_digits=10, decimal_places=2)
+     image = models.ImageField(upload_to='products/', blank=True, null=True)
+     stock = models.PositiveIntegerField()
+     created_at = models.DateTimeField(auto_now_add=True)
+     updated_at = models.DateTimeField(auto_now=True)
+
+     def __str__(self):
+         return self.name
+     def get_absolute_url(self):
+         return reverse('product_detail', args=[str(self.id)])
+
+class Gift(Product):
+      is_gift = models.BooleanField(default=True)
+      gift_type = models.CharField(max_length=50, blank=True, null=True)
+
+class Category(models.Model):
+      name = models.CharField(max_length=100)
+      slug = models.SlugField(unique=True)
+
+      def __str__(self):
+        return self.name
+
+# Cart Models
+
+from django.db import models
+from django.conf import settings
+from store.models import Product
 
 
+class Cart(models.Model):
+     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True,   blank=True)
+     session_key = models.CharField(max_length=40, null=True, blank=True)
+     created_at = models.DateTimeField(auto_now_add=True)
+     updated_at = models.DateTimeField(auto_now=True)
+
+     @property
+     def total(self):
+          return sum(item.subtotal for item in self.items.all())
+     def __str__(self):
+          return f"Cart {self.id}"
+
+class CartItem(models.Model):
+
+      cart = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
+      product =  models.ForeignKey(Product, on_delete=models.CASCADE)
+      quantity =  models.PositiveIntegerField(default=1)
+ 
+      @property
+      def subtotal(self):
+          return self.product.price * self.quantity
+      def __str__(self):
+          return f"{self.quantity} x {self.product.name}"
+
+
+# Accounts models
+
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+from store.models import Product
+
+class CustomUser(AbstractUser):
+      phone_number = models.CharField(max_length=20, blank=True)
+      address = models.TextField(blank=True)
+
+groups = models.ManyToManyField(
+      'auth.Group',
+       verbose_name='groups',
+       blank=True,
+       help_text='The group this user belongs to.',
+       related_name='customuser_set',
+       related_query_name='customuser'
+)
+
+user_permissions = models.ManyToManyField(
+       'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_name='customuser_set',
+        related_query_name='customuser'
+)
+
+def __str__(self):
+         return self.username
+
+# Checkout models
+
+from django.db import models
+from django.conf import settings
+from cart.models import Cart
+from store.models import Product 
+
+class Order(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    session_key = models.CharField(max_length=40, null=True, blank=True)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    stripe_payment_intent = models.CharField(max_length=255, blank=True, null=True)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    status = models.CharField(max_length=20, default='Pending')
+
+    def __str__(self):
+        return f"Order {self.id}"
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE) 
+    quantity = models.PositiveIntegerField(default=1)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+   
+    def __str__(self):
+        return f"{self.quantity} x {self.product.name}"  
 
 
 ## 🚀 Deployment <a id="deployment"></a>
 
+This project is deployed on Heroku with PostgreSQL for production and SQlite for local development. Here are some steps to deploy: 
 Heroku Deployment Steps
 
-1. Create a new Heroku app
-2. Configure environment variables
-3. Set up PostgreSQL add-on
-4. Configure static files with WhiteNoise
-5. Set up Stripe webhooks
+Required:
 
-| bash                                        |
-|---------------------------------------------|
-| git add.                                   |
-|---------------------------------------------|
-| git commit -m "test1"                       |
-|---------------------------------------------|
-| git push heroku main                        |
-|---------------------------------------------|
-| heroku run python manage.py migrate         |
-|---------------------------------------------|
+- Heroku CLI installed
+- Git installed
+- A verified Heroku Account
+- Stripe account (for payments) install stripe cli 
+
+1. Heroku Setup
+
+Create a heroku app through terminal or through the App
+
+bash 
+
+heroku login -i > if heroku login doesn't work
+heroku create your-app-name > # heroku create bearland
+heroku addons:create heroku-postgresql:hobby-dev #Free postgresql
+
+Set Environment Variables
+
+Configure required keys in Heroku:
+
+heroku config:set SECRET_KEY='your-django-secret-key'
+heroku config:set STRIPE_PUBLIC_KEY='your-stripe-public-key'
+heroku config:set STRIPE_SECRET_KEY='your-stripe-key'
+heroku config:set STRIPE_WEBHOOK_SECRET='your-stripe-webhook-secret'
+heroku config:set EMAIL_HOST_PASS='your-email-password' # This is for order confirmations
+
+2. Django Configuration
+
+Configure settings.py for Production
+
+settings.py
+
+from pathlib import Path
+import os
+import dj_database_url
+from whitenoise import WhiteNoise
+from dotenv import load_dotenv
+load_dotenv()
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
+# Configure Postgres for Heroku
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For production
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+# Media files (user-uploaded content)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# WhiteNoise configuration (add this)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+Required Files:
+
+1. Procfile (Heroku)
+
+web: gunicorn bearland.wsgi --log-file - # added my project name 
+
+2. requirements.txt
+
+- Django==5.1.6
+- gunicorn==23.0.0
+- psycopg2-binary==2.9.10
+- python-dotenv==1.1.0
+- whitenoise==6.9.0
+- django-allauth==65.9.0
+- django-crispy-forms==2.4
+- crispy-bootstrap5==2025.4
+- stripe==12.2.0
+- dj-database-url
+- Pillow
+
+3. Deploy to Heroku
+
+Push code to heroku
+
+bash 
+
+git add .
+git commit -m "Initial deployment setup"
+git push heroku main
+
+Run Migrations & Collect Static Files #Important
+heroku run python manage.py migrate
+heroku run python manage.py collectstatic --noinput
+
+Optional (Create a superuser)
+
+heroku run python manage.py createsuperuser
+
+5. Post-Deployment Checks
+  1. verify live site:
+  heroku open
+  2. View on the website
+
+2. Check logs for errors:
+  heroku logs --tail
+
+3. Test Stripe Payments:
+   Use test cards(4242 4242 4242 4242)
+
+Troubleshooting:
+
+Issue: Staticfiles not loading 
+Solution: Run heroku run python manage.py collectstatic
+
+Issue: Database connection errors
+Solution: Check DATABASE_URL in heroku config
+
+Issue: Stripe webhook failures
+Solution: Verify Stripe_webhook_secret in heroku
+
+
 
