@@ -4,20 +4,21 @@
 
 - [Purpose of Project](#purpose)
 - [UX Design](#ux-design)
+- [Key Features](#key-features)
 - [Target Audience](#target-audience)
-- [User Query](#user-query)
+- [Data Models](#data-models)
+- [User Stories](#user-stories)
+- [Design Rationale](#design-rationale)
 - [Features and Functionalities](#features)
 - [Technologies used](#technologies)
 - [Future Enhancements](#future-enhancements)
-- [Design Rationale](#design-rationale)
-- [Code Implementation](#code-implementation)
-- [Internal and External Code](#internal-and-external-code)
 - [Test Plan](#test-plan)
+- [Internal and External Code](#internal-and-external-code)
 - [Commit Messages](#commit-messages)
-- [HTML Validation](#html-validation)
+- [Validation](#validation)
 - [Finished Project](#finished-project)
 - [Deployment](#deployment)
-- [Getting Started](#getting-started)
+
 
 
 ## 🚀 Project Purpose <a id="project-purpose"></a>
@@ -82,130 +83,7 @@ Design Principles:
    - Nostalgic buyers reconnecting with childhood
    - Seek bears as decorative items or comfort objects
 
-## Data Models <a id="data-models"></a>
 
-```python
-# Store models 
-
-from django.db import models
-from django.urls import reverse
-
-class Product (models.Model):
-     name = models.CharField(max_length=100)
-     description = models.TextField()
-     price = models.DecimalField(max_digits=10, decimal_places=2)
-     image = models.ImageField(upload_to='products/', blank=True, null=True)
-     stock = models.PositiveIntegerField()
-     created_at = models.DateTimeField(auto_now_add=True)
-     updated_at = models.DateTimeField(auto_now=True)
-
-     def __str__(self):
-         return self.name
-     def get_absolute_url(self):
-         return reverse('product_detail', args=[str(self.id)])
-
-class Gift(Product):
-      is_gift = models.BooleanField(default=True)
-      gift_type = models.CharField(max_length=50, blank=True, null=True)
-
-class Category(models.Model):
-      name = models.CharField(max_length=100)
-      slug = models.SlugField(unique=True)
-
-      def __str__(self):
-        return self.name
-
-# Cart Models
-
-from django.db import models
-from django.conf import settings
-from store.models import Product
-
-
-class Cart(models.Model):
-     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True,   blank=True)
-     session_key = models.CharField(max_length=40, null=True, blank=True)
-     created_at = models.DateTimeField(auto_now_add=True)
-     updated_at = models.DateTimeField(auto_now=True)
-
-     @property
-     def total(self):
-          return sum(item.subtotal for item in self.items.all())
-     def __str__(self):
-          return f"Cart {self.id}"
-
-class CartItem(models.Model):
-
-      cart = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
-      product =  models.ForeignKey(Product, on_delete=models.CASCADE)
-      quantity =  models.PositiveIntegerField(default=1)
- 
-      @property
-      def subtotal(self):
-          return self.product.price * self.quantity
-      def __str__(self):
-          return f"{self.quantity} x {self.product.name}"
-
-
-# Accounts models
-
-from django.contrib.auth.models import AbstractUser
-from django.db import models
-from store.models import Product
-
-class CustomUser(AbstractUser):
-      phone_number = models.CharField(max_length=20, blank=True)
-      address = models.TextField(blank=True)
-
-groups = models.ManyToManyField(
-      'auth.Group',
-       verbose_name='groups',
-       blank=True,
-       help_text='The group this user belongs to.',
-       related_name='customuser_set',
-       related_query_name='customuser'
-)
-
-user_permissions = models.ManyToManyField(
-       'auth.Permission',
-        verbose_name='user permissions',
-        blank=True,
-        help_text='Specific permissions for this user.',
-        related_name='customuser_set',
-        related_query_name='customuser'
-)
-
-def __str__(self):
-         return self.username
-
-# Checkout models
-
-from django.db import models
-from django.conf import settings
-from cart.models import Cart
-from store.models import Product 
-
-class Order(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-    session_key = models.CharField(max_length=40, null=True, blank=True)
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
-    stripe_payment_intent = models.CharField(max_length=255, blank=True, null=True)
-    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=20, default='Pending')
-
-    def __str__(self):
-        return f"Order {self.id}"
-
-class OrderItem(models.Model):
-    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE) 
-    quantity = models.PositiveIntegerField(default=1)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-   
-    def __str__(self):
-        return f"{self.quantity} x {self.product.name}"  
 
 ## 📖 User Stories <a id="user-stories"></a>
 
@@ -308,11 +186,192 @@ Testing will cover:
 # 3. Test Cases
 [https://1drv.ms/w/c/4825e675d30aceda/ESZ0eegzToxGv8gSUPIeVqEB-UO_C1ytDsilXNx6Y3lM0w?e=bG68PV]
 
+## ID: AUTH-01: User Registration
+
+# Steps:
+
+1. Navigate to /accounts/register
+2. Fill in required/valid input e.g (Full name, Last name, Email, Password, confirm password)
+3. Submit the form
+
+Expected:
+✔️Account Created.
+✔️Redirected to Homepage.
+✔️If customer uses an existing name, email or password. It will pass a message "This email is already in use." or The password is too similar to the last name.
+
+AUTH-02: login(Invalid Credentials)
+
+Steps:
+
+1. Enter Incorrect email/password
+2. Click "login"
+
+Expected:
+
+✔️Error message displayed.
+✔️No account created.
+
+Product Browsing
+
+PROD-01:Product Search
+
+Steps:
+
+1. Search for "bear", or use keywords like "cute".
+2. Submit Query
+
+Expected:
+
+✔️Search Results for "bear"
+✔️Found 20 results for your search
+✔️No results for invalid queries.
+
+PROD-02: Product Details Page
+
+Steps:
+1. Go on product section and click on view details for any product.
+
+Expected:
+
+✔️Displays Price, Quantity, Description and stock status.
+✔️Shows 3 Related products.
+
+Shoppinng Cart
+
+CART-01: Add Item to cart
+
+Steps:
+1. Click "Add to cart" on a product
+2. Vist /cart/
+
+Expected:
+
+✔️Item appears with correct price
+✔️Cart total updates
+
+CART-02: Remove Item
+
+Steps:
+1. Remove an item from cart
+
+Expected:
+
+✔️Item Removed
+✔️For 2 items in cart, the total will recalculate
+✔️or 1 item in cart, the total will go back to £0.00 + Shipping fee £5
+
+Checkout Process
+
+CHECK-01: Successful Payment
+
+Steps:
+1. Proceed to checkout
+2. Complete stripe payment
+
+Expected:
+✔️Order Marked "Payment Successful"
+❌Confirmation Email sent
+
+CHECK-02: Payment cancellation
+
+Steps:
+1. Cancel during payment
+
+Expected:
+✔️Redirects to cancel page
+✔️Order status = "Cancelled".
+
+Responsive Design
+
+RD-01: Mobile View (320px)
+
+Steps:
+1. Resize to mobile width
+
+Expected:
+✔️Navbar collapses
+✔️Text/images scale properly
+
+RD-02: Desktop View (1200px)
+
+Steps:
+1. View on Full-Screen
+
+Expected:
+✔️No layout overflow
+✔️Consistent spacing
+
+Test Reporting: Identified Issues
+
+1. Critical Bug: Payment Confirmation Email Failure
+
+Description:
+
+- After successful stripe payment, the system processes the order but fails to send the confirmation email.
+
+Steps:
+
+1. Complete checkout with test payment
+2. Check:
+  - Database(order status = "completed")
+  - Email inbox (no confirmation recieved)
+  - Server logs(no SMTP errors)
+
+Expected Behavior:
+Email sent to user with order details(template: order_confirmation_email.html)
+
+Actual behavior:
+No email sent, despite payment success.
+
+Severity: High(Impacts user trust and order tracking)
+
+Evidence:
+
+- 
+
+2. UI Bug: Checkout Page Styling Issues
+
+Description:
+
+- The section headings "order summary" and "payment" have poor contrast, while product details and payment remain clearly visible.
+
+Affected Elements:
+
+- Order Summary heading (grey background, with white text)
+- Payment heading (grey background, with white text)
+
+Steps to reproduce:
+1. Go to /checkout/
+2. observe poor text visibility in:
+ - order summary card.
+
+Expected Behavior:
+Clear contrast (e.g dark text on light background)
+
+Actual Behavior:
+Text blends into background(WCAG accessability failure)
+Severity: Medium/Low(Impairs usability, but doesn't block functionality)
+
+Evidence:
+![image](https://github.com/user-attachments/assets/e8105876-82e8-4601-a751-2ebd973a4719)
+
+## Known Issues and Pending Fixes
+
+### 1. Email Delivery Failure
+- **Status**: Investigating
+- **Impact**: Users won't receive order confirmations.
+- **Workaround**: Manually check "orders" in account dashboard
+
+### 2. Checkout Page Styling
+- **Status**: UX fix in progress
+- **Impact**: Text readability issues in order summary
+- **Temporary Fix**: Browser zoom improves visability
+
 # 4. Test Data
 
 4.1 Test Products 
-- 10 sample teddy bear products with varying prices
-- 5 gift items with different categories
+- 11 sample teddy bear products with varying prices
+- 9 gift items with different categories
 
 4.2 Test Users 
 
@@ -425,6 +484,8 @@ Base.css
 
 ![image](https://github.com/user-attachments/assets/4fdc61fa-8646-4d2b-a174-eb76e0a5101a)
 ![image](https://github.com/user-attachments/assets/298eea84-9e8e-4f28-99ce-16e4ad44d9ee)
+![image](https://github.com/user-attachments/assets/7a1a7296-9c7a-460b-922a-664d10fbc6dc)
+
 
 # Product Page 
 ![image](https://github.com/user-attachments/assets/3cfa030a-df53-45b1-b59f-7d774024a4c6)
