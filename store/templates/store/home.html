@@ -39,55 +39,59 @@
 
 <!--Contact section-->
 
+<!-- Contact section -->
 <section class="contact-section py-5">
   <div class="container">
     <div class="row">
       <div class="col-md-8">
         <h2>Contact Us</h2>
-        <p>Questions about our teddy bears or need help with an order? Just drop us a message below.</p>
+        <p>Have questions about our teddy bears or need help with an order?</p>
         
-        <form method="post" class="mt-4">
-          {% csrf_token %}
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <input type="text" class="form-control" name="name" placeholder="Name" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <input type="email" class="form-control" name="email" placeholder="Email" required>
-            </div>
+        <div class="contact-details mt-4">
+          <div class="contact-method mb-3">
+            <h5><i class="fas fa-phone-alt me-2"></i> Phone</h5>
+            <p>020 7123 4567</p>
           </div>
-          <div class="mb-3">
-            <input type="text" class="form-control" name="subject" placeholder="Subject">
+          
+          <div class="contact-method mb-3">
+            <h5><i class="fas fa-envelope me-2"></i> Email</h5>
+            <p>customer@bearland.com</p>
           </div>
-          <div class="mb-3">
-            <textarea class="form-control" name="message" rows="4" placeholder="Your message..." required></textarea>
+          
+          <div class="contact-method mb-3">
+            <h5><i class="fas fa-map-marker-alt me-2"></i> Store Location</h5>
+            <p>123 Bear Street<br>Camden, London NW1 8AB</p>
           </div>
-          <button type="submit" class="btn btn-primary">Send</button>
-        </form>
+          
+          <div class="contact-method">
+            <h5><i class="fas fa-clock me-2"></i> Opening Hours</h5>
+            <p>Mon-Fri: 9am-6pm<br>Sat-Sun: 10am-5pm</p>
+          </div>
+        </div>
       </div>
       
-    <!--Bearland store details -->
       <div class="col-md-4">
         <div class="contact-info bg-light p-4 rounded">
-          <h4>Store Details</h4>
-          
-          <p><strong>Phone:</strong><br>020 7123 4567</p>
-          
-          <p><strong>Email:</strong><br>hello@bearland.com</p>
-          
-          <p><strong>Store Location:</strong><br>
-          123 Bear Street<br>
-          Camden, London NW1 8AB</p>
-          
-          <p><strong>Hours:</strong><br>
-          Mon-Fri: 9am-6pm<br>
-          Sat-Sun: 10am-5pm</p>
-          
-          <div class="social-links mt-4">
+          <h4>Visit Us</h4>
+          <div class="ratio ratio-16x9 mb-3">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.764047548267!2d-0.1420696842295769!3d51.51541977963638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761ad554c335c1%3A0xda2164b934c67c1a!2sOxford%20St%2C%20London!5e0!3m2!1sen!2suk!4v1629990000000!5m2!1sen!2suk" 
+                    width="600" 
+                    height="450" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy"></iframe>
+          </div>
+          <div class="social-links mt-3">
             <h5>Follow Us</h5>
-             <a href="https://facebook.com/" class="btn btn-sm btn-outline-primary me-2" target="_blank">Facebook</a>
-            <a href="https://instagram.com/" class="btn btn-sm btn-outline-primary me-2" target="_blank">Instagram</a>
-            <a href="https://twitter.com/" class="btn btn-sm btn-outline-primary" target="_blank">Twitter</a>
+            <a href="https://facebook.com/" class="btn btn-sm btn-outline-primary me-2" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com/" class="btn btn-sm btn-outline-primary me-2" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/" class="btn btn-sm btn-outline-primary" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
           </div>
         </div>
       </div>

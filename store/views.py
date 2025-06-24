@@ -1,8 +1,11 @@
+from django.conf import settings
 from django.shortcuts import redirect, render, get_object_or_404
 from .models import Product, Gift
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.db.models import Q 
+from django.core.mail import send_mail
+from django.shortcuts import redirect
 # from wishlist.models import Wishlist, WishlistItem
 
 # Store Views
@@ -59,3 +62,31 @@ def search(request):
         'query': query
     })
     
+    from django.core.mail import send_mail
+from django.contrib import messages
+from django.shortcuts import redirect
+
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        
+        # Send email
+        try:
+            send_mail(
+                f"Contact Form: {subject}",
+                f"From: {name} <{email}>\n\n{message}",
+                email,  # from email
+                [settings.DEFAULT_FROM_EMAIL], 
+                fail_silently=False,
+            )
+            messages.success(request, 'Your message has been sent successfully!')
+        except Exception as e:
+            messages.error(request, f'There was an error sending your message: {str(e)}')
+        
+        return redirect('store:home')
+    
+
+    return redirect('store:home')
