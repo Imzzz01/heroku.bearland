@@ -20,7 +20,7 @@
                     <p class="card-text flex-grow-1">{{ gift.description }}</p>
                     <div class="mt-auto">
                         <a href="{% url 'store:product_detail' gift.id %}" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' gift.id %}" class="d-inline">
+                        <form method="post"  class="d-inline">
                             {% csrf_token %}
                             <input type="hidden" name="quantity" value="1">
                             <button type="submit" class="btn btn-primary btn-sm me-2">

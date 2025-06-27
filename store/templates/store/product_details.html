@@ -1,40 +1,47 @@
 <!--product_details.html -->{% extends 'store/base.html' %}
-{% load static %}
+{% load static %} 
 
-{% block title %}{{ product.name }} - Bear Land{% endblock %}
+{% block title %}{{ product.name }} - Bear Land{% endblock %} 
 
 {% block content %}
 
 <!---->
-<div class="container mt-5">
+<div class="container mt-5"> 
     <div class="row">
+        <!--Product Image Column-->
         <div class="col-md-6">
-            <div class="product-image-container">
+            <div class="product-image-container"> 
                 {% if product.image %}
+                <!--Display the product image with styling-->
                     <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid product-detail-image" style="border-radius: 12px; box-shadow: 0 8px 15px rgba(0,0,0,0.2);">
                 {% else %}
+                <!--Fallback to default image if no product if no image exists -->
                     <img src="{% static 'images/store/bear11.jpg' %}" alt="{{ product.name }}" class="img-fluid product-detail-image" style="border-radius: 12px; box-shadow: 0 8px 15px rgba(0,0,0,0.2);">
                 {% endif %}
             </div>
         </div>
+
+        <!-- Product details column-->
         <div class="col-md-6">
             <div class="product-details">
                 <nav aria-label="breadcrumb" class="mb-3">
+                     <!-- Breadcrumb Navigation -->
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'store:home' %}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{% url 'store:products' %}">Products</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
                     </ol>
                 </nav>
-                
+                <!-- Product title and price -->
                 <h1 class="product-title mb-3">{{ product.name }}</h1>
                 <p class="product-price mb-4">£{{ product.price }}</p>
                 
+                <!--Product Description -->
                 <div class="product-description mb-4">
                     <h5>Description</h5>
                     <p>{{ product.description }}</p>
                 </div>
-                
+                <!-- Stock Information-->
                 <div class="product-stock mb-4">
                     {% if product.stock > 0 %}
                         <span class="badge bg-success">In Stock ({{ product.stock }} available)</span>
@@ -42,15 +49,15 @@
                         <span class="badge bg-danger">Out of Stock</span>
                     {% endif %}
                 </div>
-                
+                <!--Action buttons (Add to cart, etc.) -->
                 <div class="product-actions">
-                    {% if product.stock > 0 %}
+                    {% if product.stock > 0 %} <!-- Only show add to cart if product is in stock -->
                         <form method="post" action="{% url 'cart:add_to_cart' product.id %}" class="d-inline">
                             {% csrf_token %}
                             <div class="quantity-selector mb-3">
                                 <label for="quantity" class="form-label">Quantity:</label>
                                 <select name="quantity" id="quantity" class="form-select" style="width: 100px; display: inline-block;">
-                                    {% for i in "123456789"|make_list %}
+                                    {% for i in "123456789"|make_list %} <!-- Generate quantity options 1-9 -->
                                         <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
                                     {% endfor %}
                                 </select>
@@ -59,19 +66,20 @@
                                 <i class="fa fa-cart-plus"></i> Add to Cart
                             </button>
                         </form>
-                        {% comment %}
+                        {% comment %} <!-- Commented out wishlist functionality for future implementation -->
                         <button class="btn btn-outline-secondary btn-lg" onclick="addToWishlist('{{ product.id }}')">
                            <i class="fa fa-heart"></i> Add to Wishlist
                           </button>
                         
                         {% endcomment %}
                     {% else %}
+                    <!-- Disabled button when out of stock -->
                         <button class="btn btn-secondary btn-lg" disabled>
                             <i class="fa fa-ban"></i> Out of Stock
                         </button>
                     {% endif %}
                 </div>
-                
+                <!-- Product Metadata -->
                 <div class="product-meta mt-4">
                     <p><strong>SKU:</strong> BEAR-{{ product.id }}</p>
                     <p><strong>Category:</strong> Teddy Bears</p>
@@ -82,17 +90,19 @@
     </div>
     
     <!-- Related Products Section -->
-    <div class="row mt-5">
-        <div class="col-12">
+    <div class="row mt-5"> <!-- New row with top margin -->
+        <div class="col-12"> <!-- Full width -->
             <h3 class="text-center mb-4">You Might Also Like</h3>
             <div class="row">
                 {% if related_products %}
                     <!-- If you have actual related products from the view -->
                     {% for related_product in related_products %}
+                    <!-- Related Product Card -->
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 related-product-card">
                             {% if related_product.image %}
-                                <img src="{{ related_product.image.url }}" class="card-img-top" alt="{{ related_product.name }}">
+                                <!-- Display related product image if available -->
+                                <img src="{{ related_product.image.url }}" class="card-img-top" alt="{{ related_product.name }}"> 
                             {% else %}
                                 <img src="{% static 'images/bear.jpg' %}" class="card-img-top" alt="{{ related_product.name }}">
                             {% endif %}
@@ -112,7 +122,8 @@
                     </div>
                     {% endfor %}
                 {% else %}
-                    <!-- Fallback static related products -->
+                    <!-- Fallback static related products -->  
+                     <!-- Added fallback bears, if database products don't show up!-->
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 related-product-card">
                             <img src="{% static 'images/bear2.jpg' %}" class="card-img-top" alt="Pink Teddy Bear">
@@ -137,6 +148,7 @@
                             </div>
                         </div>
                     </div>
+                  
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 related-product-card">
                             <img src="{% static 'images/bear.jpg' %}" class="card-img-top" alt="Classic Brown Bear">
