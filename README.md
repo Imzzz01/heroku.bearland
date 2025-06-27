@@ -50,6 +50,12 @@ Design Principles:
 - Intuitive navigation with clear CTAs
 - Emotional connection through imagery and product presentation
 
+UX Wireframe (Old design - I Initially had the Idea to create an Adopt your virtual bear) ->> Due to tight deadline I couldn't add this feature to my project 
+![image](https://github.com/user-attachments/assets/6626eab6-77e4-4511-834c-a2999036b7b4)
+
+New Wireframe:
+
+
 ## 🌟 Key Features <a id="key-features"></a>
 
 - Product catalogue: Browse our extensive collection of teddy bears
