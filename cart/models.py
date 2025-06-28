@@ -7,6 +7,18 @@ from store.models import Product
 
 
 class Cart(models.Model):
+      """
+      Represents a shopping cart that can be associated with: 
+      - A registered user (if authenticated)
+      - A session key (for anonymous users)
+
+      Attributes:
+          user: Authenticated user owner
+          session_key: Identifier for anonymous users
+          created_at: When cart was created
+          updated_at: When cart was last modified 
+
+      """
       user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True,   blank=True)
       session_key = models.CharField(max_length=40, null=True, blank=True)
       created_at = models.DateTimeField(auto_now_add=True)
@@ -14,13 +26,24 @@ class Cart(models.Model):
 
       @property
       def total(self):
+          """Calculate total value of all items in cart"""
           return sum(item.subtotal for item in self.items.all())
       def __str__(self):
+          """String representation of cart"""
           return f"Cart {self.id}"
 # cart/models.py
 # This file defines the CartItem model for items in a shopping cart
 
 class CartItem(models.Model):
+      """
+      Represents an individual product item within a shopping cart
+
+      Attributes:
+           cart: Parent cart this item belongs to
+           product: Product being added to cart
+           quantity: Number of units (minimum 1)
+
+      """
 
       cart = models.ForeignKey(Cart, related_name='items', on_delete=models.CASCADE)
       product =  models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -28,7 +51,9 @@ class CartItem(models.Model):
  
       @property
       def subtotal(self):
+          """Calculate line total (price × quantity)"""
           return self.product.price * self.quantity
       def __str__(self):
+          """String representation of cart item"""
           return f"{self.quantity} x {self.product.name}"
      

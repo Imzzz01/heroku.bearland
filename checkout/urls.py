@@ -8,5 +8,5 @@ urlpatterns = [
     path('', views.checkout_view, name='checkout'), # Main checkout page
     path('success/', views.payment_success, name='success'), # Payment success page
     path('cancel/', views.payment_cancel, name='cancel'), # Payment cancellation page
-   path('webhook/', stripe_webhook, name='webhook'),
+   path('webhook/', stripe_webhook, name='webhook'), # Stripe payment 
 ]

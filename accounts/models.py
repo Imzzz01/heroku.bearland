@@ -3,6 +3,14 @@ from django.db import models
 from store.models import Product 
 
 class CustomUser(AbstractUser): # Custom user model extending AbstractUser
+    """
+    Custom user model extending Django's AbstractUser with additional fields
+
+    Inherits all fields from AbstractUser (username, email, password etc.) and adds:
+    - phone_number: contact number for user
+    - address: address for shipping
+
+    """
     phone_number = models.CharField(max_length=20, blank=True)
     address = models.TextField(blank=True)
     
@@ -27,4 +35,5 @@ user_permissions = models.ManyToManyField(
 )
 
 def __str__(self): 
+    """String representation of the user (uses username)"""
     return self.username

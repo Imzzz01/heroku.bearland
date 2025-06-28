@@ -48,15 +48,16 @@ def home(request):
     return render(request, 'store/home.html', {'featured_products': featured_products})
 
 def products(request):
-   """
-   Lists all regular products ( excluding gift items).
+    """
+    Lists all regular products ( excluding gift items).
 
-   Args: 
+    Args: 
        request: HttpRequest object
     
-   Returns:
+    Returns:
        Rendered products template with product list context
     """
+   
     products = Product.objects.exclude(gift__isnull=False)
     return render(request, 'store/product.html', {'products': products})
 # This view lists all products excluding those that are gifts
