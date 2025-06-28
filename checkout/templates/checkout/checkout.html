@@ -4,14 +4,17 @@
 {% block title %}Checkout - Bear Land{% endblock %}
 
 {% block content %}
+<!-- Main checkout container-->
 <div class="container py-5">
     <div class="row">
+        <!--  Left column - Order Summary-->
         <div class="col-lg-8">
             <div class="card mb-4">
                 <div class="card-header bg-brown text-white">
                     <h3>Order Summary</h3>
                 </div>
                 <div class="card-body">
+                    <!--  Table showing cart items -->
                     <table class="table">
                         <thead>
                             <tr>
@@ -41,19 +44,22 @@
                 </div>
             </div>
         </div>
-        
+        <!--  Right column - Payment Form-->
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-header bg-brown text-white">
                     <h3>Payment</h3>
                 </div>
                 <div class="card-body">
+                    <!-- Stripe Payment Form -->
                     <form id="payment-form" method="POST" action="{% url 'checkout:checkout' %}">
                         {% csrf_token %}
                         <div id="card-element" class="mb-3">
                             <!-- Stripe Card Element will be inserted here -->
                         </div>
+                        <!-- Display area for card errors-->
                         <div id="card-errors" role="alert" class="text-danger mb-3"></div>
+                        <!--  Submit button with loading state-->
                         <button id="submit-button" class="btn btn-primary w-100">
                             <span id="button-text">Pay £{{ cart.total }}</span>
                             <span id="spinner" class="spinner-border spinner-border-sm d-none"></span>
