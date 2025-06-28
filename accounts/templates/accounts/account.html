@@ -4,18 +4,21 @@
 {% block title %}My Account - Bear Land{% endblock %}
 
 {% block content %}
+<!--  Account dashboard container -->
 <div class="container my-5">
     <div class="simple-account-card">
         <div class="card">
             <div class="card-body p-4">
+                <!--  Welcome header-->
                 <div class="text-center mb-4">
                     <h2>Hello, {{ user.first_name|default:user.username }}</h2>
                     <p class="text-muted">Welcome to your Bear Land account</p>
                 </div>
-                
+                <!--  Accounts details section-->
                 <div class="account-details">
                     <div class="detail-card mb-4">
                         <h5 class="card-title">Account Information</h5>
+                        <!--  User details rows-->
                         <div class="detail-row">
                             <span>Name:</span>
                             <span>{{ user.get_full_name|default:"Not specified" }}</span>
@@ -29,7 +32,7 @@
                             <span>{{ user.date_joined|date:"F j, Y" }}</span>
                         </div>
                     </div>
-                    
+                    <!--  Action buttons-->
                     <div class="text-center mt-4">
                         <a href="{% url 'store:products' %}" class="btn btn-primary me-2">
                             Continue Shopping

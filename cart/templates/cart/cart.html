@@ -4,28 +4,35 @@
 {% block title %}Bear Land - Shopping Cart{% endblock %}
 
 {% block content %}
+<!--  Main cart section-->
 <section class="container mt-5">
     <h1 class="text-center">Your Cart</h1>
     
     <div class="row mt-5">
+        <!--  Left column - cart items -->
         <div class="col-md-8">
             <div class="card p-3">
                 {% if cart.items.all %}
+                <!--  Loop through each cart items-->
                     {% for item in cart.items.all %}
                     <div class="cart-item mb-3 border-bottom pb-3">
                         <div class="row align-items-center">
+                            <!--  Product image -->
                             <div class="col-md-2">
                                 {% if item.product.image %}
                                 <img src="{{ item.product.image.url }}" class="img-fluid" alt="{{ item.product.name }}">
                                 {% endif %}
                             </div>
+                            <!--  Product details -->
                             <div class="col-md-6">
                                 <h5>{{ item.product.name }}</h5>
                                 <p>£{{ item.product.price }}</p>
                             </div>
+                            <!--  Quantity-->
                             <div class="col-md-2">
                                 <p>Qty: {{ item.quantity }}</p>
                             </div>
+                            <!-- Remove button -->
                             <div class="col-md-2 text-end">
                                 <form method="post" action="{% url 'cart:remove_from_cart' item.id %}">
                                     {% csrf_token %}
@@ -38,19 +45,24 @@
                     </div>
                     {% endfor %}
                 {% else %}
+                <!-- Empty cart message-->
                     <p class="text-center">Your cart is empty</p>
                 {% endif %}
             </div>
         </div>
-        
+        <!-- Right column - Order Summary -->
         <div class="col-md-4">
             <div class="card p-3">
                 <h5>Order Summary</h5>
                 <hr>
+                    <!-- Subtotal -->
                 <p>Subtotal: £{{ cart.total|floatformat:2 }}</p>
+                <!--  Fixed shipping cost-->
                 <p>Shipping: £5.00</p>
                 <hr>
+                    <!--  Total with shipping-->
                 <p><strong>Total: £{{ cart.total|add:5|floatformat:2 }}</strong></p>
+                <!--  Checkout button -->
                 <a href="{% url 'checkout:checkout' %}" class="btn btn-primary w-100">Proceed to Checkout</a>
             </div>
         </div>

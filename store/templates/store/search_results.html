@@ -11,11 +11,14 @@
 
 {% block content %}
 <div class="container mt-5">
+    <!-- Search header section -->
     <div class="search-header text-center mb-5">
         {% if query %}
+        <!-- Display search query if it exists -->
             <h1 class="search-title">Search Results for <span class="query-highlight">"{{ query }}"</span></h1>
             <p class="search-subtitle">Found {{ results|length }} result{{ results|length|pluralize }} for your search</p>
         {% else %}
+        <!--  Default search page content -->
             <h1 class="search-title">Search Our Products</h1>
             <p class="search-subtitle">Find the perfect teddy bear for you or your loved ones</p>
         {% endif %}
@@ -46,12 +49,14 @@
             <div class="search-results">
                 <div class="row">
                     {% for product in results %}
+                    <!--  Individual Product Card-->
                     <div class="col-md-4 col-sm-6 mb-4">
                         <div class="card product-card h-100" data-aos="fade-up">
                             <div class="card-img-container">
                                 {% if product.image %}
                                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                                 {% else %}
+                                <!-- Fallback image if product image doesn't exist  -->
                                     <img src="{% static 'images/bear.jpg' %}" class="card-img-top" alt="{{ product.name }}">
                                 {% endif %}
                                 <div class="card-overlay">
@@ -71,6 +76,7 @@
                 </div>
             </div>
         {% else %}
+        <!-- No results message -->
             <div class="alert alert-info text-center">
                 No results found for "{{ query }}"
             </div>

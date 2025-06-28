@@ -3,8 +3,10 @@
 {% block content %}
 <!--Cancelled Payment-->
 <div class="order-cancel">
+    <!--  Cancellation message-->
     <h2>Payment Canceled</h2>
     <p>Your payment has been canceled. If you have any questions, please contact our support team.</p>
+    <!--  Nav buttons -->
 <a href="{% url 'checkout:checkout' %}" class="btn btn-primary">Try Again</a> 
 <a href="{% url 'store:home' %}" class="btn btn-secondary">Return to Home</a>
 </div>
