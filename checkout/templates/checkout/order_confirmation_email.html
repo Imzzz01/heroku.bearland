@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Order Confirmation #{{ order.id }}</title>
+   <!-- Email Styling -->
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; } 
         .container { max-width: 600px; margin: 0 auto; padding: 20px; } 
@@ -15,17 +16,19 @@
     </style>
 </head>
 <body>
-   
+   <!--  Email content container-->
     <div class="container">
+      <!--  Header section-->
         <div class="header">
             <h1>Thank you for your order!</h1>
         </div>
-        
+        <!--  Greeting and order confirmation -->
         <p>Hello {{ order.user.first_name|default:"Customer" }},</p>
         <p>Your order <strong>#{{ order.id }}</strong> has been confirmed.</p>
-        
+        <!--  Order details section -->
         <div class="order-details">
             <h3>Order Summary</h3>
+            <!-- Order items table -->
             <table>
                 <thead>
                     <tr>
@@ -44,11 +47,12 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <!--  Order total -->
             <p class="total">Total: £{{ order.total }}</p>
         </div>
-        
+        <!--  Additional information -->
         <p>We'll notify you when your items ship. For questions, contact our support team.</p>
-        
+        <!--  Footer section-->
         <div class="footer">
             <p>Bear Land - Bringing Joy Through Teddy Bears</p>
             <p>© {% now "Y" %} Bear Land. All rights reserved.</p>
