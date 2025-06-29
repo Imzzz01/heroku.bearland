@@ -52,153 +52,153 @@
 
 /* Buttons */
 .auth-btn {
-    width: 100%; /*  */
-    padding: 1rem;  
-    border: none; /* */
-    border-radius: 8px;
-    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    width: 100%; /* Full width button */
+    padding: 1rem;  /* Comfortable click area*/
+    border: none; /* Removes default border */
+    border-radius: 8px; /* Consistent rounding */
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);/* Brand gradient */
+    color: white;/* High contrast text*/
+    font-weight: 600; /* bold text*/
+    cursor: pointer; /* indicates clickable */
+    transition: all 0.3s ease; /* smooth hover/focus effects*/
 }
 
 .auth-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-2px);/* slight left effect*/
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);/* enhanced shadow */
 }
 
 /* Links */
 .auth-links {
-    text-align: center;
-    margin-top: 1.5rem;
+    text-align: center; /* centered links */
+    margin-top: 1.5rem;/* space above links */
 }
 
 .auth-link {
-    color: #A0522D;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    color: #A0522D;/* brand secondary color*/
+    text-decoration: none;/* removes underline by default */
+    font-weight: 600;/* makes links stand out */
+    transition: all 0.3s ease;/* smooth color transition */
 }
 
 .auth-link:hover {
-    color: #8B4513;
-    text-decoration: underline;
+    color: #8B4513;/* darker brand color*/
+    text-decoration: underline;/* standard hover indication */
 }
 
 /* Account Page Styles */
 .account-container {
-    padding: 30px 0;
+    padding: 30px 0; /* vertical padding only */
 }
 
 .account-sidebar {
-    background: #f8f9fa;
-    padding: 20px;
-    border-radius: 8px;
-    height: 100%;
+    background: #f8f9fa;/* light gray background*/
+    padding: 20px;/* internal spacing */
+    border-radius: 8px;/* matches other components*/
+    height: 100%;/* full height of parent*/
 }
 
 .welcome-message {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 20px;
+    padding-bottom: 20px;/* space below message */
+    border-bottom: 1px solid #eee;/* light separator*/
+    margin-bottom: 20px;/* space before meny*/
 }
 
 .account-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style: none;/* removes bullets*/
+    padding: 0;/* removes default padding */
+    margin: 0;/* removes default padding */
 }
 
 .account-menu li {
-    margin-bottom: 10px;
+    margin-bottom: 10px;/* space between items */
 }
 
 .account-menu li a {
-    display: block;
-    padding: 8px 12px;
-    color: #333;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.3s;
+    display: block;/* makes whole area clickable */
+    padding: 8px 12px;/* click area*/
+    color: #333;/* dark text for readability*/
+    text-decoration: none;/* no underlines*/
+    border-radius: 4px;/* slightly rounded corners*/
+    transition: all 0.3s;/* smooth hovet effects*/
 }
 
 .account-menu li a:hover,
 .account-menu li.active a {
-    background-color: #e9ecef;
-    color: #8B4513;
+    background-color: #e9ecef;/* light gray background */
+    color: #8B4513;/* brand color for active store */
 }
 
 .account-menu li a i {
-    margin-right: 8px;
-    width: 20px;
-    text-align: center;
+    margin-right: 8px;/* space between icon anf text*/
+    width: 20px;/* fixed width for alignment*/
+    text-align: center;/* centers icons in space */
 }
 
 .account-content {
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    background: white; /* clean background */
+    padding: 25px;/* spacing */
+    border-radius: 8px;/* matchss other components*/
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);/* very subtle shadow*/
 }
 
 .account-section {
-    margin-bottom: 30px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;/* space between sections*/
+    padding-bottom: 20px;/* space before separator*/
+    border-bottom: 1px solid #eee;/* light separator */
 }
 
 .empty-state {
-    text-align: center;
-    padding: 30px;
-    color: #6c757d;
+    text-align: center;/* centered content */
+    padding: 30px;/* spacing*/
+    color: #6c757d;/* muted text color*/
 }
 
 .empty-state i {
-    font-size: 50px;
-    color: #dee2e6;
-    margin-bottom: 15px;
+    font-size: 50px;/* large icon size*/
+    color: #dee2e6;/* light gray*/
+    margin-bottom: 15px;/* space below icon*/
 }
 
 .detail-card {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 6px;
+    background: #f8f9fa;/* light gray*/
+    padding: 15px;/* spacing */
+    border-radius: 6px;/* slightly rounded*/
 }
 
 .detail-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #e9ecef;
+    display: flex;/* side by side layout */
+    justify-content: space-between;/* space between label/value*/
+    padding: 8px 0;/* vertical spacing */
+    border-bottom: 1px solid #e9ecef;/* light separator*/
 }
 
 .detail-row:last-child {
-    border-bottom: none;
+    border-bottom: none;/* no border on last item*/
 }
 
 /* Simplified Account Page */
 .simple-account-card {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px;/* reasonable max width*/
+    margin: 0 auto;/* horizontal centering*/
 }
 
 .account-details {
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 500px;/* optinal line length */
+    margin: 0 auto;/* centered layout*/
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .auth-container {
-        margin: 1rem auto;
+        margin: 1rem auto;/* spacing on mobile */
     }
     
     .account-container {
-        padding: 15px 0;
+        padding: 15px 0;/* vertical padding */
     }
     
     .account-content {
-        padding: 15px;
+        padding: 15px;/* less internal spacing */
     }
 }
