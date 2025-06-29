@@ -1,60 +1,60 @@
 /* Accounts App Specific Styles */
 /* Base Styles */
 .auth-container {
-    max-width: 500px;
-    margin: 2rem auto;
-    padding: 0 15px;
+    max-width: 500px; /*Maximum width for better readability*/
+    margin: 2rem auto; /*Vertical spacing and horizontal centering*/
+    padding: 0 15px; /*Horizontal padding for mobile devices*/
 }
 
 .auth-card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    overflow: hidden;
+    background: white; /*Clean white background */
+    border-radius: 8px; /*Rounded corners*/
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /*Subtle shadow for depth*/
+    overflow: hidden; /*Ensures child elements respect border radius*/
 }
 
 .auth-card-header {
-    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
-    color: white;
-    padding: 1.5rem;
-    text-align: center;
+    background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%); /*Brand gradient */
+    color: white; /*Contrasting text color*/
+    padding: 1.5rem; /*Comfortable spacing*/
+    text-align: center; /*Centered header text*/
 }
 
 .auth-card-body {
-    padding: 2rem;
+    padding: 2rem; /*Generous spacing around form content */
 }
 
 /* Form Elements */
 .auth-form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem; /*Space between form fields*/
 }
 
 .auth-form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #333;
+    display: block; /*Ensures label is above input*/
+    margin-bottom: 0.5rem; /*Space between label and input*/
+    font-weight: 600; /*Semi bold for better readablity*/
+    color: #333; /*Dark gray for good contrast*/
 }
 
 .auth-form-input {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    width: 100%; /*Full width of parent*/
+    padding: 0.8rem 1rem; /*Comfortable text padding */
+    border: 2px solid #e0e0e0; /*Light gray border*/
+    border-radius: 8px; /*Matches card rounding*/
+    transition: all 0.3s ease; /*Smooth transitions for interactions*/
 }
 
 .auth-form-input:focus {
-    border-color: #8B4513;
-    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.1);
-    outline: none;
+    border-color: #8B4513; /*Brand color border*/
+    box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.1); /*Subtle glow*/
+    outline: none; /*Removes default browser outline*/
 }
 
 /* Buttons */
 .auth-btn {
-    width: 100%;
-    padding: 1rem;
-    border: none;
+    width: 100%; /*  */
+    padding: 1rem;  
+    border: none; /* */
     border-radius: 8px;
     background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
     color: white;
