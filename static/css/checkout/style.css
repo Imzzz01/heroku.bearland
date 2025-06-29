@@ -1,56 +1,59 @@
-/* Checkout Page Styles */
-.checkout-container {
-    display: grid;/* enables css grid layout */
-    grid-template-columns: 1fr 1fr;/* two equal width columns*/
-    gap: 2rem;/* space between columns*/
-    margin-top: 2rem;/* top margin for separation from header */
+/* Styles for the main container of the checkout page */
+.container {
+    margin-top: 2rem; /* add top margin */
 }
 
-/* Order Summary Section */
-.order-summary-card {
-    background: white;/* clean white background*/
-    border-radius: 8px;/* rounded corners*/
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);/* subtle shadow for depth*/
-    overflow: hidden;/* ensures child elements respect border radius */
+/* Styles for the card containing the order summary */
+.card {
+    background: white; /* set white background */
+    border-radius: 8px; /* add rounded corners */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* add subtle shadow */
+    overflow: hidden; /* ensure border radius applies */
 }
 
-.order-summary-header {
-    background: #8B4513; /* SaddleBrown */
-    color: white;/* High contrast text*/
-    padding: 1rem 1.5rem;/* spacing */
-    font-size: 1.25rem;/* slightly larger text*/
-    font-weight: 600;/* semi-bold for emphasis*/
+/* Styles for the card header containing the "Order Summary" title */
+.card-header {
+    background: #8B4513; /* set SaddleBrown background */
+    color: white; /* set white text */
+    padding: 1rem 1.5rem; /* add padding */
+    font-size: 1.25rem; /* increase font size */
+    font-weight: 600; /* set semi-bold */
 }
 
-.order-summary-body {
-    padding: 1.5rem;/* consistent internal spacing */
+/* Styles for the card body containing the order summary table */
+.card-body {
+    padding: 1.5rem; /* add padding */
 }
 
-.order-table {
-    width: 100%;/* full width of container */
-    border-collapse: collapse;/* removes default cell spacing */
+/* Styles for the table displaying cart items */
+.table {
+    width: 100%; /* set full width */
+    border-collapse: collapse; /* collapse borders */
 }
 
-.order-table th {
-    text-align: left;/* left aligned headers*/
-    padding: 0.75rem;/* cell padding */
-    border-bottom: 2px solid #eee;/* bottom border for separation */
-    font-weight: 600;/* semi-bold headers */
-    color: #333;/* dark gray for good contrast*/
+/* Styles for table headers */
+.table th {
+    text-align: left; /* align left */
+    padding: 0.75rem; /* add padding */
+    border-bottom: 2px solid #eee; /* add bottom border */
+    font-weight: 600; /* set semi-bold */
+    color: #333; /* set dark gray */
 }
 
-.order-table td {
-    padding: 0.75rem;/* matches header padding */
-    border-bottom: 1px solid #eee;/* lighter border than headers */
-    vertical-align: top;/* aligns content to top of cell*/
+/* Styles for table cells */
+.table td {
+    padding: 0.75rem; /* add padding */
+    border-bottom: 1px solid #eee; /* add bottom border */
+    vertical-align: top; /* align top */
 }
 
-.order-table tfoot tr:last-child td {
-    border-bottom: none;/* removes bottom border*/
-    font-weight: 700;/* bold for emphasis*/
-    color: #8B4513;/* brand color for total */
-    font-size: 1.1rem;/* slightly larger text*/
-    padding-top: 1rem;/* extra space above total*/
+/* Styles for the total row in the table footer */
+.table tfoot tr:last-child td {
+    border-bottom: none; /* remove bottom border */
+    font-weight: 700; /* set bold */
+    color: #8B4513; /* set SaddleBrown */
+    font-size: 1.1rem; /* increase font size */
+    padding-top: 1rem; /* add top padding */
 }
 
 /* Payment Section */
