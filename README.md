@@ -54,6 +54,7 @@ UX Wireframe (Old design - I Initially had the Idea to create an Adopt your virt
 ![image](https://github.com/user-attachments/assets/6626eab6-77e4-4511-834c-a2999036b7b4)
 
 New Wireframe:
+![image](https://github.com/user-attachments/assets/6e5251d7-16ac-439f-bc30-d87f75f9fe9f)
 
 
 ## 🌟 Key Features <a id="key-features"></a>
@@ -368,7 +369,7 @@ Evidence:
 - **Workaround**: Manually check "orders" in account dashboard
 
 ### 2. Checkout Page Styling
-- **Status**: UX fix in progress
+- **Status**: UX fix has been
 - **Impact**: Text readability issues in order summary
 - **Temporary Fix**: Browser zoom improves visability
 
