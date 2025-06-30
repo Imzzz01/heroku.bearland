@@ -28,7 +28,7 @@ def get_or_create_cart(request):
     return cart
 
 @login_required
-
+@csrf_exempt
 def cart_view(request):
     """
     Display the shopping cart page
@@ -46,7 +46,7 @@ def cart_view(request):
     return render(request, 'cart/cart.html', {'cart': cart})
 
 @login_required
-
+@csrf_exempt
 def add_to_cart(request, product_id):
     """
     Add a product to the cart or increment quantity if already present
