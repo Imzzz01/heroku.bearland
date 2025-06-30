@@ -12,13 +12,18 @@
         <!-- Individual gift cards -->
         <div class="col-md-4 mb-4">
             <div class="card h-100" data-aos="fade-up">
-                <img src="{{ gift.image.url }}" class="card-img-top" alt="{{ gift.name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                {% if gift.image %}
+                    <img src="{{ gift.image.url }}" class="card-img-top" alt="{{ gift.name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                {% else %}
+                    <img src="{% static 'images/no-image.png' %}" class="card-img-top" alt="{{ gift.name }}" style="width: 100%; height: 250px; object-fit: cover;">
+                {% endif %}
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">{{ gift.name }}</h5>
                     <p class="price">£{{ gift.price }}</p>
-                    <p class="card-text flex-grow-1">{{ gift.description }}</p>
+                    <p class="card-text flex-grow-1">{{ gift.description|default:"A wonderful bear-themed gift!" }}</p>
                     <div class="mt-auto">
                         <a href="{% url 'store:product_detail' gift.id %}" class="btn btn-outline-primary btn-sm me-2">View Details</a>
+                        {% if gift.stock > 0 %}
                         <form method="post" action="{% url 'cart:add_to_cart' gift.id %}" class="d-inline add-to-cart-form" data-product-id="{{ gift.id }}">
                             {% csrf_token %}
                             <input type="hidden" name="quantity" value="1">
@@ -26,11 +31,15 @@
                                 <i class="fa fa-cart-plus"></i> Add to Cart
                             </button>
                         </form>
+                        {% else %}
+                        <button class="btn btn-secondary btn-sm" disabled>Out of Stock</button>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
         {% empty %}
+        <!-- Fallback gift items if no gifts are passed -->
         <!-- Rose Bear Gift -->
         <div class="col-md-4 mb-4">
             <div class="card h-100" data-aos="fade-up">
@@ -41,7 +50,7 @@
                     <p class="card-text flex-grow-1">A romantic gift with a beautiful rose - perfect for someone special!</p>
                     <div class="mt-auto">
                         <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' 101 %}" class="d-inline add-to-cart-form" data-product-id="101">
+                        <form method="post" action="#" class="d-inline add-to-cart-form" data-product-id="101">
                             {% csrf_token %}
                             <input type="hidden" name="quantity" value="1">
                             <button type="submit" class="btn btn-primary btn-sm me-2">
@@ -62,7 +71,7 @@
                     <p class="card-text flex-grow-1">Adorable bear-themed jewelry for bear lovers!</p>
                     <div class="mt-auto">
                         <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' 102 %}" class="d-inline add-to-cart-form" data-product-id="102">
+                        <form method="post" action="#" class="d-inline add-to-cart-form" data-product-id="102">
                             {% csrf_token %}
                             <input type="hidden" name="quantity" value="1">
                             <button type="submit" class="btn btn-primary btn-sm me-2">
@@ -73,153 +82,7 @@
                 </div>
             </div>
         </div>
-        <!-- Bear Keychain -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100" data-aos="fade-up">
-                <img src="{% static 'images/store/bearkeychain.jpg' %}" class="card-img-top" alt="Bear keychain" style="width: 100%; height: 250px; object-fit: cover;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Bear Keychain</h5>
-                    <p class="price">£8.00</p>
-                    <p class="card-text flex-grow-1">Cute bear keychain to keep your favorite bear with you always!</p>
-                    <div class="mt-auto">
-                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' 103 %}" class="d-inline add-to-cart-form" data-product-id="103">
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn btn-primary btn-sm me-2">
-                                <i class="fa fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Wedding Bear Gift -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100" data-aos="fade-up">
-                <img src="{% static 'images/store/teddygift.jpg' %}" class="card-img-top" alt="Wedding bear gift" style="width: 100%; height: 250px; object-fit: cover;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Wedding Bear Gift</h5>
-                    <p class="price">£35.00</p>
-                    <p class="card-text flex-grow-1">Perfect wedding gift for the happy couple!</p>
-                    <div class="mt-auto">
-                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' 104 %}" class="d-inline add-to-cart-form" data-product-id="104">
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn btn-primary btn-sm me-2">
-                                <i class="fa fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Bear Chocolates -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100" data-aos="fade-up">
-                <img src="{% static 'images/store/chocolates.jpg' %}" class="card-img-top" alt="Bear chocolates" style="width: 100%; height: 250px; object-fit: cover;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Bear Chocolates</h5>
-                    <p class="price">£15.00</p>
-                    <p class="card-text flex-grow-1">Delicious bear-shaped chocolates for sweet moments!</p>
-                    <div class="mt-auto">
-                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' 105 %}" class="d-inline add-to-cart-form" data-product-id="105">
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn btn-primary btn-sm me-2">
-                                <i class="fa fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Teddy Bear Bouquet -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100" data-aos="fade-up">
-                <img src="{% static 'images/store/teddybouquet.jpg' %}" class="card-img-top" alt="Teddy bouquet" style="width: 100%; height: 250px; object-fit: cover;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Teddy Bear Bouquet</h5>
-                    <p class="price">£28.00</p>
-                    <p class="card-text flex-grow-1">A beautiful bouquet of mini teddy bears - unique and adorable!</p>
-                    <div class="mt-auto">
-                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' 106 %}" class="d-inline add-to-cart-form" data-product-id="106">
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn btn-primary btn-sm me-2">
-                                <i class="fa fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Valentine Gift Set -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100" data-aos="fade-up">
-                <img src="{% static 'images/store/valentinegift.jpg' %}" class="card-img-top" alt="Valentine bear gift set" style="width: 100%; height: 250px; object-fit: cover;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Valentine Gift Set</h5>
-                    <p class="price">£32.00</p>
-                    <p class="card-text flex-grow-1">Complete Valentine's gift set with bear and treats!</p>
-                    <div class="mt-auto">
-                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' 107 %}" class="d-inline add-to-cart-form" data-product-id="107">
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn btn-primary btn-sm me-2">
-                                <i class="fa fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Gift Box Bears -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100" data-aos="fade-up">
-                <img src="{% static 'images/store/giftboxbears.jpg' %}" class="card-img-top" alt="Gift box bears" style="width: 100%; height: 250px; object-fit: cover;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Gift Box Bears</h5>
-                    <p class="price">£22.00</p>
-                    <p class="card-text flex-grow-1">Beautifully packaged mini bears in elegant gift boxes!</p>
-                    <div class="mt-auto">
-                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' 108 %}" class="d-inline add-to-cart-form" data-product-id="108">
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn btn-primary btn-sm me-2">
-                                <i class="fa fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Special Occasion Bear -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100" data-aos="fade-up">
-                <img src="{% static 'images/store/specialoccasion.jpg' %}" class="card-img-top" alt="Special occasion bear" style="width: 100%; height: 250px; object-fit: cover;">
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">Special Occasion Bear</h5>
-                    <p class="price">£30.00</p>
-                    <p class="card-text flex-grow-1">Perfect for birthdays, anniversaries, and special celebrations!</p>
-                    <div class="mt-auto">
-                        <a href="#" class="btn btn-outline-primary btn-sm me-2">View Details</a>
-                        <form method="post" action="{% url 'cart:add_to_cart' 109 %}" class="d-inline add-to-cart-form" data-product-id="109">
-                            {% csrf_token %}
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn btn-primary btn-sm me-2">
-                                <i class="fa fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Add more fallback gift items as needed -->
         {% endfor %}
     </div>
 </section>
@@ -266,6 +129,12 @@
                 const productId = this.dataset.productId;
                 const formData = new FormData(this);
 
+                // Check if the form has a valid action URL
+                if (!this.action || this.action === '#') {
+                    console.error('Form action is not set properly');
+                    return;
+                }
+
                 fetch(this.action, {
                     method: 'POST',
                     body: formData,
@@ -273,7 +142,12 @@
                         'X-CSRFToken': '{{ csrf_token }}'
                     }
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data.success) {
                         const toast = document.getElementById('cart-toast');
@@ -286,7 +160,7 @@
                         toast.onclick = () => window.location.href = "{% url 'cart:cart' %}";
                     }
                 })
-                .catch(error => console.error('Oops, error:', error));
+                .catch(error => console.error('Error:', error));
             });
         });
     });
