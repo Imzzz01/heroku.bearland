@@ -1,6 +1,13 @@
 from django.db import models
 from django.urls import reverse
 
+def product_image_upload_to(instance, filename):
+    # Get file extension
+    ext = filename.split('.')[-1]
+    # Generate new filename: products/<id>_<original_name>.<ext>
+    new_filename = f"{instance.id}_{instance.name.replace(' ', '_')}.{ext}"
+    return f"products/{new_filename}"
+
 class Product(models.Model):
     """
     Base model representing a product in the store 
@@ -17,7 +24,7 @@ class Product(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    image = models.ImageField(upload_to=product_image_upload_to, blank=True, null=True)
     stock = models.PositiveIntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -29,6 +36,7 @@ class Product(models.Model):
     def get_absolute_url(self):
         """Returns URL for product detail view"""
         return reverse('product_detail', args=[str(self.id)])
+
 
 class Gift(Product):
     """
