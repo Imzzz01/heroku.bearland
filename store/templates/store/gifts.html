@@ -258,6 +258,7 @@
 
 {% block extra_js %}
 <script>
+
     document.addEventListener('DOMContentLoaded', function() {
         const forms = document.querySelectorAll('.add-to-cart-form');
         forms.forEach(form => {
@@ -282,7 +283,7 @@
                         setTimeout(() => {
                             toast.classList.remove('show');
                         }, 3000);
-                        // Redirect on click
+                        // Optional: Redirect on click
                         toast.onclick = () => window.location.href = "{% url 'cart:cart' %}";
                     }
                 })
