@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-development-key-here') 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'bearland-b0479f09fcd3.herokuapp.com',
@@ -163,10 +163,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # WhiteNoise configuration (add this)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
+ 
 EMAIL_USE_TLS = True  
 EMAIL_PORT = 587  
-EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST = 'in-v3.mailjet.com'  
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') 
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')  
