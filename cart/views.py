@@ -49,7 +49,7 @@ def cart_view(request):
 @csrf_exempt
 def add_to_cart(request, product_id):
     """
-    Add a product to the cart or increment quantity if already present
+    Add a product to the cart or update quantity if already present
 
     Handles AJAX requests and returns JSON response with updated cart info
 
@@ -59,28 +59,35 @@ def add_to_cart(request, product_id):
 
     Returns:
         JsonResponse: Contains success status and updated cart totals
-    
     """
     product = get_object_or_404(Product, id=product_id)
     cart = get_or_create_cart(request)
     
-    # Get existing cart item or create new one with quantity=1
-    cart_item, created = CartItem.objects.get_or_create(
-        cart=cart,
-        product=product,
-        defaults={'quantity': 1}
-    )
-    # If item already existed, increment quantity
-    if not created:
-        cart_item.quantity += 1
-        cart_item.save()
-    # Return JSON response for AJAX calls
-    return JsonResponse({
-        'success': True,
-        'cart_total': cart.total, # Updated cart total
-        'item_count': cart.items.count() #Updated item count
-    })
-  
+    if request.method == 'POST':
+        try:
+            quantity = int(request.POST.get('quantity', 1))  # Get quantity from POST, default to 1
+            if quantity <= 0:
+                return JsonResponse({'success': False, 'message': 'Quantity must be positive'}, status=400)
+            
+            # Get or create cart item with the specified quantity
+            cart_item, created = CartItem.objects.get_or_create(
+                cart=cart,
+                product=product,
+                defaults={'quantity': quantity}
+            )
+            if not created:
+                cart_item.quantity += quantity  # Add the new quantity to existing quantity
+                cart_item.save()
+            
+            return JsonResponse({
+                'success': True,
+                'cart_total': cart.total,
+                'item_count': cart.items.count()
+            })
+        except ValueError:
+            return JsonResponse({'success': False, 'message': 'Invalid quantity'}, status=400)
+    
+    return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=405)
 
 @login_required
 def remove_from_cart(request, item_id):

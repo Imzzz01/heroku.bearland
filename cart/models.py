@@ -1,3 +1,4 @@
+from decimal import Decimal
 from django.db import models
 from django.conf import settings
 from store.models import Product
@@ -26,11 +27,13 @@ class Cart(models.Model):
 
       @property
       def total(self):
-          """Calculate total value of all items in cart"""
-          return sum(item.subtotal for item in self.items.all())
+        """Calculate total value of all items in cart including shipping"""
+        item_total = sum(item.subtotal for item in self.items.all())
+        shipping = Decimal('5.00')
+        return item_total + shipping
+
       def __str__(self):
-          """String representation of cart"""
-          return f"Cart {self.id}"
+        return f"Cart {self.id}"
 # cart/models.py
 # This file defines the CartItem model for items in a shopping cart
 

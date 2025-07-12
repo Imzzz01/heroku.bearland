@@ -56,12 +56,12 @@
                 <h5>Order Summary</h5>
                 <hr>
                     <!-- Subtotal -->
-                <p>Subtotal: £{{ cart.total|floatformat:2 }}</p>
+                <p>Subtotal: £{{ cart.total|add:-5|floatformat:2 }}</p>
                 <!--  Fixed shipping cost-->
                 <p>Shipping: £5.00</p>
                 <hr>
                     <!--  Total with shipping-->
-                <p><strong>Total: £{{ cart.total|add:5|floatformat:2 }}</strong></p>
+                <h5>Total: £{{ cart.total|floatformat:2 }}</h5>
                 <!--  Checkout button -->
                 <a href="{% url 'checkout:checkout' %}" class="btn btn-primary w-100">Proceed to Checkout</a>
             </div>

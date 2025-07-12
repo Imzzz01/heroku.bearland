@@ -45,7 +45,10 @@ def checkout_view(request):
                         quantity=item.quantity,
                         price=item.product.price
                     )
-
+                print(f"Debug - Stripe Secret Key: {stripe.api_key}")
+                print(f"Debug - Stripe Publishable Key: {settings.STRIPE_PUBLISHABLE_KEY}")
+                print(f"Debug - Order Amount: {order.amount}, Type: {type(order.amount)}")
+                logger.info(f"Debug - Order amount: {order.amount}, Type: {type(order.amount)}")
                 # Create Stripe checkout session
                 checkout_session = stripe.checkout.Session.create(
                     payment_method_types=['card'],
@@ -55,7 +58,7 @@ def checkout_view(request):
                             'product_data': {
                                 'name': f'Order #{order.id}',
                             },
-                            'unit_amount': int(order.amount * 100),
+                            'unit_amount': int(float(order.amount) * 100) if order.amount is not None else 0,
                         },
                         'quantity': 1,
                     }],
