@@ -3,4 +3,12 @@ db.sqlite3
 __pycache__/
 *.py[cod]
 *.class
+.envvenv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+env.bak/
 .env
