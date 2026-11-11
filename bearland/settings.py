@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'your-development-key-here')
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "https://django-bearland.onrender.com",
+    "django-bearland.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
