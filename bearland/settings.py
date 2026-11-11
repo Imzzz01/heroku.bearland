@@ -29,16 +29,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'your-development-key-here') 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
-     'django-bearland.onrender.com',
-    'localhost',
-    '127.0.0.1',
+    "django-bearland.onrender.com",
+    "localhost",
+    "127.0.0.1",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://django-bearland.onrender.com',
+    "https://django-bearland.onrender.com",
 ]
 
 # Application definition
