@@ -32,9 +32,9 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'your-development-key-here')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'bearland-b0479f09fcd3.herokuapp.com',
-    '127.0.0.1',
+     'django-bearland.onrender.com',
     'localhost',
+    '127.0.0.1',
 ]
 
 
