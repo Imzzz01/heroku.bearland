@@ -32,13 +32,13 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'your-development-key-here')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "django-bearland.onrender.com",
+    "heroku-bearland4.onrender.com",
     "localhost",
     "127.0.0.1",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://django-bearland.onrender.com",
+    "https://heroku-bearland4.onrender.com",
 ]
 
 # Application definition
