@@ -325,18 +325,32 @@
                     }
                 })
                 .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        const toast = document.getElementById('cart-toast');
-                        toast.textContent = `Added to cart! Total: £${data.cart_total}, Items: ${data.item_count}`;
-                        toast.classList.add('show');
-                        setTimeout(() => {
-                            toast.classList.remove('show');
-                        }, 3000);
-                        // Optional: Redirect on click
-                        toast.onclick = () => window.location.href = "{% url 'cart:cart' %}";
-                    }
-                })
+                .then(response => {
+    if (response.redirected) {
+        window.location.href = response.url;
+        return null;
+    }
+
+    if (!response.headers.get('content-type')?.includes('application/json')) {
+        throw new Error('Expected a JSON response from the server.');
+    }
+
+    return response.json();
+})
+.then(data => {
+    if (!data) return;
+
+    if (data.success) {
+        const toast = document.getElementById('cart-toast');
+        toast.textContent = `Added to cart! Total: £${data.cart_total}, Items: ${data.item_count}`;
+        toast.classList.add('show');
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+        toast.onclick = () => window.location.href = "{% url 'cart:cart' %}";
+    }
+})
+                
                 .catch(error => console.error('Oops, error:', error));
             });
         });
